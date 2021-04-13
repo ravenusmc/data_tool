@@ -6,7 +6,9 @@ I want to create a simple tool like Tableau or DOMO that will allow me to analyz
 simple CSV files. The basic functionality would be that you load a csv file and then can 
 look the data through some basic data visualizations. 
 
-
+I will say that I'm not sure if I'll ever finish this project. There may be parts that I can't 
+figure out how to build. I may also continually be adding more and more parts to it as to 
+build a fairly robust data tool. We'll see where this goes and let's start the adventure...
 
 # Getting started
 ### Installing
