@@ -13,12 +13,13 @@ build a fairly robust data tool. We'll see where this goes and let's start the a
 # Getting started
 ### Installing
 
+Please note that these instructions are not 100% complete. 
+
 1. Clone the repo
 2. Run [sudo] pip3 install or pip3 install flask
 3. Run python3 app.py to run the application
 4. Visit localhost:5000 to see the application
 5. Please note that these instructions only follow the Python side of this application.
-
 
 ### Technology Stack
 
