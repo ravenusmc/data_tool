@@ -64,6 +64,7 @@
 <script>
 import Navbar from "@/components/generic/Navbar.vue";
 import Footer from "@/components/generic/Footer.vue";
+
 export default {
   name: "About",
   components: {

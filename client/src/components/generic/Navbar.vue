@@ -42,6 +42,7 @@ export default {};
 </script>
 
 <style scoped>
+
 .backgroundColor {
   background-color: #041e42 !important;
 }
@@ -51,4 +52,5 @@ export default {};
 .navbar-toggler {
   background-color: white;
 }
+
 </style>
