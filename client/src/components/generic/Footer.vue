@@ -45,7 +45,6 @@ footer {
   align-items: center;
   background: #041e42;
   height: 300px;
-  margin-top: 75px;
 }
 .footer_fix {
   display: flex;

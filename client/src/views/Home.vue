@@ -2,7 +2,9 @@
   <div>
     <Navbar />
       <section>
-        <img src="../assets/images/data_pic.jpg" alt="image of a graphs on a computer">
+        <div class='title-div'>
+          <h1 class='title_header'>Data Tool</h1>
+        </div>
       </section>
     <Footer />
   </div>
@@ -22,12 +24,29 @@ export default {
 </script>
 
 <style scoped>
-img {
-  border: 2px solid red;
+
+section {
+  background-image: url('../assets/images/data_pic.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-	width: 100%;
-	height: 900px;
+	/* width: 100%; */
+	height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
+.title_header {
+  font-size: 9rem;
+  font-weight: 600;
+  letter-spacing: -.3rem;
+  color: #fff;
+}
+
+.title-div {
+  background-color: rgba(255, 0, 0, 0.8);
+}
+
 </style>
