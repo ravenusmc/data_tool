@@ -42,11 +42,12 @@ section {
   font-size: 9rem;
   font-weight: 600;
   letter-spacing: -.3rem;
-  color: #fff;
+  color: #bf0d3e;
 }
 
 .title-div {
-  background-color: rgba(255, 0, 0, 0.8);
+  background-color: rgba(0, 255, 180, 0.8);
+  padding: 20px;
 }
 
 </style>
