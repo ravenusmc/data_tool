@@ -44,10 +44,10 @@ export default {};
 <style scoped>
 
 .backgroundColor {
-  background-color: rgb(0, 255, 180) !important;
+  background-color: rgb(0, 125, 225) !important;
 }
 .fontColor {
-  color: #bf0d3e !important;
+  color: rgb(225, 100, 0) !important;
 }
 .navbar-toggler {
   background-color: white;

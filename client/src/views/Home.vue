@@ -26,11 +26,11 @@ export default {
 <style scoped>
 
 section {
+  margin: 25px;
   background-image: url('../assets/images/data_pic.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-	/* width: 100%; */
 	height: 100vh;
   display: flex;
   flex-direction: column;
@@ -39,14 +39,14 @@ section {
 }
 
 .title_header {
-  font-size: 9rem;
+  font-size: 6rem;
   font-weight: 600;
   letter-spacing: -.3rem;
-  color: #bf0d3e;
+  color: rgb(225, 100, 0);
 }
 
 .title-div {
-  background-color: rgba(0, 255, 180, 0.8);
+  background-color: rgba(0, 125, 225, 0.8);
   padding: 20px;
 }
 

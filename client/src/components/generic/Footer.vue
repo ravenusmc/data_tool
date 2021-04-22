@@ -43,7 +43,7 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgb(0, 255, 180);
+  background: rgb(0, 125, 225);
   height: 300px;
 }
 .footer_fix {
@@ -55,7 +55,7 @@ footer {
   padding-top: 50px;
 }
 .footerTitle {
-  color: #bf0d3e;
+  color: rgb(225, 100, 0);
   font-size: 20px;
   text-transform: uppercase;
   text-align: center;
