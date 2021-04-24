@@ -14,3 +14,13 @@ class Connection():
                                 port=3306,
                                 database='data_tool')
         self.cursor = self.conn.cursor()
+
+    def pull_user_info(self, username):
+        query = ("""SELECT * FROM users WHERE username = %s""")
+        self.cursor.execute(query, (username,))
+        row = self.cursor.fetchone()
+        return row
+
+# test = Connection() 
+# name = test.pull_user_info('test')
+# print(name[1])

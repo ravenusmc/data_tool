@@ -25,6 +25,16 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#"
+              ><router-link class="fontColor font" to="/">Login</router-link></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"
+              ><router-link class="fontColor font" to="/sign_up">Sign Up</router-link></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"
               ><router-link class="fontColor font" to="/about"
                 >About</router-link
               ></a
