@@ -69,6 +69,13 @@ export default {
 		...mapActions([ "common/setUpUser"]),
     submitSelection(evt) {
       evt.preventDefault();
+      if (this.username == '') {
+        alert('Uername must be entered');
+      }else if (this.email == '') {
+        alert('Email must be entered');
+      }else if (this.password != this.password_confirm) {
+        alert('Passwords Must be the Same');
+      }else {
       const payload = {
         email: this.email,
         username: this.username,
@@ -76,6 +83,8 @@ export default {
         password_confirm: this.password_confirm,
       };
       this.$store.dispatch("common/setUpUser", { payload });
+      }
+
     },
   },
 };
