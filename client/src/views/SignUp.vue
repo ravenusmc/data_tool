@@ -75,12 +75,13 @@ export default {
         alert('Email must be entered');
       }else if (this.password != this.password_confirm) {
         alert('Passwords Must be the Same');
-      }else {
+      }else if (this.password.length <6) {
+        alert('Password must be at least 6 characters long')
+      } else {
       const payload = {
         email: this.email,
         username: this.username,
         password: this.password,
-        password_confirm: this.password_confirm,
       };
       this.$store.dispatch("common/setUpUser", { payload });
       }

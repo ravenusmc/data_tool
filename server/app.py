@@ -21,20 +21,18 @@ CORS(app)
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
-        #Creating a user object 
-        user = User()
         #creating the db object
         db = Connection()
         post_data = request.get_json()
-        print(post_data)
+        email = post_data['email']
+        username = post_data['username']
+        password = post_data['password']
         #setting the properties to the user object
-        # user.set_up_user(username, email, address, city, state, zipcode, person_type, password)
-        #Getting the lat and lng coordinates for the user. 
-        # user = coords.get_coords(user)
+        user = User(email, username, password)
         #Encrypting the password
-        # password, hashed = db.encrypt_pass(user)
-        # #Adding the user to the database
-        # db.insert(user, hashed)
+        password, hashed = db.encrypt_pass(user)
+        #Adding the user to the database
+        db.insert(user, hashed)
         return jsonify('hi Mike')
 
 if __name__ == '__main__':

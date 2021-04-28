@@ -20,6 +20,21 @@ class Connection():
         self.cursor.execute(query, (username,))
         row = self.cursor.fetchone()
         return row
+    
+    #This method will encrypt the password
+    def encrypt_pass(self, user):
+        password = user.password.encode('utf-8')
+        hashed = bcrypt.hashpw(password, bcrypt.gensalt())
+        return password, hashed
+    
+    #This method will insert a new user into the database.
+    def insert(self, user, hashed):
+        self._SQL = """insert into users
+          (email, username, password)
+          values
+          (%s, %s, %s)"""
+        self.cursor.execute(self._SQL, (user.email, user.username, hashed))
+        self.conn.commit()
 
 # test = Connection() 
 # name = test.pull_user_info('test')
