@@ -35,7 +35,3 @@ class Connection():
           (%s, %s, %s)"""
         self.cursor.execute(self._SQL, (user.email, user.username, hashed))
         self.conn.commit()
-
-# test = Connection() 
-# name = test.pull_user_info('test')
-# print(name[1])
