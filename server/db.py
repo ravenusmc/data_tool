@@ -29,9 +29,11 @@ class Connection():
     
     #This method will insert a new user into the database.
     def insert(self, user, hashed):
+        user_created = True
         self._SQL = """insert into users
           (email, username, password)
           values
           (%s, %s, %s)"""
-        self.cursor.execute(self._SQL, (user.email, user.username, hashed))
+        self.cursor.execute(self._SQL, (user.username, user.email, hashed))
         self.conn.commit()
+        return user_created
