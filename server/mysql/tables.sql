@@ -15,3 +15,5 @@ SHOW COLUMNS FROM users;
 
 INSERT INTO users
 VALUES (1, 'test', 'a1@yahoo.com', 'test');
+
+DELETE FROM users WHERE user_id = 2;

@@ -6,10 +6,12 @@ Vue.use(Vuex)
 
 const state = {
 	loginUserObject: [],
+	userCreated: false,
 };
 
 const getters = {
 	loginUserObject: state => state.loginUserObject,
+	userCreated: state => state.userCreated,
 };
 
 const actions = {
@@ -19,11 +21,7 @@ const actions = {
 		axios.post(path, payload)
 			.then((res) => {
 				console.log(res.data);
-				// for (let i = 1; i < res.data.length; i++) {
-				// 	let date = new Date(res.data[i][0], 0, 1)
-				// 	res.data[i][0] = date
-				// }
-				// commit('setEvaCountData', res.data);
+				commit('setUserCreated', res.data);
 			})
 			.catch(error => {
 				console.log(error);
@@ -36,6 +34,10 @@ const mutations = {
 
 	setloginUserObject(state, data) {
 		state.loginUserObject = data
+	},
+
+	setUserCreated(state, data) {
+		state.userCreated = data 
 	},
 
 };

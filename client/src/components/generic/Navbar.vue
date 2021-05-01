@@ -25,6 +25,11 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#"
+              ><router-link class="fontColor font" to="/set_up">Set up</router-link></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"
               ><router-link class="fontColor font" to="/">Login</router-link></a
             >
           </li>
