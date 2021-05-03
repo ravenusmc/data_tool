@@ -28,6 +28,18 @@ const actions = {
 			})
 	},
 
+	login: ({ commit }, { payload }) => {
+		const path = 'http://localhost:5000/login';
+		axios.post(path, payload)
+			.then((res) => {
+				res.data = 5
+				commit('setUserCreated', res.data);
+			})
+			.catch(error => {
+				console.log(error);
+			})
+	},
+
 };
 
 const mutations = {
