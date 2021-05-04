@@ -7,11 +7,13 @@ Vue.use(Vuex)
 const state = {
 	loginUserObject: [],
 	userCreated: false,
+	token: null, 
 };
 
 const getters = {
 	loginUserObject: state => state.loginUserObject,
 	userCreated: state => state.userCreated,
+	token: state => state.token, 
 };
 
 const actions = {
@@ -51,6 +53,10 @@ const mutations = {
 	setUserCreated(state, data) {
 		state.userCreated = data 
 	},
+
+	set_token(state, token) {
+		state.token = token 
+	}
 
 };
 

@@ -54,14 +54,22 @@ class Connection():
         #If the user name is in the database I move here to check if the password
         #is valid.
         else:
-            hashed = row[10].encode('utf-8')
+            #hashed = row[3].encode('utf-8')
+            salt = bcrypt.gensalt()
+            hashed = bcrypt.hashpw(password, salt)
+            print('---------------')
+            print(hashed)
+            print(bcrypt.hashpw(password, hashed))
+            print('---------------')
             if bcrypt.hashpw(password, hashed) == hashed:
+                print('HERE')
                 flag = True
                 not_found = False
                 password_no_match = False
             #This is a final catch all area. Basically if the password does not match 
             #the user is not getting in. 
             else:
+                print('BAD')
                 flag = False
                 not_found = False
                 password_no_match = True

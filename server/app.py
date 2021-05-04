@@ -41,10 +41,11 @@ def login():
         post_data = request.get_json()
         username = post_data['username']
         password = post_data['password']
-        print(username)
-        print(password)
         #Checking to see if the user is in the database
-        # flag, not_found, password_no_match = db.check(username, password)
+        flag, not_found, password_no_match = db.check(username, password)
+        print(flag)
+        print(not_found)
+        print(password_no_match)
         #Conditional statement to test if the user is a member of the site.
         # if flag == True:
         #     #If the user is in the database, the user gets sent to the index page.
