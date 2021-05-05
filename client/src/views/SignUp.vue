@@ -1,12 +1,15 @@
 <template>
   <div>
     <Navbar />
-    <div>
-      <h3>Sign Up</h3>
-    </div>
 
     <section>
+
       <form @submit="submitSelection">
+
+        <div>
+          <h3 class='login-title center'>Sign Up</h3>
+        </div>
+
         <div class="form-group">
           <label for="username">Username</label>
           <input
@@ -47,9 +50,11 @@
             placeholder="Retype Password"
           />
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-outline-primary">Submit</button>
       </form>
+
     </section>
+
     <Footer />
   </div>
 </template>
@@ -100,7 +105,40 @@ export default {
 </script>
 
 <style scoped>
-form {
-  width: 50%;
+
+section {
+  margin: 100px 0 100px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
+.login-title {
+  text-transform: uppercase;
+  color: rgb(0, 125, 225);
+}
+
+form {
+  border: 2px solid rgb(0, 125, 225);
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  width: 45%;
+}
+
+/****************
+Media Queries
+****************/
+
+/* Mobile Screen */
+@media only all and (max-width: 900px) {
+
+  form {
+    border: 2px solid rgb(0, 125, 225);
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    width: 65%;
+  }
+}
+
 </style>

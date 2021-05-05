@@ -62,7 +62,7 @@ export default {};
   background-color: rgb(0, 125, 225) !important;
 }
 .fontColor {
-  color: rgb(225, 100, 0) !important;
+  color: rgb(255, 150, 0) !important;
 }
 .navbar-toggler {
   background-color: white;

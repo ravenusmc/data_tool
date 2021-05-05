@@ -55,7 +55,7 @@ footer {
   padding-top: 50px;
 }
 .footerTitle {
-  color: rgb(225, 100, 0);
+  color: rgb(255, 150, 0);
   font-size: 20px;
   text-transform: uppercase;
   text-align: center;

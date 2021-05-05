@@ -4,3 +4,10 @@
   </div>
 </template>
 
+<style>
+
+.center {
+  text-align: center;
+}
+
+</style>
