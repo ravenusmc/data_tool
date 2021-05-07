@@ -4,11 +4,12 @@
 
     <section>
 
-      <div>
-        <h3 class='login-title center'>Login</h3>
-      </div>
-
       <form @submit="login">
+
+        <div>
+          <h3 class='login-title center'>Login</h3>
+        </div>
+
         <div class="form-group">
           <label for="username">Username</label>
           <input
@@ -101,7 +102,7 @@ Media Queries
     border: 2px solid rgb(0, 125, 225);
     background-color: rgba(0, 0, 0, 0.3);
     padding: 30px;
-    width: 65%;
+    width: 70%;
   }
 }
 

@@ -41,12 +41,12 @@
           />
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">Retype Password</label>
+          <label for="exampleInputPassword2">Retype Password</label>
           <input
             type="password"
             class="form-control"
             v-model="password_confirm"
-            id="exampleInputPassword1"
+            id="exampleInputPassword2"
             placeholder="Retype Password"
           />
         </div>
