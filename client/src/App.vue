@@ -10,4 +10,8 @@
   text-align: center;
 }
 
+.redText {
+  color: red;
+}
+
 </style>

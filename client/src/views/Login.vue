@@ -8,6 +8,7 @@
 
         <div>
           <h3 class='login-title center'>Login</h3>
+          <p class='center redText' v-if="passwordNoMatch">Password Or Username Invalid</p>
         </div>
 
         <div class="form-group">
@@ -41,13 +42,18 @@
 <script>
 import Navbar from "@/components/generic/Navbar.vue";
 import Footer from "@/components/generic/Footer.vue";
-import { mapActions } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "signup",
   components: {
     Navbar,
     Footer,
+  },
+  computed: {
+    ...mapGetters('common', [
+			'passwordNoMatch',
+    ]),
   },
   data() {
     return {

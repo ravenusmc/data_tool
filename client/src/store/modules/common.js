@@ -8,12 +8,16 @@ const state = {
 	loginUserObject: [],
 	userCreated: false,
 	token: null, 
+	passwordNoMatch: false,
+	loginValues: {},
 };
 
 const getters = {
 	loginUserObject: state => state.loginUserObject,
 	userCreated: state => state.userCreated,
 	token: state => state.token, 
+	passwordNoMatch: state => state.passwordNoMatch, 
+	loginValues: state => state.loginValues,
 };
 
 const actions = {
@@ -34,8 +38,7 @@ const actions = {
 		const path = 'http://localhost:5000/login';
 		axios.post(path, payload)
 			.then((res) => {
-				res.data = 5
-				commit('setUserCreated', res.data);
+				commit('setNoPasswordMatch', res.data.Password_no_match);
 			})
 			.catch(error => {
 				console.log(error);
@@ -56,6 +59,10 @@ const mutations = {
 
 	set_token(state, token) {
 		state.token = token 
+	},
+
+	setNoPasswordMatch(state, data) {
+		state.passwordNoMatch = data
 	}
 
 };
