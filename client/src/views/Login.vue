@@ -69,7 +69,10 @@ export default {
         username: this.username,
         password: this.password,
       };
-      this.$store.dispatch("common/login", { payload });
+      this.$store.dispatch("common/login", { payload })
+      // .then(() => {
+      //   this.$router.push({ path: '/set_up'});
+      // });
     },
   },
 };

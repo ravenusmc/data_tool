@@ -23,7 +23,7 @@
               ><router-link class="fontColor font" to="/">Home</router-link></a
             >
           </li>
-          <li class="nav-item">
+          <li class="nav-item" v-if='loginFlag'>
             <a class="nav-link" href="#"
               ><router-link class="fontColor font" to="/set_up">Set up</router-link></a
             >
@@ -53,7 +53,16 @@
 </template>
 
 <script>
-export default {};
+import { mapGetters } from "vuex";
+
+export default {
+  name: "Navbar",
+  computed: {
+    ...mapGetters('common', [
+			'loginFlag',
+    ]),
+  },
+};
 </script>
 
 <style scoped>

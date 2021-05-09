@@ -48,7 +48,7 @@ class Connection():
         row = self.cursor.fetchone()
         #Here I check to see if the username is in the database.
         if str(row) == 'None':
-            flag = False
+            login_flag = False
             not_found = True
             password_no_match = False
         #If the user name is in the database I move here to check if the password
@@ -56,13 +56,13 @@ class Connection():
         else:
             hashed = row[3].encode('utf-8')
             if bcrypt.hashpw(password, hashed) == str(hashed,'UTF-8'):
-                flag = True
+                login_flag = True
                 not_found = False
                 password_no_match = False
             #This is a final catch all area. Basically if the password does not match 
             #the user is not getting in. 
             else:
-                flag = False
+                login_flag = False
                 not_found = False
                 password_no_match = True
-        return flag, not_found, password_no_match
+        return login_flag, not_found, password_no_match
