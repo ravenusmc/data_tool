@@ -29,7 +29,6 @@ const actions = {
 		const path = 'http://localhost:5000/signup';
 		axios.post(path, payload)
 			.then((res) => {
-				console.log(res.data);
 				commit('setUserCreated', res.data);
 			})
 			.catch(error => {
@@ -42,7 +41,6 @@ const actions = {
 		axios.post(path, payload)
 			.then((res) => {
 				if (res.data.login_flag) {
-					console.log(res.data.login_flag)
 					commit('setLoginFlag', res.data.login_flag)
 					router.push({ path: '/set_up'});
 				}
@@ -52,6 +50,11 @@ const actions = {
 			.catch(error => {
 				console.log(error);
 			})
+	},
+
+	logout: ({ commit }) => {
+		let data = false 
+		commit('setLoginFlag', data)
 	},
 
 };

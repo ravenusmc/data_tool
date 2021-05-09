@@ -18,24 +18,40 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
+          <li class="nav-item" v-if="!loginFlag">
             <a class="nav-link" href="#"
               ><router-link class="fontColor font" to="/">Home</router-link></a
             >
           </li>
-          <li class="nav-item" v-if='loginFlag'>
+          <li class="nav-item" v-if="loginFlag">
             <a class="nav-link" href="#"
-              ><router-link class="fontColor font" to="/set_up">Set up</router-link></a
+              ><router-link class="fontColor font" to="/set_up"
+                >Set up</router-link
+              ></a
             >
           </li>
-          <li class="nav-item">
+          <li class="nav-item" v-if="!loginFlag">
             <a class="nav-link" href="#"
-              ><router-link class="fontColor font" to="/login">Login</router-link></a
+              ><router-link class="fontColor font" to="/login"
+                >Login</router-link
+              ></a
             >
           </li>
-          <li class="nav-item">
+          <li class="nav-item" v-if="loginFlag">
             <a class="nav-link" href="#"
-              ><router-link class="fontColor font" to="/sign_up">Sign Up</router-link></a
+              ><router-link
+                class="fontColor font"
+                to="/login"
+                @click.native="logout"
+                >Logout</router-link
+              ></a
+            >
+          </li>
+          <li class="nav-item" v-if="!loginFlag">
+            <a class="nav-link" href="#"
+              ><router-link class="fontColor font" to="/sign_up"
+                >Sign Up</router-link
+              ></a
             >
           </li>
           <li class="nav-item">
@@ -53,20 +69,23 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "Navbar",
   computed: {
-    ...mapGetters('common', [
-			'loginFlag',
-    ]),
+    ...mapGetters("common", ["loginFlag"]),
+  },
+  methods: {
+    ...mapActions([ "common/logout"]),
+    logout: function () {
+      this.$store.dispatch("common/logout")
+    },
   },
 };
 </script>
 
 <style scoped>
-
 .backgroundColor {
   background-color: rgb(0, 125, 225) !important;
 }
@@ -76,5 +95,4 @@ export default {
 .navbar-toggler {
   background-color: white;
 }
-
 </style>

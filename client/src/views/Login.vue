@@ -30,7 +30,8 @@
             placeholder="Password"
           />
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+         <button type="submit" class="btn btn-outline-primary">Submit</button>
       </form>
 
     </section>
@@ -70,9 +71,6 @@ export default {
         password: this.password,
       };
       this.$store.dispatch("common/login", { payload })
-      // .then(() => {
-      //   this.$router.push({ path: '/set_up'});
-      // });
     },
   },
 };
