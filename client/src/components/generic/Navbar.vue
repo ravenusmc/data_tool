@@ -47,6 +47,16 @@
               ></a
             >
           </li>
+          <li class="nav-item" v-if="loginFlag">
+            <a class="nav-link" href="#"
+              ><router-link
+                class="fontColor font"
+                to="/text_analysis"
+                @click.native="logout"
+                >Text Analysis</router-link
+              ></a
+            >
+          </li>
           <li class="nav-item" v-if="!loginFlag">
             <a class="nav-link" href="#"
               ><router-link class="fontColor font" to="/sign_up"
@@ -77,9 +87,9 @@ export default {
     ...mapGetters("common", ["loginFlag"]),
   },
   methods: {
-    ...mapActions([ "common/logout"]),
+    ...mapActions(["common/logout"]),
     logout: function () {
-      this.$store.dispatch("common/logout")
+      this.$store.dispatch("common/logout");
     },
   },
 };

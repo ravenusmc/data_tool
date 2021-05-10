@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import { Store } from 'vuex';
-import store from '@/store/index.js';  //or use a full path to ./store 
+// import { Store } from 'vuex';
+import store from '@/store/index.js'; 
 import Home from '../views/Home.vue';
 import Missing from '../views/Missing.vue';
 
@@ -35,6 +35,18 @@ const routes = [
     path: '/set_up',
     name: 'setup',
     component: () => import('../views/Setup.vue'),
+    beforeEnter: (to, from, next) => {
+      if (store.state.common.loginFlag == false) {
+        next('/login')
+      }else {
+        next()
+      }
+    }
+  },
+  {
+    path: '/text_analysis',
+    name: 'TextAnalysis',
+    component: () => import('../views/TextAnalysis.vue'),
     beforeEnter: (to, from, next) => {
       if (store.state.common.loginFlag == false) {
         next('/login')
