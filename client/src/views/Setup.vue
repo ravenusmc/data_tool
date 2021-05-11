@@ -37,7 +37,7 @@
             some basic data analysis on the document
           </p>
           <a class="btn btn-primary">
-            <router-link class="fontColor font" to="/Graphs">
+            <router-link class="fontColor font" to="/data_analysis">
               Get Started...
             </router-link>
           </a>

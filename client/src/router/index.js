@@ -63,6 +63,18 @@ const routes = [
     }
   },
   {
+    path: '/data_analysis',
+    name: 'DataAnalysis',
+    component: () => import('../views/Data.vue'),
+    beforeEnter: (to, from, next) => {
+      if (store.state.common.loginFlag == false) {
+        next('/login')
+      }else {
+        next()
+      }
+    }
+  },
+  {
     path: '*',
     component: Missing
   }

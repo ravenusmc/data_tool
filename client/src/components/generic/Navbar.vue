@@ -39,6 +39,15 @@
               ></a
             >
           </li>
+          <li class="nav-item" v-if="loginFlag">
+            <a class="nav-link" href="#"
+              ><router-link
+                class="fontColor font"
+                to="/data_analysis"
+                >Data Analysis</router-link
+              ></a
+            >
+          </li>
           <li class="nav-item" v-if="!loginFlag">
             <a class="nav-link" href="#"
               ><router-link class="fontColor font" to="/login"
