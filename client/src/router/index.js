@@ -54,14 +54,11 @@ const routes = [
     path: '/text_analysis',
     name: 'TextAnalysis',
     component: () => import('../views/TextAnalysis.vue'),
-    // beforeRouteUpdate: (to, from, next) => {
     beforeEnter: (to, from, next) => {
       if (store.state.common.loginFlag == false) {
         next('/login')
       }else {
         next()
-        //to({ path: '/text_analysis' })
-        //next({ name: 'TextAnalysis' })
       }
     }
   },
