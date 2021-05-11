@@ -93,6 +93,7 @@ section {
 
 form {
   border: 2px solid rgb(0, 125, 225);
+  border-radius: 15px;
   background-color: rgba(0, 0, 0, 0.3);
   padding: 30px;
   width: 45%;
@@ -106,9 +107,6 @@ Media Queries
 @media only all and (max-width: 900px) {
 
   form {
-    border: 2px solid rgb(0, 125, 225);
-    background-color: rgba(0, 0, 0, 0.3);
-    padding: 30px;
     width: 70%;
   }
 }

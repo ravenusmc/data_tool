@@ -30,30 +30,19 @@
               ></a
             >
           </li>
-          <li class="nav-item" v-if="!loginFlag">
-            <a class="nav-link" href="#"
-              ><router-link class="fontColor font" to="/login"
-                >Login</router-link
-              ></a
-            >
-          </li>
-          <li class="nav-item" v-if="loginFlag">
-            <a class="nav-link" href="#"
-              ><router-link
-                class="fontColor font"
-                to="/login"
-                @click.native="logout"
-                >Logout</router-link
-              ></a
-            >
-          </li>
           <li class="nav-item" v-if="loginFlag">
             <a class="nav-link" href="#"
               ><router-link
                 class="fontColor font"
                 to="/text_analysis"
-                @click.native="logout"
                 >Text Analysis</router-link
+              ></a
+            >
+          </li>
+          <li class="nav-item" v-if="!loginFlag">
+            <a class="nav-link" href="#"
+              ><router-link class="fontColor font" to="/login"
+                >Login</router-link
               ></a
             >
           </li>
@@ -67,7 +56,17 @@
           <li class="nav-item">
             <a class="nav-link" href="#"
               ><router-link class="fontColor font" to="/about"
-                >About</router-link
+                >About FLAG: {{ loginFlag }}</router-link
+              ></a
+            >
+          </li>
+          <li class="nav-item" v-if="loginFlag">
+            <a class="nav-link" href="#"
+              ><router-link
+                class="fontColor font"
+                to="/login"
+                @click.native="logout"
+                >Logout</router-link
               ></a
             >
           </li>

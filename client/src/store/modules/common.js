@@ -41,6 +41,7 @@ const actions = {
 		axios.post(path, payload)
 			.then((res) => {
 				if (res.data.login_flag) {
+					// localStorage.setItem('LoggedUser',results.User);
 					commit('setLoginFlag', res.data.login_flag)
 					router.push({ path: '/set_up'});
 				}

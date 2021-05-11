@@ -122,6 +122,7 @@ section {
 form {
   border: 2px solid rgb(0, 125, 225);
   background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
   padding: 30px;
   width: 45%;
 }
