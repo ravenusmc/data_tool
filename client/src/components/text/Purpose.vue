@@ -20,6 +20,7 @@
                 type="file"
                 id="file"
                 ref="file"
+                name='file'
                 v-on:change="handleFileUpload()"
               />
             </label>
@@ -47,8 +48,10 @@ export default {
 			this.file = this.$refs.file.files[0];
     },
     submitFile() {
-      let payload = this.file
-      this.$store.dispatch("text/handleFileUpload", { payload })
+      let formData = new FormData();
+      formData.append('file', this.file);
+      // let payload = this.file
+      this.$store.dispatch("text/handleFileUpload", { formData })
     },
   }, // End of Methods
 };

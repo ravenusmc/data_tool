@@ -15,12 +15,12 @@ const getters = {
 
 const actions = {
 
-	handleFileUpload: ({ commit }, { payload }) => {
-		console.log(payload)
+	handleFileUpload: ({ commit }, { formData }) => {
+		// console.log(payload)
 		const path = 'http://localhost:5000/text_file_upload';
-		axios.post(path, payload, {
+		axios.post(path, formData, {
 			headers: {
-					'Content-Type': 'multipart/form-data'
+				'Content-Type': 'multipart/form-data'
 			}
 		})
 		.then((res) => {

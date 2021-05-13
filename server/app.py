@@ -55,15 +55,11 @@ def login():
 @app.route('/text_file_upload', methods=['GET', 'POST'])
 def text_file_upload():
     if request.method == 'POST':
-        if 'file' not in request.files:
-            print('here')
-        print(request.files)
-        # uploaded_file = request.form['name']
-        # print('here')
-        # f = request.files['file']
-        # print(f)
-        # post_data = request.get_json()
-        # print(post_data)
+        if request.files:
+            file = request.files['file']
+            filename = secure_filename(file.filename)
+            # print(os. getcwd()) Used to get path to upload to 
+            file.save(os.path.join('/Users/mikecuddy/Desktop/coding/data_science_projects/data_tool/server/text', filename))
     return jsonify('5')
 
 if __name__ == '__main__':
