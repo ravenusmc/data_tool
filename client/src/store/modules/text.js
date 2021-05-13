@@ -6,7 +6,7 @@ import router from '../../router';
 Vue.use(Vuex)
 
 const state = {
-	textFile: '',
+	textFile: {},
 };
 
 const getters = {
@@ -15,23 +15,28 @@ const getters = {
 
 const actions = {
 
-	setUpUser: ({ commit }, { payload }) => {
-		const path = 'http://localhost:5000/signup';
-		axios.post(path, payload)
-			.then((res) => {
-				commit('setUserCreated', res.data);
-			})
-			.catch(error => {
-				console.log(error);
-			})
+	handleFileUpload: ({ commit }, { payload }) => {
+		console.log(payload)
+		const path = 'http://localhost:5000/text_file_upload';
+		axios.post(path, payload, {
+			headers: {
+					'Content-Type': 'multipart/form-data'
+			}
+		})
+		.then((res) => {
+			commit('setTextFile', res.data);
+		})
+		.catch(error => {
+			console.log(error);
+		})
 	},
 
 };
 
 const mutations = {
 
-	setloginUserObject(state, data) {
-		state.loginUserObject = data
+	setTextFile(state, data) {
+		state.textFile = data
 	},
 
 };

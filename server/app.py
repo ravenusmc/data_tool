@@ -1,6 +1,8 @@
 # libraries for use in project
+import os
 from flask import Flask, jsonify, request
 from flask_cors import CORS
+from werkzeug.utils import secure_filename
 import datetime
 
 #Importing files that I created for the project
@@ -48,6 +50,21 @@ def login():
         login_values['Not_found'] = not_found
         login_values['Password_no_match'] = password_no_match
     return jsonify(login_values)
+
+#This route will handle the text analysis file upload
+@app.route('/text_file_upload', methods=['GET', 'POST'])
+def text_file_upload():
+    if request.method == 'POST':
+        if 'file' not in request.files:
+            print('here')
+        print(request.files)
+        # uploaded_file = request.form['name']
+        # print('here')
+        # f = request.files['file']
+        # print(f)
+        # post_data = request.get_json()
+        # print(post_data)
+    return jsonify('5')
 
 if __name__ == '__main__':
     app.run()

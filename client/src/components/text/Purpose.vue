@@ -32,19 +32,25 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
 	name: "Purpose",
 	data() {
 		return {
-			file: ''
+			file: '',
 		}
-	},
+	}, // End of Data
   methods: {
+    ...mapActions([ "text/handleFileUpload"]),
     handleFileUpload() {
 			this.file = this.$refs.file.files[0];
-			console.log(this.file);
-		},
-  },
+    },
+    submitFile() {
+      let payload = this.file
+      this.$store.dispatch("text/handleFileUpload", { payload })
+    },
+  }, // End of Methods
 };
 </script>
 
