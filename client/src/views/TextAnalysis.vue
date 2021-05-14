@@ -2,6 +2,7 @@
   <div>
     <Navbar />
     <Purpose />
+    <hr>
     <Footer />
   </div>
 </template>
