@@ -8,6 +8,7 @@ import datetime
 #Importing files that I created for the project
 from user import *
 from db import *
+from text import *
 
 # configuration
 DEBUG = True
@@ -58,6 +59,8 @@ def text_file_upload():
         if request.files:
             file = request.files['file']
             filename = secure_filename(file.filename)
+            text_object = Text(filename)
+            text_object.get_text_file_sentiment()
             # print(os. getcwd()) Used to get path to upload to 
             file.save(os.path.join('/Users/mikecuddy/Desktop/coding/data_science_projects/data_tool/server/text', filename))
     return jsonify('5')
