@@ -57,12 +57,17 @@ def login():
 def text_file_upload():
     if request.method == 'POST':
         if request.files:
+            text_data = {}
             file = request.files['file']
             filename = secure_filename(file.filename)
-            text_object = Text(filename)
-            text_object.get_text_file_sentiment()
-            # print(os. getcwd()) Used to get path to upload to 
             file.save(os.path.join('/Users/mikecuddy/Desktop/coding/data_science_projects/data_tool/server/text', filename))
+            text_data['file_name'] = filename
+            text_object = Text(filename)
+            sentiment_speech_average = text_object.get_text_file_sentiment()
+            text_data['text_file_sentement_average'] = sentiment_speech_average
+            first_sentence = text_object.get_first_sentence_in_text_file()
+            text_data['first_sentence'] = first_sentence
+            # print(os. getcwd()) Used to get path to upload to 
     return jsonify('5')
 
 if __name__ == '__main__':
