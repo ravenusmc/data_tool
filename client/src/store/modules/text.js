@@ -24,6 +24,7 @@ const actions = {
 			}
 		})
 		.then((res) => {
+			console.log(res.data)
 			commit('setTextFile', res.data);
 		})
 		.catch(error => {
