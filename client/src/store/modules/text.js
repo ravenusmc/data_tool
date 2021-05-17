@@ -7,10 +7,12 @@ Vue.use(Vuex)
 
 const state = {
 	textFile: {},
+	showSentimentResults: false,
 };
 
 const getters = {
 	textFile: state => state.textFile,
+	showSentimentResults: state => state.showSentimentResults
 };
 
 const actions = {
@@ -26,6 +28,7 @@ const actions = {
 		.then((res) => {
 			console.log(res.data)
 			commit('setTextFile', res.data);
+			commit('setShowSentimentResults', true);
 		})
 		.catch(error => {
 			console.log(error);
@@ -39,6 +42,10 @@ const mutations = {
 	setTextFile(state, data) {
 		state.textFile = data
 	},
+
+	setShowSentimentResults(state, data) {
+		state.showSentimentResults = data
+	}
 
 };
 

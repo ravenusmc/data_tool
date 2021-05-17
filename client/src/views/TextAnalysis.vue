@@ -2,7 +2,9 @@
   <div>
     <Navbar />
     <Purpose />
-    <hr>
+    <section v-if="showSentimentResults">
+    <hr />
+    </section>
     <Footer />
   </div>
 </template>
@@ -11,6 +13,7 @@
 import Navbar from "@/components/generic/Navbar.vue";
 import Purpose from "@/components/text/Purpose.vue";
 import Footer from "@/components/generic/Footer.vue";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "TextAnalysis",
@@ -18,6 +21,11 @@ export default {
     Navbar,
     Purpose,
     Footer,
+  },
+  computed: {
+    ...mapGetters('text', [
+			'showSentimentResults',
+    ]),
   },
 };
 </script>

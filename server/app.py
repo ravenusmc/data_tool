@@ -67,9 +67,10 @@ def text_file_upload():
             text_object = Text(filename)
             sentiment_speech_average, first_sentence, first_sentence_sentiment = text_object.get_text_file_sentiment()
             text_data['sentiment_speech_average'] = sentiment_speech_average
-            # text_data['first_sentence'] = first_sentence 
+            # first_sentence = str(first_sentence)
+            text_data['first_sentence'] = str(first_sentence)
+            print(text_data)
             text_data['first_sentence_sentiment'] = first_sentence_sentiment
-        print(text_data)
         return jsonify(text_data)
 
 if __name__ == '__main__':
