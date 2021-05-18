@@ -4,6 +4,7 @@
     <Purpose />
     <section v-if="showSentimentResults">
     <hr />
+      <Results />
     </section>
     <Footer />
   </div>
@@ -12,6 +13,7 @@
 <script>
 import Navbar from "@/components/generic/Navbar.vue";
 import Purpose from "@/components/text/Purpose.vue";
+import Results from "@/components/text/Results.vue";
 import Footer from "@/components/generic/Footer.vue";
 import { mapGetters, mapActions } from "vuex";
 
@@ -20,6 +22,7 @@ export default {
   components: {
     Navbar,
     Purpose,
+    Results,
     Footer,
   },
   computed: {

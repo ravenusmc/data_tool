@@ -11,10 +11,10 @@
           works:
           <br />
           <br />
-          <span>1.</span> Simply upload a text (.txt) document
+          <span>1.</span> Simply upload a text (.txt) document.
           <br />
           <span>2.</span> The application will do the rest and show you the data
-          about your document
+          about your document below.
         </p>
       </div>
 
