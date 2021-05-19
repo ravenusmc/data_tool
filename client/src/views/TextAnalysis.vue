@@ -2,9 +2,12 @@
   <div>
     <Navbar />
     <Purpose />
+    <p>
+      {{ this.textFile }}
+    </p>
     <section v-if="showSentimentResults">
     <hr />
-      <Results />
+      <Results v-bind:text-file="textFile" />
     </section>
     <Footer />
   </div>
@@ -27,7 +30,8 @@ export default {
   },
   computed: {
     ...mapGetters('text', [
-			'showSentimentResults',
+      'showSentimentResults',
+      'textFile',
     ]),
   },
 };

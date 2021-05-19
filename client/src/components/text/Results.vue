@@ -1,8 +1,10 @@
 <template>
   <div>
     <h2 class="center">The Analysis</h2>
+    <p>{{this.test}}</p>
+    <p>{{this.name}}</p>
     <section>
-      <Basic />
+      <Basic v-bind:text-file="text-file" />
       <SentenceSentiment />
     </section>
   </div>
@@ -14,10 +16,17 @@ import SentenceSentiment from "@/components/text/subsections/SentenceSentiment.v
 
 export default {
   name: "Results",
+  props: ['text-file'],
   components: {
     Basic,
     SentenceSentiment,
   },
+  data(){
+    return {
+      test: text-file,
+      name: "mike",
+    }
+  }
 };
 </script>
 
