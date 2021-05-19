@@ -1,9 +1,8 @@
 <template>
   <div>
     <section>
-			<h4>Title: TITLE.TXT</h4>
-			<h4>Overall Sentiment: 0.83</h4>
-      <p>{{ this.text-file }}</p>
+			<h4>Title: {{ this.textFile.file_name }}</h4>
+			<h4>Overall Sentiment: {{ this.textFile.sentiment_speech_average }}</h4>
     </section>
   </div>
 </template>
@@ -12,11 +11,6 @@
 export default {
   name: "Basic",
   props: ['text-file'],
-  // data(){
-  //   return {
-  //     textFile: text-file,
-  //   }
-  // }
 };
 </script>
 

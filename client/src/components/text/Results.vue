@@ -1,10 +1,8 @@
 <template>
   <div>
     <h2 class="center">The Analysis</h2>
-    <p>{{this.test}}</p>
-    <p>{{this.name}}</p>
     <section>
-      <Basic v-bind:text-file="text-file" />
+      <Basic v-bind:text-file="textFile" />
       <SentenceSentiment />
     </section>
   </div>
@@ -13,20 +11,17 @@
 <script>
 import Basic from "@/components/text/subsections/Basic.vue";
 import SentenceSentiment from "@/components/text/subsections/SentenceSentiment.vue";
+import { mapGetters } from "vuex";
 
 export default {
   name: "Results",
-  props: ['text-file'],
   components: {
     Basic,
     SentenceSentiment,
   },
-  data(){
-    return {
-      test: text-file,
-      name: "mike",
-    }
-  }
+  computed: {
+    ...mapGetters("text", ["textFile"]),
+  },
 };
 </script>
 
