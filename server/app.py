@@ -69,7 +69,6 @@ def text_file_upload():
             text_data['sentiment_speech_average'] = sentiment_speech_average
             # first_sentence = str(first_sentence)
             text_data['first_sentence'] = str(first_sentence)
-            print(text_data)
             text_data['first_sentence_sentiment'] = first_sentence_sentiment
         return jsonify(text_data)
 

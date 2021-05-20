@@ -10,7 +10,9 @@
 <script>
 export default {
   name: "Basic",
-  props: ['text-file'],
+  props: {
+    textFile: Object,
+  }
 };
 </script>
 

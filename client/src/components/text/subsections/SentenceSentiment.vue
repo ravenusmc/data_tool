@@ -1,9 +1,9 @@
 <template>
   <div>
     <section>
-			<h4>Sentence: This is a sentence</h4>
+			<h4>Sentence: {{ this.textFile.first_sentence }}</h4>
 			<br>
-			<h4>Sentence Sentiment: 0.1</h4>
+			<h4>Sentence Sentiment: {{ this.textFile.first_sentence_sentiment }}</h4>
 			<h4>Change Sentence:</h4>
 			<div>
 				<svg
@@ -33,7 +33,10 @@
 
 <script>
 export default {
-	name: "SentenceSentiment",
+  name: "SentenceSentiment",
+  props: {
+    textFile: Object,
+  },
 	// data() {
   //   return {
   //     value: this.initalValue,

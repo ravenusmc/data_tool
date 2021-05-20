@@ -3,7 +3,7 @@
     <h2 class="center">The Analysis</h2>
     <section>
       <Basic v-bind:text-file="textFile" />
-      <SentenceSentiment />
+      <SentenceSentiment v-bind:text-file="textFile" />
     </section>
   </div>
 </template>

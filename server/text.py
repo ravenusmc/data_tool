@@ -15,8 +15,8 @@ class Text():
 		return open("./text/" + self.file_name, "r")
 	
 	def get_text_to_textBlob_format(self, text_file):
-		text_file_converted = str([cell.encode('utf-8') for cell in text_file])
-		return TextBlob(text_file_converted)
+		text = text_file.read()
+		return TextBlob(text)
 	
 	def get_sentiment_values_of_single_speech(self, text_converted):
 		sentiment_sentence_list = []
@@ -26,18 +26,19 @@ class Text():
 		for sentence in text_converted.sentences:
 			if count == 0:
 				first_sentence = sentence
-				first_sentence_sentiment = sentence.sentiment[0]
+				first_sentence_sentiment = format(sentence.sentiment[0], '.3f')
 			sentence_sentiment = sentence.sentiment[0]
 			sentiment_sentence_list.append(sentence_sentiment)
 			count += 1
 		return sentiment_sentence_list, first_sentence, first_sentence_sentiment
 	
 	def get_sentiment_average_per_speech(self, sentiment_sentence_list):
-		return sum(sentiment_sentence_list) / len(sentiment_sentence_list)
+		return format(sum(sentiment_sentence_list) / len(sentiment_sentence_list), '.3f')
 	
 	def get_text_file_sentiment(self):
 		text_file = self.getting_text_file()
 		text_converted = self.get_text_to_textBlob_format(text_file)
+		print(text_converted)
 		sentiment_sentence_list, first_sentence, first_sentence_sentiment = self.get_sentiment_values_of_single_speech(text_converted)
 		sentiment_speech_average = self.get_sentiment_average_per_speech(sentiment_sentence_list)
 		return sentiment_speech_average, first_sentence, first_sentence_sentiment
