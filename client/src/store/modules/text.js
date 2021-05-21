@@ -1,18 +1,19 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios'
-import router from '../../router';
 
 Vue.use(Vuex)
 
 const state = {
 	textFile: {},
 	showSentimentResults: false,
+	initalValue: 0,
 };
 
 const getters = {
 	textFile: state => state.textFile,
-	showSentimentResults: state => state.showSentimentResults
+	showSentimentResults: state => state.showSentimentResults,
+	initalValue: state => state.initalValue,
 };
 
 const actions = {
@@ -25,14 +26,14 @@ const actions = {
 				'Content-Type': 'multipart/form-data'
 			}
 		})
-		.then((res) => {
-			console.log(res.data)
-			commit('setTextFile', res.data);
-			commit('setShowSentimentResults', true);
-		})
-		.catch(error => {
-			console.log(error);
-		})
+			.then((res) => {
+				// console.log(res.data)
+				commit('setTextFile', res.data);
+				commit('setShowSentimentResults', true);
+			})
+			.catch(error => {
+				console.log(error);
+			})
 	},
 
 };
@@ -45,6 +46,10 @@ const mutations = {
 
 	setShowSentimentResults(state, data) {
 		state.showSentimentResults = data
+	},
+
+	setInitalValue(state, data) {
+		state.initalValue = data
 	}
 
 };
