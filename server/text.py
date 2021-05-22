@@ -31,12 +31,11 @@ class Text():
 				first_sentence_sentiment = format(sentence.sentiment[0], '.3f')
 			sentence_sentiment = sentence.sentiment[0]
 			sentiment_sentence_list.append(sentence_sentiment)
-			sentence_and_sentiment['sentence'] = sentence 
-			sentence_and_sentiment['sentiment'] = sentence_sentiment
+			sentence_and_sentiment['sentence'] = str(sentence)
+			sentence_and_sentiment['sentiment'] = format(sentence_sentiment, '.3f')
 			sentence_and_sentiment_list.append(sentence_and_sentiment)
 			count += 1
-		print(sentence_and_sentiment_list)
-		return sentiment_sentence_list, first_sentence, first_sentence_sentiment
+		return sentiment_sentence_list, first_sentence, first_sentence_sentiment, sentence_and_sentiment_list
 	
 	def get_sentiment_average_per_speech(self, sentiment_sentence_list):
 		return format(sum(sentiment_sentence_list) / len(sentiment_sentence_list), '.3f')
@@ -44,9 +43,9 @@ class Text():
 	def get_text_file_sentiment(self):
 		text_file = self.getting_text_file()
 		text_converted = self.get_text_to_textBlob_format(text_file)
-		sentiment_sentence_list, first_sentence, first_sentence_sentiment = self.get_sentiment_values_of_single_speech(text_converted)
+		sentiment_sentence_list, first_sentence, first_sentence_sentiment, sentence_and_sentiment_list = self.get_sentiment_values_of_single_speech(text_converted)
 		sentiment_speech_average = self.get_sentiment_average_per_speech(sentiment_sentence_list)
-		return sentiment_speech_average, first_sentence, first_sentence_sentiment
+		return sentiment_speech_average, first_sentence, first_sentence_sentiment, sentence_and_sentiment_list
 
 
 #Ideas for sentence sentiment:

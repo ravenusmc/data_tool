@@ -1,9 +1,9 @@
 <template>
   <div>
     <section>
-      <h4>Sentence: {{ this.textFile.first_sentence }}</h4>
+      <h4>Sentence: {{ this.initialSentence }}</h4>
       <br />
-      <h4>Sentence Sentiment: {{ this.textFile.first_sentence_sentiment }}</h4>
+      <h4>Sentence Sentiment: {{ this.sentenceSentiment }}</h4>
       <h4>Change Sentence:</h4>
       <div>
         <svg
@@ -59,7 +59,9 @@ export default {
   },
   computed: {
     ...mapGetters('text', [
-			'initalValue',
+      'initalValue',
+      'initialSentence',
+      'sentenceSentiment',
     ]),
   },
   methods: {

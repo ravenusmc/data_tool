@@ -65,11 +65,12 @@ def text_file_upload():
             file.save(os.path.join('/Users/mikecuddy/Desktop/coding/data_science_projects/data_tool/server/text', filename))
             text_data['file_name'] = filename
             text_object = Text(filename)
-            sentiment_speech_average, first_sentence, first_sentence_sentiment = text_object.get_text_file_sentiment()
+            sentiment_speech_average, first_sentence, first_sentence_sentiment, sentence_and_sentiment_list = text_object.get_text_file_sentiment()
             text_data['sentiment_speech_average'] = sentiment_speech_average
             # first_sentence = str(first_sentence)
             text_data['first_sentence'] = str(first_sentence)
             text_data['first_sentence_sentiment'] = first_sentence_sentiment
+            text_data['sentence_and_sentiment_list'] = sentence_and_sentiment_list
         return jsonify(text_data)
 
 if __name__ == '__main__':
