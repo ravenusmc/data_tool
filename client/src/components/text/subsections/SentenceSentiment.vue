@@ -1,7 +1,7 @@
 <template>
   <div>
     <section>
-      <h4>Sentence: {{ this.initialSentence }}</h4>
+      <h4>Sentence: {{ this.sentence }}</h4>
       <br />
       <h4>Sentence Sentiment: {{ this.sentenceSentiment }}</h4>
       <h4>Change Sentence:</h4>
@@ -58,35 +58,34 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('text', [
-      'initalValue',
-      'initialSentence',
-      'sentenceSentiment',
+    ...mapGetters("text", [
+      "initalValue",
+      "sentence",
+      "sentenceSentiment",
+      "textLength",
     ]),
   },
   methods: {
-    // ...mapActions([
-    //   'fireActions',
-    //   'fetchSpeechSentenceSentiment',
-    // ]),
+    ...mapActions("text", ["changeSentenceAndSentiment"]),
     changeSentence(direction) {
       let value = this.initalValue;
-      if (direction === 'up') {
+      if (direction === "up") {
         value += 1;
-      } else if (direction === 'down') {
+      } else if (direction === "down") {
         value -= 1;
       }
-      // if (value > this.speechLength) {
-      //   alert('The end of the speech has been reached!');
-      // } else if (value < 0) {
-      //   alert('You cannot go back any further');
-      // } else {
-      // const payload = {
-      //   value,
-      //   speech: this.selectedSpeech,
-      // };
-      // this.fetchSpeechSentenceSentiment({ payload });
-      // }
+      console.log(value);
+      console.log(this.textLength);
+      if (value > this.textLength - 1) {
+        alert("The end of the speech has been reached!");
+      } else if (value < 0) {
+        alert("You cannot go back any further");
+      } else {
+        const payload = {
+          value,
+        };
+        this.changeSentenceAndSentiment({ payload });
+      }
     },
   },
 };
