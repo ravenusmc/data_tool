@@ -12,8 +12,9 @@
           height="3em"
           viewBox="0 0 16 16"
           class="bi bi-arrow-up-circle-fill svgLeft arrow"
-          :fill="colorAttr('')"
-          @mouseover="mouseOver"
+          v-bind:fill="color"
+          @mouseover="mouseOver('arrowUp')"
+          @mouseout="hoverOut('arrowUp')"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -30,7 +31,9 @@
           height="3em"
           viewBox="0 0 16 16"
           class="bi bi-arrow-down-circle-fill svgRight"
-          fill="#007bff"
+          v-bind:fill="colorDown"
+          @mouseover="mouseOver('arrowDown')"
+          @mouseout="hoverOut('arrowDown')"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -48,7 +51,7 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-
+// :fill="colorAttr('')"
 export default {
   name: "SentenceSentiment",
   props: {
@@ -57,7 +60,8 @@ export default {
   data() {
     return {
       value: this.initalValue,
-      hover: false,
+      color: "#007bff",
+      colorDown: "#007bff",
     };
   },
   computed: {
@@ -70,15 +74,19 @@ export default {
   },
   methods: {
     ...mapActions("text", ["changeSentenceAndSentiment"]),
-    colorAttr: function (color) {
-      let test = 'red';
-      console.log(color)
-      // var my_color = "#007bff";
-      // console.log("TEST");
-      return test;
+    mouseOver: function (arrowDirection) {
+      if (arrowDirection === 'arrowUp'){
+        this.color = "#FF9900";
+      }else {
+        this.colorDown = "#FF9900";
+      }
     },
-    mouseOver: function () {
-      this.colorAttr('#FF9900');
+    hoverOut: function (arrowDirection) {
+      if (arrowDirection === 'arrowUp'){
+        this.color = "#007bff";
+      }else {
+        this.colorDown = "#007bff";
+      }
     },
     changeSentence(direction) {
       let value = this.initalValue;
@@ -113,6 +121,7 @@ section {
 
 .sentence-area {
   border: 2px solid red;
+  height: 250px;
 }
 
 span {
