@@ -3,7 +3,7 @@
     <Navbar />
     <Purpose />
     <section v-if="showSentimentResults">
-    <hr />
+      <hr />
       <Results />
     </section>
     <Footer />
@@ -26,12 +26,14 @@ export default {
     Footer,
   },
   computed: {
-    ...mapGetters('text', [
-      'showSentimentResults',
-    ]),
+    ...mapGetters("text", ["showSentimentResults"]),
   },
 };
 </script>
 
 <style scoped>
+section {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
 </style>
