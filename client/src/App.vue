@@ -10,6 +10,10 @@
   text-align: center;
 }
 
+.make-bold {
+  font-weight: bold;
+}
+
 .redText {
   color: red;
 }

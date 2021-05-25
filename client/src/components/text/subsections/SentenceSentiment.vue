@@ -1,10 +1,10 @@
 <template>
   <div>
     <section>
-      <h4 class="sentence-area"><span>Sentence:</span> {{ this.sentence }}</h4>
+      <h4 class="sentence-area"><span class='make-bold'>Sentence:</span> {{ this.sentence }}</h4>
       <br />
-      <h4><span>Sentence Sentiment:</span> {{ this.sentenceSentiment }}</h4>
-      <h4><span>Change Sentence:</span></h4>
+      <h4><span class='make-bold'>Sentence Sentiment:</span> {{ this.sentenceSentiment }}</h4>
+      <h4><span class='make-bold'>Change Sentence:</span></h4>
       <div>
         <svg
           @click="changeSentence('up')"
@@ -112,20 +112,14 @@ export default {
 
 <style scoped>
 section {
-  border: 2px solid blue;
-  text-align: center;
   margin-top: 50px;
+  text-align: center;
   min-height: 100px;
   overflow: hidden;
 }
 
 .sentence-area {
-  border: 2px solid red;
   height: 250px;
-}
-
-span {
-  font-weight: bold;
 }
 
 .arrow {

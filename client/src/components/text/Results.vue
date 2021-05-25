@@ -28,8 +28,9 @@ export default {
 <style scoped>
 section {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 3em;
   justify-items: center;
+  border: 2px solid blue;
 }
 </style>
