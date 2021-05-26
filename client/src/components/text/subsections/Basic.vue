@@ -13,7 +13,7 @@
       <div>
         <p>The Overall Sentiment of the speech is:</p>
       </div>
-      <Guage percentage="33" />
+      <Guage :percentage="percentage" />
     </section>
   </div>
 </template>
@@ -31,7 +31,7 @@ export default {
   },
   data() {
     return {
-      sentimentClass: '',
+      percentage: this.textFile.sentiment_speech_average,
     };
   },
 };
