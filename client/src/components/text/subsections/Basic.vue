@@ -11,7 +11,7 @@
         </p>
       </h4>
       <div>
-        <p>The Overall Sentiment of the speech is:</p>
+        <p>The rating of the sentiment:</p>
       </div>
       <Guage :percentage="percentage" />
     </section>
