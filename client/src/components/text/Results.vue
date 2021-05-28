@@ -31,6 +31,5 @@ section {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 3em;
   justify-items: center;
-  border: 2px solid blue;
 }
 </style>

@@ -5,7 +5,7 @@
       <span>{{ widthCalculation }}%</span>
     </div>
     <p class='speechRating-paragraph center'>The text file has an overall rating of {{ this.speechRating }}</p>
-    <p class='center'>
+    <p class='make-bold center'>
       Rating System:
     </p>
       <ul>
@@ -48,7 +48,7 @@ export default {
 
 <style scoped>
 .container {
-  width: 400px;
+  width: 100%;
   height: 100px;
   top: 0;
   overflow: hidden;

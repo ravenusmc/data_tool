@@ -1,15 +1,15 @@
 <template>
   <div>
     <section>
-      <h4>
-        <span class="make-bold">Title: </span>{{ this.textFile.file_name }}
-      </h4>
-      <h4>
-        <span class="make-bold">Overall Sentiment: </span>
-        <p class="sentiment-color">
-          {{ this.textFile.sentiment_speech_average }}
-        </p>
-      </h4>
+      <div>
+        <h4>
+          <span class="make-bold">Title: </span>{{ this.textFile.file_name }}
+        </h4>
+        <h4>
+          <span class="make-bold">Overall Sentiment: </span>
+            {{ this.textFile.sentiment_speech_average }}
+        </h4>
+      </div>
       <div>
         <p>The rating of the sentiment:</p>
       </div>
@@ -44,6 +44,6 @@ section {
   align-items: center;
   justify-content: center;
   margin-top: 50px;
-  /* border: 2px solid red; */
 }
+
 </style>
