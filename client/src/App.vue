@@ -1,11 +1,10 @@
 <template>
   <div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
 <style>
-
 .center {
   text-align: center;
 }
@@ -17,5 +16,4 @@
 .redText {
   color: red;
 }
-
 </style>

@@ -27,12 +27,12 @@ export default {
 <style scoped>
 
 section {
-  margin: 25px;
-  background-image: url('../assets/images/data_pic.jpg');
+  background-image: url('../assets/images/landing.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 	height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;

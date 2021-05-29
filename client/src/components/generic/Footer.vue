@@ -4,10 +4,12 @@
       <div class="footer_fix">
         <h2 class="footerTitle font">
           Copyright &copy; 2021 Double Sun Productions<br />
+          <font-awesome-icon icon="user-secret" size="6x"/>
+          <font-awesome-icon icon="UsersCog" size="6x" />
         </h2>
-        <div>
+        <!-- <div>
           <a href="https://www.linkedin.com/in/mcuddy1/"
-            ><i class="fa fa-linkedin-square fa-3x" aria-hidden="true"></i
+            ><i class="fa fa-linkedin-square fa-3x"></i
           ></a>
           <a href="https://twitter.com/mcuddy7"
             ><i class="fa fa-twitter-square fa-3x" aria-hidden="true"></i
@@ -18,13 +20,19 @@
           <a href="https://github.com/ravenusmc"
             ><i class="fa fa-github-square fa-3x" aria-hidden="true"></i
           ></a>
-        </div>
+        </div> -->
       </div>
     </footer>
   </div>
 </template>
 
 <script>
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
+import { faUsersCog } from '@fortawesome/free-solid-svg-icons'
+library.add(faUserSecret)
+library.add(faUsersCog)
+
 export default {
   name: "Footer",
 };
@@ -35,7 +43,7 @@ export default {
 .fa-twitter-square,
 .fa-pencil,
 .fa-github-square {
-  color: #bf0d3e;
+  color: black;
   margin: 5px;
 }
 footer {
@@ -43,7 +51,7 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgb(0, 125, 225);
+  background: black;
   height: 300px;
 }
 .footer_fix {
@@ -55,9 +63,13 @@ footer {
   padding-top: 50px;
 }
 .footerTitle {
-  color: rgb(255, 150, 0);
+  color: white;
   font-size: 20px;
   text-transform: uppercase;
   text-align: center;
+}
+
+a {
+  border: 2px solid white;
 }
 </style>
