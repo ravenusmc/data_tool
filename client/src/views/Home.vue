@@ -1,25 +1,19 @@
 <template>
   <div>
-    <Navbar />
+    
       <section>
         <div class='title-div'>
           <h1 class='title_header'>Data Tool</h1>
         </div>
       </section>
-    <Footer />
   </div>
 </template>
 
 <script>
-import Navbar from "@/components/generic/Navbar.vue";
-import Footer from "@/components/generic/Footer.vue";
+
 
 export default {
   name: "Home",
-  components: {
-    Navbar,
-    Footer,
-  },
 };
 
 </script>

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Navbar />
 
     <section>
 
@@ -35,22 +34,14 @@
       </form>
 
     </section>
-
-    <Footer />
   </div>
 </template>
 
 <script>
-import Navbar from "@/components/generic/Navbar.vue";
-import Footer from "@/components/generic/Footer.vue";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "signup",
-  components: {
-    Navbar,
-    Footer,
-  },
   computed: {
     ...mapGetters('common', [
 			'passwordNoMatch',

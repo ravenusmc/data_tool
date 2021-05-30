@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Navbar />
 
     <section>
 
@@ -55,21 +54,14 @@
 
     </section>
 
-    <Footer />
   </div>
 </template>
 
 <script>
-import Navbar from "@/components/generic/Navbar.vue";
-import Footer from "@/components/generic/Footer.vue";
 import { mapActions } from "vuex";
 
 export default {
   name: "signup",
-  components: {
-    Navbar,
-    Footer,
-  },
   data() {
     return {
       email: "",

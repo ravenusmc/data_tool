@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Navbar />
 
     <section>
       <div class="card" style="width: 30rem">
@@ -45,7 +44,6 @@
       </div>
     </section>
 
-    <Footer />
   </div>
 </template>
 
@@ -55,10 +53,6 @@ import Footer from "@/components/generic/Footer.vue";
 
 export default {
   name: "Home",
-  components: {
-    Navbar,
-    Footer,
-  },
 };
 </script>
 
