@@ -4,34 +4,27 @@
       <div class="footer_fix">
         <h2 class="footerTitle font">
           Copyright &copy; 2021 Double Sun Productions<br />
-          <font-awesome-icon icon="user-secret" size="6x"/>
-          <font-awesome-icon icon="UsersCog" size="6x" />
         </h2>
-        <!-- <div>
-          <a href="https://www.linkedin.com/in/mcuddy1/"
-            ><i class="fa fa-linkedin-square fa-3x"></i
-          ></a>
-          <a href="https://twitter.com/mcuddy7"
-            ><i class="fa fa-twitter-square fa-3x" aria-hidden="true"></i
-          ></a>
-          <a href="https://codingsaga.wordpress.com/"
-            ><i class="fa fa-pencil fa-3x" aria-hidden="true"></i
-          ></a>
-          <a href="https://github.com/ravenusmc"
-            ><i class="fa fa-github-square fa-3x" aria-hidden="true"></i
-          ></a>
-        </div> -->
+        <div class='icon-div'>
+          <a href="https://twitter.com/mcuddy7">
+            <fa-icon :icon="['fas', 'hashtag']" size="3x" />
+          </a>
+          <a href="https://codingsaga.wordpress.com/">
+            <fa-icon class='test' :icon="['fas', 'pencil-alt']" size="3x" />
+          </a>
+          <a href="https://github.com/ravenusmc">
+            <fa-icon :icon="['fas', 'code-branch']" size="3x" />
+          </a>
+          <a href="https://www.linkedin.com/in/mcuddy1/">
+            <fa-icon :icon="['fas', 'network-wired']" size="3x" />
+          </a>
+        </div>
       </div>
     </footer>
   </div>
 </template>
 
 <script>
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
-import { faUsersCog } from '@fortawesome/free-solid-svg-icons'
-library.add(faUserSecret)
-library.add(faUsersCog)
 
 export default {
   name: "Footer",
@@ -39,13 +32,7 @@ export default {
 </script>
 
 <style scoped>
-.fa-linkedin-square,
-.fa-twitter-square,
-.fa-pencil,
-.fa-github-square {
-  color: black;
-  margin: 5px;
-}
+
 footer {
   display: flex;
   flex-direction: column;
@@ -69,7 +56,13 @@ footer {
   text-align: center;
 }
 
-a {
-  border: 2px solid white;
+.icon-div {
+  margin-top: 20px;
 }
+
+a {
+  padding: 10px;
+  color: white;
+}
+
 </style>
