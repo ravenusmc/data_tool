@@ -1,7 +1,5 @@
 <template>
   <div>
-    <Navbar />
-
     <!-- Header area -->
     <div class="about_header">
       <h1 class="center font">About Me</h1>
@@ -57,20 +55,13 @@
 
     <hr />
 
-    <Footer />
   </div>
 </template>
 
 <script>
-import Navbar from "@/components/generic/Navbar.vue";
-import Footer from "@/components/generic/Footer.vue";
 
 export default {
   name: "About",
-  components: {
-    Navbar,
-    Footer,
-  },
 };
 </script>
 
