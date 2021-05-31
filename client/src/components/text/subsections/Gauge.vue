@@ -66,7 +66,9 @@ export default {
 span {
   font-size: 50px;
   margin-left: 65%;
-  margin-top: 50%;
+  /* margin-top: 50%; */
+  top: 10px;
+  position: relative;
 }
 
 .speechRating-paragraph {

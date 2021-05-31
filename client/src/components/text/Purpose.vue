@@ -80,6 +80,7 @@ section {
   align-items: center;
   border-radius: 15px;
   background-color: rgba(0, 0, 0, 0.2);
+  border: 2px solid rgb(0, 125, 225);
 }
 
 .input-area {
