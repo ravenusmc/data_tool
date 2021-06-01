@@ -5,12 +5,14 @@
       <Basic v-bind:text-file="textFile" />
       <SentenceSentiment v-bind:text-file="textFile" />
     </section>
+    <SentimentGraph />
   </div>
 </template>
 
 <script>
 import Basic from "@/components/text/subsections/Basic.vue";
 import SentenceSentiment from "@/components/text/subsections/SentenceSentiment.vue";
+import SentimentGraph from "@/components/text/subsections/SentimentGraph.vue";
 import { mapGetters } from "vuex";
 
 export default {
@@ -18,6 +20,7 @@ export default {
   components: {
     Basic,
     SentenceSentiment,
+    SentimentGraph,
   },
   computed: {
     ...mapGetters("text", ["textFile"]),

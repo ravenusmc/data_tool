@@ -31,8 +31,6 @@ class Text():
 				first_sentence_sentiment = format(sentence.sentiment[0], '.3f')
 			sentence_sentiment = sentence.sentiment[0]
 			sentiment_sentence_list.append(sentence_sentiment)
-			print(sentence)
-			print(format(sentence_sentiment, '.3f'))
 			sentence_and_sentiment['sentence'] = str(sentence)
 			sentence_and_sentiment['sentiment'] = format(sentence_sentiment, '.3f')
 			sentence_and_sentiment_list.append(sentence_and_sentiment)
@@ -52,23 +50,18 @@ class Text():
 				sentence_sentiment = sentence.sentiment[0]
 				sentence_number = count + 1
 				rows.append(sentence_number)
-				rows.append(format(sentence_sentiment, '.3f'))
+				rows.append(float(format(sentence_sentiment, '.3f')))
 				sentiment_graph_data.append(rows)
-				# print(sentence)
-				# print(sentence_number)
-				# print(format(sentence_sentiment, '.3f'))
 				count += 1
 			return sentiment_graph_data
 
-	
 	def get_text_file_sentiment(self):
 		text_file = self.getting_text_file()
 		text_converted = self.get_text_to_textBlob_format(text_file)
 		sentiment_graph_data = self.get_data_for_sentiment_graph(text_converted)
-		print(sentiment_graph_data)
 		sentiment_sentence_list, first_sentence, first_sentence_sentiment, sentence_and_sentiment_list = self.get_sentiment_values_of_single_speech(text_converted)
 		sentiment_speech_average = self.get_sentiment_average_per_speech(sentiment_sentence_list)
-		return sentiment_speech_average, first_sentence, first_sentence_sentiment, sentence_and_sentiment_list
+		return sentiment_graph_data, sentiment_speech_average, first_sentence, first_sentence_sentiment, sentence_and_sentiment_list
 
 
 #Ideas for sentence sentiment:

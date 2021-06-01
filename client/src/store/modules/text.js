@@ -7,10 +7,11 @@ Vue.use(Vuex)
 const state = {
 	textFile: {},
 	showSentimentResults: false,
-	initalValue: 1,
+	initalValue: 0,
 	sentence: '',
 	sentenceSentiment: 0,
 	textLength: 0,
+	sentiment_graph_data: [],
 };
 
 const getters = {
@@ -20,12 +21,12 @@ const getters = {
 	sentence: state => state.sentence,
 	sentenceSentiment: state => state.sentenceSentiment,
 	textLength: state => state.textLength,
+	sentiment_graph_data: state => state.sentiment_graph_data,
 };
 
 const actions = {
 
 	handleFileUpload: ({ commit }, { formData }) => {
-		// console.log(payload)
 		const path = 'http://localhost:5000/text_file_upload';
 		axios.post(path, formData, {
 			headers: {
@@ -33,11 +34,13 @@ const actions = {
 			}
 		})
 			.then((res) => {
+				console.log(res.data)
 				commit('setTextFile', res.data);
 				commit('setShowSentimentResults', true);
 				commit('setSentence', res.data.sentence_and_sentiment_list[0].sentence)
 				commit('setSentenceSentiment', res.data.sentence_and_sentiment_list[0].sentiment)
 				commit('setTextLength', res.data.sentence_and_sentiment_list.length)
+				commit('setSentiment_graph_data', res.data.sentiment_graph_data)
 			})
 			.catch(error => {
 				console.log(error);
@@ -45,7 +48,6 @@ const actions = {
 	},
 
 	changeSentenceAndSentiment: ({ commit, getters }, { payload }) => {
-		// console.log(getters.textFile.sentence_and_sentiment_list.length)
 		commit('setSentence', getters.textFile.sentence_and_sentiment_list[payload.value].sentence)
 		commit('setSentenceSentiment', getters.textFile.sentence_and_sentiment_list[payload.value].sentiment)
 		commit('setInitalValue', payload.value)
@@ -77,6 +79,10 @@ const mutations = {
 
 	setTextLength(state, data) {
 		state.textLength = data
+	},
+
+	setSentiment_graph_data(state, data) {
+		state.sentiment_graph_data = data
 	}
 
 };

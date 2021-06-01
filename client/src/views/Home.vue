@@ -13,7 +13,7 @@ export default {
   name: "Home",
   computed: {
     blurCalculation() {
-      return "blur(1.3px)";
+      return "blur(1.2px)";
     },
   }
 };
@@ -36,7 +36,6 @@ section {
 .title-div {
   background: hsla(240, 100%, 100%, 0.7);
   padding: 20px;
-  /* filter: blur(1.3px); */
 }
 
 .title_header {

@@ -1,10 +1,15 @@
 <template>
   <div>
     <section>
-      <h4 class="sentence-area"><span class='make-bold'>Sentence:</span> {{ this.sentence }}</h4>
+      <h4 class="sentence-area">
+        <span class="make-bold">Sentence:</span> {{ this.sentence }}
+      </h4>
       <br />
-      <h4><span class='make-bold'>Sentence Sentiment:</span> {{ this.sentenceSentiment }}</h4>
-      <h4><span class='make-bold'>Change Sentence:</span></h4>
+      <h4>
+        <span class="make-bold">Sentence Sentiment:</span>
+        {{ this.sentenceSentiment }}
+      </h4>
+      <h4><span class="make-bold">Change Sentence:</span></h4>
       <div>
         <svg
           @click="changeSentence('up')"
@@ -75,16 +80,16 @@ export default {
   methods: {
     ...mapActions("text", ["changeSentenceAndSentiment"]),
     mouseOver: function (arrowDirection) {
-      if (arrowDirection === 'arrowUp'){
+      if (arrowDirection === "arrowUp") {
         this.color = "#FF9900";
-      }else {
+      } else {
         this.colorDown = "#FF9900";
       }
     },
     hoverOut: function (arrowDirection) {
-      if (arrowDirection === 'arrowUp'){
+      if (arrowDirection === "arrowUp") {
         this.color = "#007bff";
-      }else {
+      } else {
         this.colorDown = "#007bff";
       }
     },

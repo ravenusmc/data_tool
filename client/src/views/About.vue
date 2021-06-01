@@ -76,6 +76,10 @@ export default {
 img {
   border-radius: 10px;
   width: 80%;
+  filter: sepia();
+}
+img:hover {
+  filter: none;
 }
 .about_content_area {
   display: grid;

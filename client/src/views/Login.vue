@@ -70,11 +70,11 @@ export default {
 <style scoped>
 
 section {
-  margin: 100px 0 100px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100vh;
 }
 
 .login-title {
