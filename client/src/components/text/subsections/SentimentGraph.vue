@@ -36,16 +36,11 @@ export default {
           duration: 1000,
           easing: "linear",
         },
-        // vAxis: {
-        //   viewWindow: {
-        //     min: 0,
-        //   },
-        // },
       },
     };
   }, // End of Data
   computed: {
     ...mapGetters("text", ["sentiment_graph_data"]),
-  }, // End Computed properties
+  }, 
 };
 </script>
