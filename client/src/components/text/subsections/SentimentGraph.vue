@@ -23,23 +23,29 @@ export default {
       typeOne: "LineChart",
       chartOptionsOne: {
         title: "Sentiment by Sentence",
+        hAxis: {
+          title: "Sentence Number",
+        },
+        vAxis: {
+          title: "Sentiment",
+        },
         legend: { position: "top" },
         colors: ["#BF0D3E"],
-        height: 500,
+        height: 400,
         animation: {
           duration: 1000,
           easing: "linear",
         },
-        vAxis: {
-          viewWindow: {
-            min: 0,
-          },
-        },
+        // vAxis: {
+        //   viewWindow: {
+        //     min: 0,
+        //   },
+        // },
       },
     };
   }, // End of Data
   computed: {
-		...mapGetters("text", ["sentiment_graph_data"]),
+    ...mapGetters("text", ["sentiment_graph_data"]),
   }, // End Computed properties
 };
 </script>
