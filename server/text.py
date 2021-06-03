@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 from textblob import TextBlob
 import fileinput
+import re
 
 class Text():
 
@@ -58,6 +59,12 @@ class Text():
 	def get_text_file_sentiment(self):
 		text_file = self.getting_text_file()
 		text_converted = self.get_text_to_textBlob_format(text_file)
+		words_list = text_converted.words
+		# The code here will be going to build the common words
+		words = self.purge_extra_characters(words_list) 
+		word_and_count = self.clean_word_list(words)
+		print(word_and_count)
+		# End common words code 
 		sentiment_graph_data = self.get_data_for_sentiment_graph(text_converted)
 		sentiment_sentence_list, first_sentence, first_sentence_sentiment, sentence_and_sentiment_list = self.get_sentiment_values_of_single_speech(text_converted)
 		sentiment_speech_average = self.get_sentiment_average_per_speech(sentiment_sentence_list)
@@ -76,7 +83,6 @@ class Text():
 		# removing periods and commas at the end of each word
 		words = self.purge_extra_characters(words_in_list)
 		while len_count < len(words):
-				print(len_count)
 				word_count = 0
 				#I assign the current_word to the current position of the word_count counter
 				current_word = words[len_count].lower()
@@ -130,7 +136,15 @@ class Text():
 						and current_word != '(laughter' and current_word != 'don’t' and current_word != 'some' and current_word != 'we’re'
 						and current_word != 'where' and current_word != 'would' and current_word != 'under'):
 								word_count += 1
-								if (word_count >= 10):
+								if (word_count >= 3):
 										word_and_count[current_word] = word_count
 				len_count += 1
 		return word_and_count
+
+
+# word_count >= 3:
+#{'nation': 5, 'dedicated': 4, 'we': 10, 'great': 3, 'dead': 3, 'they': 3, 'us': 3, 'people': 3}
+# word_count >= 2: 
+# {'our': 2, 'nation': 5, 'conceived': 2, 'dedicated': 4, 'men': 2, 'we': 10, 'great': 3, 'war': 2, 
+# 'field': 2, 'dedicate': 2, 'gave': 2, 'living': 2, 'dead': 3, 'far': 2, 'they': 3, 'us': 3, 
+# 'devotion': 2, 'people': 3}
