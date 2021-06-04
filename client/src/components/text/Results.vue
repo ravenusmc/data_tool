@@ -6,6 +6,7 @@
       <SentenceSentiment v-bind:text-file="textFile" />
     </section>
     <SentimentGraph />
+    <WordCountGraph />
   </div>
 </template>
 
@@ -13,6 +14,7 @@
 import Basic from "@/components/text/subsections/Basic.vue";
 import SentenceSentiment from "@/components/text/subsections/SentenceSentiment.vue";
 import SentimentGraph from "@/components/text/subsections/SentimentGraph.vue";
+import WordCountGraph from "@/components/text/subsections/WordCountGraph.vue";
 import { mapGetters } from "vuex";
 
 export default {
@@ -21,6 +23,7 @@ export default {
     Basic,
     SentenceSentiment,
     SentimentGraph,
+    WordCountGraph,
   },
   computed: {
     ...mapGetters("text", ["textFile"]),

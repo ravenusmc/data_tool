@@ -8,17 +8,17 @@ Vue.use(Vuex)
 const state = {
 	loginUserObject: [],
 	userCreated: false,
-	token: null, 
+	token: null,
 	passwordNoMatch: false,
-	loginFlag: false, 
+	loginFlag: false,
 	loginValues: {},
 };
 
 const getters = {
 	loginUserObject: state => state.loginUserObject,
 	userCreated: state => state.userCreated,
-	token: state => state.token, 
-	passwordNoMatch: state => state.passwordNoMatch, 
+	token: state => state.token,
+	passwordNoMatch: state => state.passwordNoMatch,
 	loginFlag: state => state.loginFlag,
 	loginValues: state => state.loginValues,
 };
@@ -41,20 +41,22 @@ const actions = {
 		axios.post(path, payload)
 			.then((res) => {
 				if (res.data.login_flag) {
-					// localStorage.setItem('LoggedUser',results.User);
 					commit('setLoginFlag', res.data.login_flag)
-					router.push({ path: '/set_up'});
+					router.push({ path: '/set_up' });
 				}
 				commit('setNoPasswordMatch', res.data.Password_no_match);
-				// localStorage.setItem('token', res.data.token)
 			})
 			.catch(error => {
 				console.log(error);
 			})
 	},
 
-	logout: ({ commit }) => {
-		let data = false 
+	logout: ({ commit, rootGetters }) => {
+		// console.log(rootGetters.sentenceSentiment)
+		console.log(rootGetters['text/sentenceSentiment'])
+		let textFile = {}
+		let data = false
+		commit('text/setTextFile', textFile, { root: true });
 		commit('setLoginFlag', data)
 	},
 
@@ -67,11 +69,11 @@ const mutations = {
 	},
 
 	setUserCreated(state, data) {
-		state.userCreated = data 
+		state.userCreated = data
 	},
 
 	set_token(state, token) {
-		state.token = token 
+		state.token = token
 	},
 
 	setLoginFlag(state, data) {

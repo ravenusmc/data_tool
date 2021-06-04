@@ -63,12 +63,12 @@ class Text():
 		# The code here will be going to build the common words
 		words = self.purge_extra_characters(words_list) 
 		word_and_count = self.clean_word_list(words)
-		print(word_and_count)
+		word_count_chart_data = self.buildChartData(word_and_count)
 		# End common words code 
 		sentiment_graph_data = self.get_data_for_sentiment_graph(text_converted)
 		sentiment_sentence_list, first_sentence, first_sentence_sentiment, sentence_and_sentiment_list = self.get_sentiment_values_of_single_speech(text_converted)
 		sentiment_speech_average = self.get_sentiment_average_per_speech(sentiment_sentence_list)
-		return sentiment_graph_data, sentiment_speech_average, first_sentence, first_sentence_sentiment, sentence_and_sentiment_list
+		return sentiment_graph_data, sentiment_speech_average, first_sentence, first_sentence_sentiment, sentence_and_sentiment_list, word_count_chart_data
 
 	def purge_extra_characters(self, words_in_list):
 		words = []
@@ -83,6 +83,7 @@ class Text():
 		# removing periods and commas at the end of each word
 		words = self.purge_extra_characters(words_in_list)
 		while len_count < len(words):
+				rows = []
 				word_count = 0
 				#I assign the current_word to the current position of the word_count counter
 				current_word = words[len_count].lower()
@@ -140,6 +141,17 @@ class Text():
 										word_and_count[current_word] = word_count
 				len_count += 1
 		return word_and_count
+	
+	def buildChartData(self, word_and_count):
+		word_count_chart_data = []
+		columns = ['Word', 'Count']
+		word_count_chart_data.append(columns)
+		for word, count in word_and_count.items():
+				rows = []
+				rows.append(word)
+				rows.append(count)
+				word_count_chart_data.append(rows)
+		return word_count_chart_data
 
 
 # word_count >= 3:

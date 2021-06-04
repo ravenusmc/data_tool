@@ -12,6 +12,7 @@ const state = {
 	sentenceSentiment: 0,
 	textLength: 0,
 	sentiment_graph_data: [],
+	word_count_graph_data: [],
 };
 
 const getters = {
@@ -22,6 +23,7 @@ const getters = {
 	sentenceSentiment: state => state.sentenceSentiment,
 	textLength: state => state.textLength,
 	sentiment_graph_data: state => state.sentiment_graph_data,
+	word_count_graph_data: state => state.word_count_graph_data,
 };
 
 const actions = {
@@ -41,6 +43,7 @@ const actions = {
 				commit('setSentenceSentiment', res.data.sentence_and_sentiment_list[0].sentiment)
 				commit('setTextLength', res.data.sentence_and_sentiment_list.length)
 				commit('setSentiment_graph_data', res.data.sentiment_graph_data)
+				commit('setWord_count_graph_data', res.data.word_count_chart_data)
 			})
 			.catch(error => {
 				console.log(error);
@@ -83,7 +86,11 @@ const mutations = {
 
 	setSentiment_graph_data(state, data) {
 		state.sentiment_graph_data = data
-	}
+	},
+
+	setWord_count_graph_data(state, data) {
+		state.word_count_graph_data = data
+	}, 
 
 };
 
