@@ -74,5 +74,17 @@ def text_file_upload():
             text_data['word_count_chart_data'] = word_count_chart_data
         return jsonify(text_data)
 
+#This route will handle changing the word count on the word count graph
+@app.route('/change_word_count', methods=['GET', 'POST'])
+def change_word_count():
+    if request.method == 'POST':
+        post_data = request.get_json()
+        text_object = Text(post_data['text_file_name'])
+        text_file = text_object.getting_text_file()
+        text_converted = text_object.get_text_to_textBlob_format(text_file)
+        print(text_file)
+        return jsonify('7')
+
+
 if __name__ == '__main__':
     app.run()

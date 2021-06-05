@@ -7,6 +7,7 @@
     </section>
     <SentimentGraph />
     <WordCountGraph />
+    <WordCountFilter />
   </div>
 </template>
 
@@ -15,6 +16,7 @@ import Basic from "@/components/text/subsections/Basic.vue";
 import SentenceSentiment from "@/components/text/subsections/SentenceSentiment.vue";
 import SentimentGraph from "@/components/text/subsections/SentimentGraph.vue";
 import WordCountGraph from "@/components/text/subsections/WordCountGraph.vue";
+import WordCountFilter from "@/components/text/subsections/WordCountFilter.vue";
 import { mapGetters } from "vuex";
 
 export default {
@@ -24,6 +26,7 @@ export default {
     SentenceSentiment,
     SentimentGraph,
     WordCountGraph,
+    WordCountFilter,
   },
   computed: {
     ...mapGetters("text", ["textFile"]),

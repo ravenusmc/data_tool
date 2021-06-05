@@ -77,7 +77,7 @@ class Text():
 				words.append(word[0])
 		return words
 	
-	def clean_word_list(self, words_in_list):
+	def clean_word_list(self, words_in_list, times_word_appears = 3):
 		word_and_count = {}
 		len_count = 0
 		# removing periods and commas at the end of each word
@@ -137,7 +137,7 @@ class Text():
 						and current_word != '(laughter' and current_word != 'don’t' and current_word != 'some' and current_word != 'we’re'
 						and current_word != 'where' and current_word != 'would' and current_word != 'under'):
 								word_count += 1
-								if (word_count >= 3):
+								if (word_count >= times_word_appears):
 										word_and_count[current_word] = word_count
 				len_count += 1
 		return word_and_count
