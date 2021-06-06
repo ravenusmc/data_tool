@@ -82,8 +82,11 @@ def change_word_count():
         text_object = Text(post_data['text_file_name'])
         text_file = text_object.getting_text_file()
         text_converted = text_object.get_text_to_textBlob_format(text_file)
-        print(text_file)
-        return jsonify('7')
+        words_list = text_converted.words
+        words = text_object.purge_extra_characters(words_list)
+        word_and_count = text_object.clean_word_list(words, int(post_data['wordCount']))
+        word_count_chart_data = text_object.buildChartData(word_and_count)
+        return jsonify(word_count_chart_data)
 
 
 if __name__ == '__main__':

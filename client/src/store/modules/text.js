@@ -65,8 +65,12 @@ const actions = {
 		const path = 'http://localhost:5000/change_word_count';
 		axios.post(path, payload)
 			.then((res) => {
-
-				//commit('setWord_count_graph_data', res.data.word_count_chart_data)
+				console.log(res.data)
+				res.data.sort((a, b) => b[1] - a[1]);
+				commit('setWord_count_graph_data', res.data)
+			})
+			.catch(error => {
+				console.log(error);
 			})
 	}
 

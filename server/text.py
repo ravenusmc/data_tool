@@ -152,11 +152,3 @@ class Text():
 				rows.append(count)
 				word_count_chart_data.append(rows)
 		return word_count_chart_data
-
-
-# word_count >= 3:
-#{'nation': 5, 'dedicated': 4, 'we': 10, 'great': 3, 'dead': 3, 'they': 3, 'us': 3, 'people': 3}
-# word_count >= 2: 
-# {'our': 2, 'nation': 5, 'conceived': 2, 'dedicated': 4, 'men': 2, 'we': 10, 'great': 3, 'war': 2, 
-# 'field': 2, 'dedicate': 2, 'gave': 2, 'living': 2, 'dead': 3, 'far': 2, 'they': 3, 'us': 3, 
-# 'devotion': 2, 'people': 3}
