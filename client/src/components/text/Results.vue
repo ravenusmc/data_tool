@@ -7,7 +7,10 @@
     </section>
     <SentimentGraph />
     <WordCountGraph />
-    <WordCountFilter />
+    <div class="word-count-area">
+      <WordCountFilter />
+      <WordCountExplanation />
+    </div>
   </div>
 </template>
 
@@ -17,6 +20,7 @@ import SentenceSentiment from "@/components/text/subsections/SentenceSentiment.v
 import SentimentGraph from "@/components/text/subsections/SentimentGraph.vue";
 import WordCountGraph from "@/components/text/subsections/WordCountGraph.vue";
 import WordCountFilter from "@/components/text/subsections/WordCountFilter.vue";
+import WordCountExplanation from "@/components/text/subsections/WordCountExplanation.vue";
 import { mapGetters } from "vuex";
 
 export default {
@@ -27,6 +31,7 @@ export default {
     SentimentGraph,
     WordCountGraph,
     WordCountFilter,
+    WordCountExplanation,
   },
   computed: {
     ...mapGetters("text", ["textFile"]),
@@ -40,5 +45,13 @@ section {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 3em;
   justify-items: center;
+}
+
+.word-count-area {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 3em;
+  justify-items: center;
+  margin-top: 50px;
 }
 </style>
