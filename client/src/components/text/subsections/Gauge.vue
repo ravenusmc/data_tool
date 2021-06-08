@@ -5,19 +5,15 @@
       :options="chartOptionsOne"
     >
     </Guage>
-    <!-- <div class="container"></div> -->
-    <!-- <div class="fill-container" :style="{ width: widthCalculation + '%' }">
-      <span>{{ widthCalculation }}%</span>
-    </div> -->
     <p class="speechRating-paragraph center">
       The text file has an overall rating of {{ this.speechRating }}
     </p>
     <p class="make-bold center">Rating System:</p>
     <ul>
-      <li>0-25: Very Negative</li>
-      <li>26-50: Negative</li>
-      <li>51-75: Positive</li>
-      <li>76-100: Very Positive</li>
+      <li :class="{ active: firstLevel }">0-25: Very Negative</li>
+      <li :class="{ active: secondLevel }">26-50: Negative</li>
+      <li :class="{ active: thirdLevel }">51-75: Positive</li>
+      <li :class="{ active: fourthLevel }">76-100: Very Positive</li>
     </ul>
   </div>
 </template>
@@ -33,11 +29,15 @@ export default {
   props: ["percentage"],
   data() {
     return {
+      firstLevel: false, 
+      secondLevel: false, 
+      thirdLevel: false, 
+      fourthLevel: false, 
       speechRating: "",
       typeOne: "Gauge",
       chartOptionsOne: {
-        greenFrom: 76, greenTo: 100,
-        yellowFrom: 26, yellowTo: 75,
+        greenFrom: 75, greenTo: 100,
+        yellowFrom: 25, yellowTo: 75,
         redFrom: 0, redTo: 25,
         height: 400,
         minorTicks: 5
@@ -47,22 +47,24 @@ export default {
   computed: {
     widthCalculation() {
       let correctedValue = Math.round((0.5 * this.percentage + 0.5) * 100);
-
       if (correctedValue >= 0 && correctedValue <= 25) {
         this.speechRating = "Very Negative";
+        this.firstLevel = true;
       } else if (correctedValue > 25 && correctedValue <= 50) {
         this.speechRating = "Negative";
+        this.secondLevel = true;
       } else if (correctedValue > 50 && correctedValue <= 75) {
         this.speechRating = "Positive";
+        this.thirdLevel = true;
       } else {
         this.speechRating = "Very Positive";
+        this.fourthLevel = true;
       }
-      let test = [
+      let guageValues = [
         ["Label", "Value"],
         ["Rating", correctedValue],
       ];
-      return test;
-      // return correctedValue;
+      return guageValues;
     },
   },
 };
@@ -96,4 +98,9 @@ span {
 .speechRating-paragraph {
   margin-top: 15px;
 }
+
+.active {
+  font-weight: bold;
+}
+
 </style>  

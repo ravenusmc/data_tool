@@ -2,7 +2,7 @@
   <div>
     <form @submit="changeWordCount">
       <div class="form-group">
-        <label for="wordCount" class='make-bold'>Word Count:</label>
+        <label for="wordCount" class="make-bold">Word Count:</label>
         <input
           type="number"
           class="form-control"
@@ -40,8 +40,7 @@ export default {
 </script>
 
 <style scoped>
-
 form {
-  width: 60%;
+  width: 65%;
 }
 </style>

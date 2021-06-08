@@ -63,7 +63,7 @@ class Text():
 		# The code here will be going to build the common words
 		words = self.purge_extra_characters(words_list) 
 		word_and_count = self.clean_word_list(words)
-		word_count_chart_data = self.buildChartData(word_and_count)
+		word_count_chart_data = self.buildChartData(word_and_count, words)
 		# End common words code 
 		sentiment_graph_data = self.get_data_for_sentiment_graph(text_converted)
 		sentiment_sentence_list, first_sentence, first_sentence_sentiment, sentence_and_sentiment_list = self.get_sentiment_values_of_single_speech(text_converted)
@@ -80,14 +80,14 @@ class Text():
 	def clean_word_list(self, words_in_list, times_word_appears = 3):
 		word_and_count = {}
 		len_count = 0
-		# removing periods and commas at the end of each word
+		# Removing periods and commas at the end of each word
 		words = self.purge_extra_characters(words_in_list)
 		while len_count < len(words):
 				rows = []
 				word_count = 0
-				#I assign the current_word to the current position of the word_count counter
+				# Assign the current_word to the current position of the word_count counter
 				current_word = words[len_count].lower()
-				#I then loop through the words again seeing is certain conditions are met.
+				# Loop through the words again seeing is certain conditions are met.
 				for word in words:
 						word = word.lower()
 						if (current_word == word and current_word != 'and' and current_word != 'the' and current_word != 'The'
@@ -142,7 +142,7 @@ class Text():
 				len_count += 1
 		return word_and_count
 	
-	def buildChartData(self, word_and_count):
+	def buildChartData(self, word_and_count, words):
 		word_count_chart_data = []
 		columns = ['Word', 'Count']
 		word_count_chart_data.append(columns)
@@ -151,4 +151,8 @@ class Text():
 				rows.append(word)
 				rows.append(count)
 				word_count_chart_data.append(rows)
+		if len(word_count_chart_data) == 1:
+			print("here")
+			word_and_count = self.clean_word_list(words, 2)
+			word_count_chart_data = self.buildChartData(word_and_count, words)
 		return word_count_chart_data

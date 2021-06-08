@@ -85,7 +85,7 @@ def change_word_count():
         words_list = text_converted.words
         words = text_object.purge_extra_characters(words_list)
         word_and_count = text_object.clean_word_list(words, int(post_data['wordCount']))
-        word_count_chart_data = text_object.buildChartData(word_and_count)
+        word_count_chart_data = text_object.buildChartData(word_and_count, words)
         return jsonify(word_count_chart_data)
 
 
