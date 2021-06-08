@@ -1,29 +1,47 @@
 <template>
   <div>
-    <div class="container"></div>
-    <div class="fill-container" :style="{ width: widthCalculation + '%' }">
+    <Guage
+      :data="widthCalculation"
+      :options="chartOptionsOne"
+    >
+    </Guage>
+    <!-- <div class="container"></div> -->
+    <!-- <div class="fill-container" :style="{ width: widthCalculation + '%' }">
       <span>{{ widthCalculation }}%</span>
-    </div>
-    <p class='speechRating-paragraph center'>The text file has an overall rating of {{ this.speechRating }}</p>
-    <p class='make-bold center'>
-      Rating System:
+    </div> -->
+    <p class="speechRating-paragraph center">
+      The text file has an overall rating of {{ this.speechRating }}
     </p>
-      <ul>
-        <li>0-25: Very Negative</li>
-        <li>26-50: Negative</li>
-        <li>51-75: Positive</li>
-        <li>76-100: Very Positive</li>
-      </ul>
+    <p class="make-bold center">Rating System:</p>
+    <ul>
+      <li>0-25: Very Negative</li>
+      <li>26-50: Negative</li>
+      <li>51-75: Positive</li>
+      <li>76-100: Very Positive</li>
+    </ul>
   </div>
 </template>
 
 <script>
+import Guage from "@/components/charts/Guage.vue";
+
 export default {
-  name: "Guage",
+  name: "Gauge",
+  components: {
+    Guage, 
+  },
   props: ["percentage"],
   data() {
     return {
       speechRating: "",
+      typeOne: "Gauge",
+      chartOptionsOne: {
+        greenFrom: 76, greenTo: 100,
+        yellowFrom: 26, yellowTo: 75,
+        redFrom: 0, redTo: 25,
+        height: 400,
+        minorTicks: 5
+      },
     };
   },
   computed: {
@@ -39,8 +57,12 @@ export default {
       } else {
         this.speechRating = "Very Positive";
       }
-
-      return correctedValue;
+      let test = [
+        ["Label", "Value"],
+        ["Rating", correctedValue],
+      ];
+      return test;
+      // return correctedValue;
     },
   },
 };
@@ -74,5 +96,4 @@ span {
 .speechRating-paragraph {
   margin-top: 15px;
 }
-
 </style>  

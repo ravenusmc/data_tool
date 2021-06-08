@@ -10,9 +10,6 @@
             {{ this.textFile.sentiment_speech_average }}
         </h4>
       </div>
-      <div>
-        <p>The rating of the sentiment:</p>
-      </div>
       <Guage :percentage="percentage" />
     </section>
   </div>

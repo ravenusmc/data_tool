@@ -30,7 +30,7 @@ export default {
           title: "Sentiment",
         },
         legend: { position: "top" },
-        colors: ["#BF0D3E"],
+        colors: ["#007bff"],
         height: 400,
         animation: {
           duration: 1000,
