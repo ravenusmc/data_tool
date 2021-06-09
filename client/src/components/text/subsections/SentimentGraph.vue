@@ -1,22 +1,23 @@
 <template>
   <div>
-    <GraphCard
+    <DrillDownTextGraphCard
       :typeOne="typeOne"
       :data="sentiment_graph_data"
       :options="chartOptionsOne"
     >
-    </GraphCard>
+    </DrillDownTextGraphCard>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import GraphCard from "@/components/charts/GraphCard.vue";
+import DrillDownTextGraphCard from "@/components/charts/DrillDownTextGraphCard.vue";
+// import GraphCard from "@/components/charts/GraphCard.vue";
 
 export default {
   name: "SentimentGraph",
   components: {
-    GraphCard,
+    DrillDownTextGraphCard,
   },
   data() {
     return {
