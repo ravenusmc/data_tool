@@ -25,6 +25,7 @@
             id="file"
             ref="file"
             name="file"
+            class="test"
             v-on:change="handleFileUpload()"
           />
         </div>
@@ -79,13 +80,14 @@ section {
   justify-content: center;
   align-items: center;
   border-radius: 15px;
-  background-color: rgba(0, 0, 0, 0.2);
-  border: 2px solid rgb(0, 125, 225);
+  background-color: #f5f5f5;
+  box-shadow: 8px 8px 15px black;
+  border: 2px solid rgb(0, 0, 0);
 }
 
 .input-area {
   display: grid;
-  margin-left: 15%;
+  margin-left: 20%;
 }
 
 span {
@@ -96,16 +98,35 @@ button {
   margin-top: 30px;
 }
 
+label {
+  border: 2px solid red;
+}
+
+label:hover {
+  background-color: blue;
+}
+
+input[type=file]::file-selector-button {
+  border: 2px solid #6c5ce7;
+  padding: .2em .4em;
+  border-radius: .2em;
+  background-color: #a29bfe;
+  transition: 1s;
+}
+
+input[type=file]::file-selector-button:hover {
+  background-color: #81ecec;
+  border: 2px solid #00cec9;
+}
+
 /****************
 Media Queries
 ****************/
 
 /* Mobile Screen */
 @media only all and (max-width: 900px) {
-
   .file-upload-area {
     height: 275px;
   }
-
 }
 </style>
