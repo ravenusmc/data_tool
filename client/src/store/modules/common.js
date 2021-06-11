@@ -51,12 +51,12 @@ const actions = {
 			})
 	},
 
-	logout: ({ commit, rootGetters }) => {
-		// console.log(rootGetters.sentenceSentiment)
+	logout: ({ commit, rootGetters, dispatch }) => {
+		dispatch('text/clearTextState', '', { root: true })
 		console.log(rootGetters['text/sentenceSentiment'])
-		let textFile = {}
+		// let textFile = {}
 		let data = false
-		commit('text/setTextFile', textFile, { root: true });
+		// commit('text/setTextFile', textFile, { root: true });
 		commit('setLoginFlag', data)
 	},
 
