@@ -5,7 +5,9 @@
       <Basic v-bind:text-file="textFile" />
       <SentenceSentiment v-bind:text-file="textFile" />
     </section>
+    <hr>
     <SentimentGraph />
+    <hr>
     <WordCountGraph />
     <div class="word-count-area">
       <WordCountFilter />
