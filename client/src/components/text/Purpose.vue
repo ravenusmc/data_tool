@@ -1,9 +1,9 @@
 <template>
   <div>
     <section>
-      <div>
-        <h1 class="center">PURPOSE</h1>
-        <p>
+      <div class="file-upload-area">
+        <h1 class="center paragraph-title">PURPOSE</h1>
+        <p class='purpose-paragraph'>
           The purpose of this page is to all the user to upload a text document
           to do some sentiment analysis on it. The page will allow the user to
           see the overall sentiment of the document, the sentiment by sentence
@@ -72,6 +72,14 @@ section {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 3em;
   justify-items: center;
+}
+
+.paragraph-title {
+  padding-top: 2%;
+}
+
+.purpose-paragraph {
+  padding: 3%;
 }
 
 .file-upload-area {
