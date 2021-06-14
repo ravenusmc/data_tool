@@ -32,19 +32,22 @@
           </li>
           <li class="nav-item" v-if="loginFlag">
             <a class="nav-link" href="#"
-              ><router-link
-                class="fontColor font"
-                to="/text_analysis"
+              ><router-link class="fontColor font" to="/text_analysis"
                 >Text Analysis</router-link
               ></a
             >
           </li>
           <li class="nav-item" v-if="loginFlag">
             <a class="nav-link" href="#"
-              ><router-link
-                class="fontColor font"
-                to="/data_analysis"
+              ><router-link class="fontColor font" to="/data_analysis"
                 >Data Analysis</router-link
+              ></a
+            >
+          </li>
+          <li class="nav-item" v-if="loginFlag">
+            <a class="nav-link" href="#"
+              ><router-link class="fontColor font" to="/profile"
+                >Profile</router-link
               ></a
             >
           </li>

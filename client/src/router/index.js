@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 // import { Store } from 'vuex';
-import store from '@/store/index.js'; 
+import store from '@/store/index.js';
 import Home from '../views/Home.vue';
 import Missing from '../views/Missing.vue';
 
@@ -38,14 +38,14 @@ const routes = [
     beforeEnter: (to, from, next) => {
       if (store.state.common.loginFlag == false) {
         next('/login')
-      }else {
+      } else {
         next()
       }
     },
     beforeRouteLeave: (to, from, next) => {
       if (store.state.common.loginFlag == false) {
         next('/login')
-      }else {
+      } else {
         next()
       }
     }
@@ -57,7 +57,7 @@ const routes = [
     beforeEnter: (to, from, next) => {
       if (store.state.common.loginFlag == false) {
         next('/login')
-      }else {
+      } else {
         next()
       }
     }
@@ -69,7 +69,19 @@ const routes = [
     beforeEnter: (to, from, next) => {
       if (store.state.common.loginFlag == false) {
         next('/login')
-      }else {
+      } else {
+        next()
+      }
+    }
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: () => import('../views/Profile.vue'),
+    beforeEnter: (to, from, next) => {
+      if (store.state.common.loginFlag == false) {
+        next('/login')
+      } else {
         next()
       }
     }
