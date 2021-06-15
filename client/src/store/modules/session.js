@@ -6,11 +6,11 @@ import router from '../../router';
 Vue.use(Vuex)
 
 const state = {
-	// loginUserObject: [],
+	userObject: [],
 };
 
 const getters = {
-	// loginUserObject: state => state.loginUserObject,
+	userObject: state => state.userObject,
 };
 
 const actions = {
@@ -30,9 +30,9 @@ const actions = {
 
 const mutations = {
 
-	// setloginUserObject(state, data) {
-	// 	state.loginUserObject = data
-	// },
+	setUserObject(state, data) {
+		state.userObject = data
+	},
 
 };
 

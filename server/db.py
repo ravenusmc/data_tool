@@ -46,6 +46,11 @@ class Connection():
         query = ("""SELECT * FROM users WHERE username = %s""")
         self.cursor.execute(query, (username,))
         row = self.cursor.fetchone()
+        user = {}
+        user["id"] = row[0]
+        user['username'] = row[1]
+        user['email'] = row[2]
+        user['password'] = row[3]
         #Here I check to see if the username is in the database.
         if str(row) == 'None':
             login_flag = False
@@ -65,4 +70,4 @@ class Connection():
                 login_flag = False
                 not_found = False
                 password_no_match = True
-        return login_flag, not_found, password_no_match
+        return login_flag, not_found, password_no_match, user

@@ -44,7 +44,8 @@ const actions = {
 					commit('setLoginFlag', res.data.login_flag)
 					router.push({ path: '/set_up' });
 				}
-				commit('setNoPasswordMatch', res.data.Password_no_match);
+				commit('session/setUserObject', res.data.user, { root: true })
+				commit('setNoPasswordMatch', res.data.Password_no_match)
 			})
 			.catch(error => {
 				console.log(error);

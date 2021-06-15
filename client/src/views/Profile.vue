@@ -1,12 +1,13 @@
 <template>
   <div>
-		<section>
-
-      <form @submit="login">
-
+    <section>
+      <p>Hi {{ userObject.username }}!</p>
+      <!-- <form @submit="login">
         <div>
-          <h3 class='login-title center'>Login</h3>
-          <p class='center redText' v-if="passwordNoMatch">Password Or Username Invalid</p>
+          <h3 class="login-title center">Login</h3>
+          <p class="center redText" v-if="passwordNoMatch">
+            Password Or Username Invalid
+          </p>
         </div>
 
         <div class="form-group">
@@ -29,17 +30,20 @@
           />
         </div>
 
-         <button type="submit" class="btn btn-outline-primary">Submit</button>
-      </form>
-
+        <button type="submit" class="btn btn-outline-primary">Submit</button>
+      </form> -->
     </section>
-
-	</div>
+  </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "profile",
+  computed: {
+    ...mapGetters("session", ["userObject"]),
+  },
 };
 </script>
 

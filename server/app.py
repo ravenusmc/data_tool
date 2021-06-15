@@ -46,10 +46,11 @@ def login():
         password = post_data['password']
         login_values = {}
         #Checking to see if the user is in the database
-        login_flag, not_found, password_no_match = db.check(username, password)
+        login_flag, not_found, password_no_match, user = db.check(username, password)
         login_values['login_flag'] = login_flag
         login_values['Not_found'] = not_found
         login_values['Password_no_match'] = password_no_match
+        login_values['user'] = user
     return jsonify(login_values)
 
 #This route will handle the text analysis file upload
