@@ -50,7 +50,6 @@ class Connection():
         user["id"] = row[0]
         user['username'] = row[1]
         user['email'] = row[2]
-        user['password'] = row[3]
         #Here I check to see if the username is in the database.
         if str(row) == 'None':
             login_flag = False
