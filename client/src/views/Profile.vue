@@ -1,16 +1,16 @@
 <template>
   <div>
     <section>
-      <p>Hi {{ userObject.username }}!</p>
       <button
-        class="btn btn-outline-primary"
+        class="btn btn-outline-primary change-password-btn"
         v-on:click="showChangePasswordArea()"
       >
         {{ this.changePasswordButtonText }}
       </button>
       <form @submit="submit">
         <div>
-          <h3 class="login-title center">Login</h3>
+          <h2 class='center name-greeting'>Hi {{ userObject.username }}!</h2>
+          <h3 class="login-title center">Change User Information</h3>
           <!-- <p class="center redText" v-if="passwordNoMatch">
             Password Or Username Invalid
           </p> -->
@@ -97,15 +97,21 @@ export default {
   methods: {
     submit(evt) {
       evt.preventDefault();
-      console.log(this.$store.getters['session/userObject'])
       if (this.username == "") {
-        this.username = this.$store.getters['session/userObject'].username
-      } else if (this.password != this.password2) {
+        this.username = this.$store.getters["session/userObject"].username;
+      }
+
+      if (this.email == "") {
+        this.email = this.$store.getters["session/userObject"].email;
+      }
+
+      if (this.password != this.password2) {
         alert("Passwords are not the same");
       } else if (this.password.length < 6) {
         alert("Password must be at least 6 characters long");
       } else {
         const payload = {
+          id: this.$store.getters["session/userObject"].id,
           username: this.username,
           email: this.email,
           original_password: this.original_password,
@@ -129,4 +135,32 @@ export default {
 </script>
 
 <style scoped>
+.change-password-btn {
+  margin-bottom: 50px;
+}
+
+.name-greeting {
+  text-transform: uppercase;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-title {
+  text-transform: uppercase;
+  color: rgb(0, 125, 225);
+}
+
+form {
+  border: 2px solid rgb(0, 125, 225);
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  padding: 30px;
+  width: 45%;
+}
 </style>
