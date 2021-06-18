@@ -20,7 +20,7 @@ app.config.from_object(__name__)
 # enable CORS
 CORS(app)
 
-#This route will take the user to the signup page
+# This route will take the user to the signup page
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
@@ -35,11 +35,10 @@ def signup():
         user_created = db.insert(user, hashed)
         return jsonify(user_created)
 
-#This route take the user to the login page
+# This route take the user to the login page
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        #creating the db object 
         db = Connection()
         post_data = request.get_json()
         username = post_data['username']
@@ -53,7 +52,18 @@ def login():
         login_values['user'] = user
     return jsonify(login_values)
 
-#This route will handle the text analysis file upload
+# This route confirm that the user entered the correct password
+@app.route('/check_password', methods=['GET', 'POST'])
+def check_password():
+    if request.method == 'POST':
+        db = Connection()
+        post_data = request.get_json()
+        password = post_data['originalPassword']
+        user_id = post_data['id']
+        password_match = db.check_password(user_id, password)
+    return jsonify(password_match)
+
+# This route will handle the text analysis file upload
 @app.route('/text_file_upload', methods=['GET', 'POST'])
 def text_file_upload():
     if request.method == 'POST':
@@ -75,7 +85,7 @@ def text_file_upload():
             text_data['word_count_chart_data'] = word_count_chart_data
         return jsonify(text_data)
 
-#This route will handle changing the word count on the word count graph
+# This route will handle changing the word count on the word count graph
 @app.route('/change_word_count', methods=['GET', 'POST'])
 def change_word_count():
     if request.method == 'POST':
@@ -88,6 +98,22 @@ def change_word_count():
         word_and_count = text_object.clean_word_list(words, int(post_data['wordCount']))
         word_count_chart_data = text_object.buildChartData(word_and_count, words)
         return jsonify(word_count_chart_data)
+
+# This route will allow the user to update their profile information
+@app.route('/update_user_profile', methods=['GET', 'POST'])
+def update_user_profile():
+    if request.method == 'POST':
+        db = Connection()
+        post_data = request.get_json()
+        print(post_data)
+        # email = post_data['email']
+        # username = post_data['username']
+        # password = post_data['password']
+        # user = User(email, username, password)
+        return jsonify('5')
+
+
+
 
 
 if __name__ == '__main__':

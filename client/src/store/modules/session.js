@@ -15,16 +15,18 @@ const getters = {
 
 const actions = {
 
-	// setUpUser: ({ commit }, { payload }) => {
-	// 	const path = 'http://localhost:5000/signup';
-	// 	axios.post(path, payload)
-	// 		.then((res) => {
-	// 			commit('setUserCreated', res.data);
-	// 		})
-	// 		.catch(error => {
-	// 			console.log(error);
-	// 		})
-	// },
+	updateUserProfile: ({ commit }, { payload }) => {
+		const path = 'http://localhost:5000/update_user_profile';
+		axios.post(path, passwordCheck)
+			.then((res) => {
+				console.log(res.data)
+				// Going to need to return all user data 
+				// commit('setUserObject', res.data);
+			})
+			.catch(error => {
+				console.log(error);
+			})
+	},
 
 };
 

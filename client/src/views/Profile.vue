@@ -1,15 +1,11 @@
 <template>
   <div>
     <section>
-      <button
-        class="btn btn-outline-primary change-password-btn"
-        v-on:click="showChangePasswordArea()"
-      >
-        {{ this.changePasswordButtonText }}
-      </button>
       <form @submit="submit">
         <div>
-          <h2 class='center name-greeting'>Hi {{ userObject.username }}!</h2>
+          <h2 class="center name-greeting">
+            Welcome {{ userObject.username }}!
+          </h2>
           <h3 class="login-title center">Change User Information</h3>
           <!-- <p class="center redText" v-if="passwordNoMatch">
             Password Or Username Invalid
@@ -36,7 +32,7 @@
             :placeholder="userObject.email"
           />
         </div>
-        <div v-if="changePasswordArea">
+        <div>
           <div class="form-group">
             <label for="exampleInputPassword1">Original Password</label>
             <input
@@ -48,23 +44,23 @@
             />
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
+            <label for="exampleInputPassword1">New Password</label>
             <input
               type="password"
               class="form-control"
               id="exampleInputPassword1"
               v-model="password"
-              placeholder="Password"
+              placeholder="New Password"
             />
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword2">Confirm Password</label>
+            <label for="exampleInputPassword2">Confirm New Password</label>
             <input
               type="password"
               class="form-control"
               id="exampleInputPassword2"
               v-model="password2"
-              placeholder="Confirm Password"
+              placeholder="Confirm New Password"
             />
           </div>
         </div>
@@ -76,14 +72,13 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
+import axios from "axios";
 
 export default {
   name: "profile",
   data() {
     return {
-      changePasswordArea: false,
-      changePasswordButtonText: "Change Password",
       username: "",
       email: "",
       original_password: "",
@@ -95,8 +90,9 @@ export default {
     ...mapGetters("session", ["userObject"]),
   },
   methods: {
-    submit(evt) {
+    async submit(evt) {
       evt.preventDefault();
+
       if (this.username == "") {
         this.username = this.$store.getters["session/userObject"].username;
       }
@@ -105,7 +101,19 @@ export default {
         this.email = this.$store.getters["session/userObject"].email;
       }
 
-      if (this.password != this.password2) {
+      const passwordCheck = {
+        id: this.$store.getters["session/userObject"].id,
+        originalPassword: this.original_password,
+      };
+
+      const result = await axios.post(
+        "http://localhost:5000/check_password",
+        passwordCheck
+      );
+
+      if (result.data == false) {
+        alert("Original Password is invalid");
+      } else if (this.password != this.password2) {
         alert("Passwords are not the same");
       } else if (this.password.length < 6) {
         alert("Password must be at least 6 characters long");
@@ -114,20 +122,10 @@ export default {
           id: this.$store.getters["session/userObject"].id,
           username: this.username,
           email: this.email,
-          original_password: this.original_password,
+          originalPassword: this.original_password,
           password: this.password,
         };
-        console.log(payload);
-        // this.$store.dispatch("common/login", { payload });
-      }
-    },
-    showChangePasswordArea() {
-      if (this.changePasswordArea == true) {
-        this.changePasswordButtonText = "Change Password";
-        this.changePasswordArea = false;
-      } else {
-        this.changePasswordButtonText = "Hide Change Password";
-        this.changePasswordArea = true;
+        this.$store.dispatch("session/updateUserProfile", { payload });
       }
     },
   },

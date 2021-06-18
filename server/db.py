@@ -70,3 +70,16 @@ class Connection():
                 not_found = False
                 password_no_match = True
         return login_flag, not_found, password_no_match, user
+    
+    def check_password(self, user_id, password):
+        password = password.encode('utf-8')
+        query = ("""SELECT * FROM users WHERE user_id = %s""")
+        self.cursor.execute(query, (user_id,))
+        row = self.cursor.fetchone()
+        hashed = row[3].encode('utf-8')
+        if bcrypt.hashpw(password, hashed) == str(hashed,'UTF-8'):
+            password_match = True
+        else:
+            password_match = False 
+        return password_match
+

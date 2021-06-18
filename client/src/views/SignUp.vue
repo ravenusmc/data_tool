@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { x } from "vuex";
 
 export default {
   name: "signup",
