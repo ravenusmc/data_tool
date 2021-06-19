@@ -1,15 +1,12 @@
 <template>
   <div>
     <section>
-      <form @submit="submit">
+      <form @submit="changeUsernameAndEmail">
         <div>
           <h2 class="center name-greeting">
             Welcome {{ userObject.username }}!
           </h2>
           <h3 class="login-title center">Change User Information</h3>
-          <!-- <p class="center redText" v-if="passwordNoMatch">
-            Password Or Username Invalid
-          </p> -->
         </div>
 
         <div class="form-group">
@@ -32,39 +29,43 @@
             :placeholder="userObject.email"
           />
         </div>
-        <div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Original Password</label>
-            <input
-              type="password"
-              class="form-control"
-              id="exampleInputPassword1"
-              v-model="original_password"
-              placeholder="Original Password"
-            />
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">New Password</label>
-            <input
-              type="password"
-              class="form-control"
-              id="exampleInputPassword1"
-              v-model="password"
-              placeholder="New Password"
-            />
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword2">Confirm New Password</label>
-            <input
-              type="password"
-              class="form-control"
-              id="exampleInputPassword2"
-              v-model="password2"
-              placeholder="Confirm New Password"
-            />
-          </div>
-        </div>
+        <button type="submit" class="btn btn-outline-primary">Submit</button>
+      </form>
 
+      <form @submit="changePassword">
+        <div>
+          <h3 class="login-title center">Change Password</h3>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Original Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            v-model="original_password"
+            placeholder="Original Password"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">New Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            v-model="password"
+            placeholder="New Password"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword2">Confirm New Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword2"
+            v-model="password2"
+            placeholder="Confirm New Password"
+          />
+        </div>
         <button type="submit" class="btn btn-outline-primary">Submit</button>
       </form>
     </section>
@@ -90,7 +91,8 @@ export default {
     ...mapGetters("session", ["userObject"]),
   },
   methods: {
-    async submit(evt) {
+    ...mapActions(["session/updateUserProfile"]),
+    changeUsernameAndEmail(evt) {
       evt.preventDefault();
 
       if (this.username == "") {
@@ -100,6 +102,18 @@ export default {
       if (this.email == "") {
         this.email = this.$store.getters["session/userObject"].email;
       }
+
+      const payload = {
+        id: this.$store.getters["session/userObject"].id,
+        username: this.username,
+        email: this.email,
+        password: "",
+      };
+      console.log(payload);
+      this.$store.dispatch("session/updateUserProfile", { payload });
+    }, // End changeUsernameAndEmail
+    async changePassword(evt) {
+      evt.preventDefault();
 
       const passwordCheck = {
         id: this.$store.getters["session/userObject"].id,
@@ -120,14 +134,12 @@ export default {
       } else {
         const payload = {
           id: this.$store.getters["session/userObject"].id,
-          username: this.username,
-          email: this.email,
-          originalPassword: this.original_password,
           password: this.password,
         };
+        console.log(payload);
         this.$store.dispatch("session/updateUserProfile", { payload });
       }
-    },
+    }, // End changePassword
   },
 };
 </script>

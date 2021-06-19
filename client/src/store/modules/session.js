@@ -17,7 +17,7 @@ const actions = {
 
 	updateUserProfile: ({ commit }, { payload }) => {
 		const path = 'http://localhost:5000/update_user_profile';
-		axios.post(path, passwordCheck)
+		axios.post(path, payload)
 			.then((res) => {
 				console.log(res.data)
 				// Going to need to return all user data 

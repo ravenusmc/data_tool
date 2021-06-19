@@ -105,11 +105,17 @@ def update_user_profile():
     if request.method == 'POST':
         db = Connection()
         post_data = request.get_json()
-        print(post_data)
-        # email = post_data['email']
+        # print(post_data)
+        # user_id = post_data['id']
         # username = post_data['username']
+        # email = post_data['email']
         # password = post_data['password']
-        # user = User(email, username, password)
+        if post_data['password'] == '':
+            db.update_username_and_email(post_data)
+        else: 
+            #Encrypting the password
+            hashed = db.encrypt_pass(post_data)
+            db.update_password(post_data, hashed)
         return jsonify('5')
 
 

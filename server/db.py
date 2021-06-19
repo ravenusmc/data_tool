@@ -22,10 +22,10 @@ class Connection():
         return row
     
     #This method will encrypt the password
-    def encrypt_pass(self, user):
-        password = user.password.encode('utf-8')
+    def encrypt_pass(self, post_data):
+        password = post_data['password'].encode('utf-8')
         hashed = bcrypt.hashpw(password, bcrypt.gensalt())
-        return password, hashed
+        return hashed
     
     #This method will insert a new user into the database.
     def insert(self, user, hashed):
@@ -82,4 +82,19 @@ class Connection():
         else:
             password_match = False 
         return password_match
-
+    
+    def update_username_and_email(self, post_data):
+        self._SQL = """UPDATE users SET username = %s, email = %s
+        where user_id = %s"""
+        self.cursor.execute(self._SQL, (post_data['username'], post_data['email'], post_data['id']))
+        self.conn.commit()
+        self.cursor.close()
+        self.conn.close()
+    
+    def update_password(self, post_data, hashed):
+        self._SQL = """UPDATE users SET password = %s
+        where user_id = %s"""
+        self.cursor.execute(self._SQL, (hashed, post_data['id']))
+        self.conn.commit()
+        self.cursor.close()
+        self.conn.close()
