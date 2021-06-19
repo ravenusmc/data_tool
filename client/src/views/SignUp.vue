@@ -1,12 +1,9 @@
 <template>
   <div>
-
     <section>
-
       <form @submit="submitSelection">
-
         <div>
-          <h3 class='login-title center'>Sign Up</h3>
+          <h3 class="login-title center">Sign Up</h3>
         </div>
 
         <div class="form-group">
@@ -49,16 +46,14 @@
             placeholder="Retype Password"
           />
         </div>
-        <button type="button" class="btn btn-outline-primary">Submit</button>
+        <button type="submit" class="btn btn-outline-primary">Submit</button>
       </form>
-
     </section>
-
   </div>
 </template>
 
 <script>
-import { x } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
   name: "signup",
@@ -71,33 +66,36 @@ export default {
     };
   },
   methods: {
-		...mapActions([ "common/setUpUser"]),
+    ...mapActions(["common/setUpUser"]),
     submitSelection(evt) {
       evt.preventDefault();
-      if (this.username == '') {
-        alert('Uername must be entered');
-      }else if (this.email == '') {
-        alert('Email must be entered');
-      }else if (this.password != this.password_confirm) {
-        alert('Passwords Must be the Same');
-      }else if (this.password.length <6) {
-        alert('Password must be at least 6 characters long')
+      console.log("heredsdad");
+      if (this.username == "") {
+        alert("Uername must be entered");
+      } else if (this.email == "") {
+        alert("Email must be entered");
+      } else if (this.password != this.password_confirm) {
+        alert("Passwords Must be the Same");
+      } else if (this.password.length < 6) {
+        alert("Password must be at least 6 characters long");
       } else {
-      const payload = {
-        email: this.email,
-        username: this.username,
-        password: this.password,
-      };
-      this.$store.dispatch("common/setUpUser", { payload });
+        const payload = {
+          email: this.email,
+          username: this.username,
+          password: this.password,
+        };
+        this.$store.dispatch("common/setUpUser", { payload });
       }
-
+    },
+    signUpUser(evt) {
+      evt.preventDefault();
+      console.log("hi");
     },
   },
 };
 </script>
 
 <style scoped>
-
 section {
   display: flex;
   flex-direction: column;
@@ -125,7 +123,6 @@ Media Queries
 
 /* Mobile Screen */
 @media only all and (max-width: 900px) {
-
   form {
     border: 2px solid rgb(0, 125, 225);
     background-color: rgba(0, 0, 0, 0.3);
@@ -133,5 +130,4 @@ Media Queries
     width: 65%;
   }
 }
-
 </style>
