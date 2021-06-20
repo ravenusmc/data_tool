@@ -28,6 +28,22 @@ const actions = {
 			})
 	},
 
+	deleteUser: ({ commit }, { payload }) => {
+		const path = 'http://localhost:5000/delete_user';
+		axios.post(path, payload)
+			.then(() => {
+				console.log('here');
+				let userObject = []
+				let logoutFlag = false
+				commit('setUserObject', userObject);
+				commit('common/setLoginFlag', logoutFlag)
+				router.push({ path: '/' });
+			})
+			.catch(error => {
+				console.log(error);
+			})
+	},
+
 };
 
 const mutations = {

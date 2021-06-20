@@ -69,7 +69,6 @@ export default {
     ...mapActions(["common/setUpUser"]),
     submitSelection(evt) {
       evt.preventDefault();
-      console.log("heredsdad");
       if (this.username == "") {
         alert("Uername must be entered");
       } else if (this.email == "") {
@@ -86,10 +85,6 @@ export default {
         };
         this.$store.dispatch("common/setUpUser", { payload });
       }
-    },
-    signUpUser(evt) {
-      evt.preventDefault();
-      console.log("hi");
     },
   },
 };

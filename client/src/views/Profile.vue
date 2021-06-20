@@ -1,7 +1,7 @@
 <template>
   <div>
     <section>
-      <form @submit="changeUsernameAndEmail">
+      <form class="change-username-form" @submit="changeUsernameAndEmail">
         <div>
           <h2 class="center name-greeting">
             Welcome {{ userObject.username }}!
@@ -67,6 +67,11 @@
           />
         </div>
         <button type="submit" class="btn btn-outline-primary">Submit</button>
+      </form>
+      <form @submit="deleteUser">
+        <button type="submit" class="btn btn-outline-danger">
+          Delete User
+        </button>
       </form>
     </section>
   </div>
@@ -140,11 +145,21 @@ export default {
         this.$store.dispatch("session/updateUserProfile", { payload });
       }
     }, // End changePassword
+    deleteUser(evt) {
+      evt.preventDefault();
+      const payload = {
+        id: this.$store.getters["session/userObject"].id,
+      };
+      this.$store.dispatch("session/deleteUser", { payload });
+    },
   },
 };
 </script>
 
 <style scoped>
+.change-username-form {
+  margin-bottom: 30px;
+}
 .change-password-btn {
   margin-bottom: 50px;
 }
@@ -154,11 +169,11 @@ export default {
 }
 
 section {
+  margin: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
 .login-title {

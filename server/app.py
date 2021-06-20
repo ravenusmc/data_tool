@@ -111,6 +111,16 @@ def update_user_profile():
             db.update_password(post_data, hashed)
         return jsonify('5')
 
+@app.route('/delete_user', methods=['GET', 'POST'])
+def delete_user():
+    if request.method == 'POST':
+        db = Connection()
+        post_data = request.get_json()
+        db.delete_user(post_data)
+        return jsonify('5')
+
+
+
 
 
 

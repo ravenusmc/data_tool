@@ -30,6 +30,7 @@ const actions = {
 		axios.post(path, payload)
 			.then((res) => {
 				commit('setUserCreated', res.data);
+				router.push({ path: '/login' });
 			})
 			.catch(error => {
 				console.log(error);

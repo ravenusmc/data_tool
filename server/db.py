@@ -98,3 +98,10 @@ class Connection():
         self.conn.commit()
         self.cursor.close()
         self.conn.close()
+    
+    def delete_user(self, post_data):
+        self._SQL = """DELETE FROM users where user_id = %s"""
+        self.cursor.execute(self._SQL, (post_data['id'], ))
+        self.conn.commit()
+        self.cursor.close()
+        self.conn.close()
