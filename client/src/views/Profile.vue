@@ -37,11 +37,11 @@
           <h3 class="login-title center">Change Password</h3>
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">Original Password</label>
+          <label for="exampleInputPassword">Original Password</label>
           <input
             type="password"
             class="form-control"
-            id="exampleInputPassword1"
+            id="exampleInputPassword"
             v-model="original_password"
             placeholder="Original Password"
           />
@@ -68,7 +68,7 @@
         </div>
         <button type="submit" class="btn btn-outline-primary">Submit</button>
       </form>
-      <form @submit="deleteUser">
+      <form @submit="deleteUser" class="delete-user">
         <button type="submit" class="btn btn-outline-danger">
           Delete User
         </button>
@@ -114,7 +114,6 @@ export default {
         email: this.email,
         password: "",
       };
-      console.log(payload);
       this.$store.dispatch("session/updateUserProfile", { payload });
     }, // End changeUsernameAndEmail
     async changePassword(evt) {
@@ -187,5 +186,14 @@ form {
   border-radius: 15px;
   padding: 30px;
   width: 45%;
+}
+
+.delete-user {
+  border: 2px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
 }
 </style>

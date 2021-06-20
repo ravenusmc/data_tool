@@ -32,11 +32,10 @@ const actions = {
 		const path = 'http://localhost:5000/delete_user';
 		axios.post(path, payload)
 			.then(() => {
-				console.log('here');
 				let userObject = []
 				let logoutFlag = false
 				commit('setUserObject', userObject);
-				commit('common/setLoginFlag', logoutFlag)
+				commit('common/setLoginFlag', logoutFlag, { root: true })
 				router.push({ path: '/' });
 			})
 			.catch(error => {
