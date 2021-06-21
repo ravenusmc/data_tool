@@ -27,8 +27,8 @@ const actions = {
 	},
 
 	deleteUser: ({ commit }, { payload }) => {
-		const path = 'http://localhost:5000/delete_user';
-		axios.post(path, payload)
+		const path = `http://localhost:5000/delete_user/${payload.id}`;
+		axios.delete(path)
 			.then(() => {
 				let userObject = []
 				let logoutFlag = false

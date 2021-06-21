@@ -140,7 +140,6 @@ export default {
           id: this.$store.getters["session/userObject"].id,
           password: this.password,
         };
-        console.log(payload);
         this.$store.dispatch("session/updateUserProfile", { payload });
       }
     }, // End changePassword

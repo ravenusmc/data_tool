@@ -113,13 +113,12 @@ def update_user_profile():
             user = db.get_user_information(post_data)
         return jsonify(user)
 
-@app.route('/delete_user', methods=['GET', 'POST'])
-def delete_user():
-    if request.method == 'POST':
+@app.route('/delete_user/<id>', methods=["DELETE"])
+def delete_user(id):
+    if request.method == 'DELETE':
         db = Connection()
-        post_data = request.get_json()
-        db.delete_user(post_data)
-        return jsonify('5')
+        db.delete_user(id)
+        return jsonify('')
 
 
 

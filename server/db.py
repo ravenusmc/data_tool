@@ -95,9 +95,9 @@ class Connection():
         self.cursor.execute(self._SQL, (hashed, post_data['id']))
         self.conn.commit()
     
-    def delete_user(self, post_data):
+    def delete_user(self, id):
         self._SQL = """DELETE FROM users WHERE user_id = %s"""
-        self.cursor.execute(self._SQL, (post_data['id'], ))
+        self.cursor.execute(self._SQL, (id, ))
         self.conn.commit()
         self.cursor.close()
         self.conn.close()
