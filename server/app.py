@@ -106,10 +106,12 @@ def update_user_profile():
         post_data = request.get_json()
         if post_data['password'] == '':
             db.update_username_and_email(post_data)
+            user = db.get_user_information(post_data)
         else: 
             hashed = db.encrypt_pass(post_data)
             db.update_password(post_data, hashed)
-        return jsonify('5')
+            user = db.get_user_information(post_data)
+        return jsonify(user)
 
 @app.route('/delete_user', methods=['GET', 'POST'])
 def delete_user():

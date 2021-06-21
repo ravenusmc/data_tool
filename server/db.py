@@ -88,20 +88,32 @@ class Connection():
         where user_id = %s"""
         self.cursor.execute(self._SQL, (post_data['username'], post_data['email'], post_data['id']))
         self.conn.commit()
-        self.cursor.close()
-        self.conn.close()
     
     def update_password(self, post_data, hashed):
         self._SQL = """UPDATE users SET password = %s
         where user_id = %s"""
         self.cursor.execute(self._SQL, (hashed, post_data['id']))
         self.conn.commit()
-        self.cursor.close()
-        self.conn.close()
     
     def delete_user(self, post_data):
-        self._SQL = """DELETE FROM users where user_id = %s"""
+        self._SQL = """DELETE FROM users WHERE user_id = %s"""
         self.cursor.execute(self._SQL, (post_data['id'], ))
         self.conn.commit()
         self.cursor.close()
         self.conn.close()
+    
+    # I don't really like creating this method - done in the check method but I'll keep this here 
+    def get_user_information(self, post_data):
+        self._SQL = ("""SELECT * FROM users WHERE user_id = %s""")
+        self.cursor.execute(self._SQL, (post_data['id'],))
+        row = self.cursor.fetchone()
+        user = {}
+        user["id"] = row[0]
+        user['username'] = row[1]
+        user['email'] = row[2]
+        self.cursor.close()
+        self.conn.close()
+        return user
+
+
+
