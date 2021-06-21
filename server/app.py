@@ -20,7 +20,6 @@ app.config.from_object(__name__)
 # enable CORS
 CORS(app)
 
-# This route will take the user to the signup page
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
@@ -34,7 +33,6 @@ def signup():
         user_created = db.insert(user, hashed)
         return jsonify(user_created)
 
-# This route take the user to the login page
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':

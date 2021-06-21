@@ -8,6 +8,7 @@
         <div>
           <h3 class='login-title center'>Login</h3>
           <p class='center redText' v-if="passwordNoMatch">Password Or Username Invalid</p>
+          <p class='center redText' v-if="notFound">User has not signed up. Please sign up.</p>
         </div>
 
         <div class="form-group">
@@ -44,7 +45,8 @@ export default {
   name: "signup",
   computed: {
     ...mapGetters('common', [
-			'passwordNoMatch',
+      'passwordNoMatch',
+      'notFound',
     ]),
   },
   data() {

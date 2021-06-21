@@ -10,6 +10,7 @@ const state = {
 	userCreated: false,
 	token: null,
 	passwordNoMatch: false,
+	notFound: false,
 	loginFlag: false,
 	loginValues: {},
 };
@@ -19,6 +20,7 @@ const getters = {
 	userCreated: state => state.userCreated,
 	token: state => state.token,
 	passwordNoMatch: state => state.passwordNoMatch,
+	notFound: state => state.notFound,
 	loginFlag: state => state.loginFlag,
 	loginValues: state => state.loginValues,
 };
@@ -41,12 +43,15 @@ const actions = {
 		const path = 'http://localhost:5000/login';
 		axios.post(path, payload)
 			.then((res) => {
+				console.log(res.data)
 				if (res.data.login_flag) {
 					commit('setLoginFlag', res.data.login_flag)
 					router.push({ path: '/set_up' });
 				}
 				commit('session/setUserObject', res.data.user, { root: true })
 				commit('setNoPasswordMatch', res.data.Password_no_match)
+				commit('setNotFound', res.data.Not_found)
+				
 			})
 			.catch(error => {
 				console.log(error);
@@ -81,6 +86,10 @@ const mutations = {
 
 	setNoPasswordMatch(state, data) {
 		state.passwordNoMatch = data
+	},
+
+	setNotFound(state, data) {
+		state.notFound = state
 	}
 
 };
