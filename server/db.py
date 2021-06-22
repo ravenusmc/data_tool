@@ -52,7 +52,6 @@ class Connection():
         row = self.cursor.fetchone()
         # Here I check to see if the username is in the database.
         if str(row) == 'None':
-            print('here')
             login_flag = False
             not_found = True
             password_no_match = False

@@ -43,15 +43,13 @@ const actions = {
 		const path = 'http://localhost:5000/login';
 		axios.post(path, payload)
 			.then((res) => {
-				console.log(res.data)
 				if (res.data.login_flag) {
+					commit('session/setUserObject', res.data.user, { root: true })
 					commit('setLoginFlag', res.data.login_flag)
 					router.push({ path: '/set_up' });
 				}
-				commit('session/setUserObject', res.data.user, { root: true })
 				commit('setNoPasswordMatch', res.data.Password_no_match)
 				commit('setNotFound', res.data.Not_found)
-				
 			})
 			.catch(error => {
 				console.log(error);
@@ -60,8 +58,12 @@ const actions = {
 
 	logout: ({ commit, dispatch }) => {
 		dispatch('text/clearTextState', '', { root: true })
-		let data = false
-		commit('setLoginFlag', data)
+		let passwordNoMatch = false
+		let notFound = false
+		let loginFlag = false
+		commit('setLoginFlag', loginFlag)
+		commit('setNoPasswordMatch', passwordNoMatch)
+		commit('setNotFound', notFound)
 	},
 
 };
@@ -89,8 +91,8 @@ const mutations = {
 	},
 
 	setNotFound(state, data) {
-		state.notFound = state
-	}
+		state.notFound = data
+	},
 
 };
 

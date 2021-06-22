@@ -63,7 +63,6 @@ const actions = {
 					}
 				})
 					.then((res) => {
-						console.log(res.data)
 						commit('setFileName', res.data.file_name)
 						commit('setTextFile', res.data);
 						commit('setShowSentimentResults', true);

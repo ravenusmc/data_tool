@@ -152,7 +152,6 @@ class Text():
 				rows.append(count)
 				word_count_chart_data.append(rows)
 		if len(word_count_chart_data) == 1:
-			print("here")
 			word_and_count = self.clean_word_list(words, 2)
 			word_count_chart_data = self.buildChartData(word_and_count, words)
 		return word_count_chart_data
