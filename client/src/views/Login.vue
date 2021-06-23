@@ -9,7 +9,12 @@
             {{ this.passwordNoMatch }}
           </p>
           <p class="center redText" v-if="notFound">
-            User has not signed up. Please sign up.
+            User has not signed up.
+            <a
+              ><router-link class="redText fontColor font" to="/sign_up"
+                >Please sign up.</router-link
+              ></a
+            >
           </p>
         </div>
 
@@ -87,6 +92,12 @@ form {
   background-color: rgba(0, 0, 0, 0.3);
   padding: 30px;
   width: 45%;
+}
+
+
+
+.fontColor:hover {
+  color: rgb(0, 125, 225) !important;
 }
 
 /****************
