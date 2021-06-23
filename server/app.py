@@ -96,12 +96,12 @@ def change_word_count():
         word_count_chart_data = text_object.buildChartData(word_and_count, words)
         return jsonify(word_count_chart_data)
 
-# This route will allow the user to update their profile information
-@app.route('/update_user_profile', methods=['GET', 'POST'])
-def update_user_profile():
-    if request.method == 'POST':
+@app.route('/update_user_profile/<id>', methods=['PUT'])
+def update_user_profile(id):
+    if request.method == 'PUT':
         db = Connection()
         post_data = request.get_json()
+        print(post_data)
         if post_data['password'] == '':
             db.update_username_and_email(post_data)
             user = db.get_user_information(post_data)
