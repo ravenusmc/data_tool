@@ -6,23 +6,15 @@ import router from '../../router';
 Vue.use(Vuex)
 
 const state = {
-	loginUserObject: [],
-	userCreated: false,
-	token: null,
 	passwordNoMatch: false,
 	notFound: false,
 	loginFlag: false,
-	loginValues: {},
 };
 
 const getters = {
-	loginUserObject: state => state.loginUserObject,
-	userCreated: state => state.userCreated,
-	token: state => state.token,
 	passwordNoMatch: state => state.passwordNoMatch,
 	notFound: state => state.notFound,
 	loginFlag: state => state.loginFlag,
-	loginValues: state => state.loginValues,
 };
 
 const actions = {
@@ -31,7 +23,6 @@ const actions = {
 		const path = 'http://localhost:5000/signup';
 		axios.post(path, payload)
 			.then((res) => {
-				commit('setUserCreated', res.data);
 				router.push({ path: '/login' });
 			})
 			.catch(error => {
@@ -57,30 +48,20 @@ const actions = {
 	},
 
 	logout: ({ commit, dispatch }) => {
-		dispatch('text/clearTextState', '', { root: true })
 		let passwordNoMatch = false
 		let notFound = false
 		let loginFlag = false
+		let userObject = []
+		dispatch('text/clearTextState', '', { root: true })
 		commit('setLoginFlag', loginFlag)
 		commit('setNoPasswordMatch', passwordNoMatch)
 		commit('setNotFound', notFound)
+		commit('session/setUserObject', userObject, { root: true })
 	},
 
 };
 
 const mutations = {
-
-	setloginUserObject(state, data) {
-		state.loginUserObject = data
-	},
-
-	setUserCreated(state, data) {
-		state.userCreated = data
-	},
-
-	set_token(state, token) {
-		state.token = token
-	},
 
 	setLoginFlag(state, data) {
 		state.loginFlag = data
