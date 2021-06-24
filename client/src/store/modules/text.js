@@ -91,7 +91,12 @@ const actions = {
 		axios.post(path, payload)
 			.then((res) => {
 				res.data.sort((a, b) => b[1] - a[1]);
-				commit('setWord_count_graph_data', res.data)
+				let word_data = res.data
+				if (word_data.length > 10) {
+					word_data = word_data.slice(0, 14)
+					alert('Please Note: There were a lot of words and this is only showing the first 14')
+				}
+				commit('setWord_count_graph_data', word_data)
 			})
 			.catch(error => {
 				console.log(error);
