@@ -1,13 +1,17 @@
 <template>
   <div>
-    <h1>Data</h1>
+    <FileArea />
   </div>
 </template>
 
 <script>
+import FileArea from "@/components/data/FileArea.vue";
 
 export default {
   name: "TextAnalysis",
+  components: {
+    FileArea,
+  },
 };
 </script>
 
