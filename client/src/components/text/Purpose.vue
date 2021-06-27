@@ -3,7 +3,7 @@
     <section>
       <div class="file-upload-area">
         <h1 class="center paragraph-title">PURPOSE</h1>
-        <p class='purpose-paragraph'>
+        <p class="purpose-paragraph">
           The purpose of this page is to all the user to upload a text document
           to do some sentiment analysis on it. The page will allow the user to
           see the overall sentiment of the document, the sentiment by sentence
@@ -25,7 +25,6 @@
             id="file"
             ref="file"
             name="file"
-            class="test"
             v-on:change="handleFileUpload()"
           />
         </div>

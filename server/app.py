@@ -60,7 +60,6 @@ def check_password():
         password_match = db.check_password(user_id, password)
     return jsonify(password_match)
 
-# This route will handle the text analysis file upload
 @app.route('/text_file_upload', methods=['GET', 'POST'])
 def text_file_upload():
     if request.method == 'POST':
@@ -82,7 +81,6 @@ def text_file_upload():
             text_data['word_count_chart_data'] = word_count_chart_data
         return jsonify(text_data)
 
-# This route will handle changing the word count on the word count graph
 @app.route('/change_word_count', methods=['GET', 'POST'])
 def change_word_count():
     if request.method == 'POST':
@@ -118,6 +116,28 @@ def delete_user(id):
         db.delete_user(id)
         return jsonify('')
 
+
+@app.route('/fetch_File_Information', methods=['GET', 'POST'])
+def fetch_File_Information():
+    if request.method == 'POST':
+        if request.files:
+            # For reference 
+            # print(os. getcwd()) Used to get path to upload to 
+            text_data = {}
+            file = request.files['file']
+            filename = secure_filename(file.filename)
+            print(filename)
+            file.save(os.path.join('/Users/mikecuddy/Desktop/coding/data_science_projects/data_tool/server/data', filename))
+            # text_data['file_name'] = filename
+            # text_object = Text(filename)
+            # sentiment_graph_data, sentiment_speech_average, first_sentence, first_sentence_sentiment, sentence_and_sentiment_list, word_count_chart_data = text_object.get_text_file_sentiment()
+            # text_data['sentiment_speech_average'] = sentiment_speech_average
+            # text_data['first_sentence'] = str(first_sentence)
+            # text_data['first_sentence_sentiment'] = first_sentence_sentiment
+            # text_data['sentence_and_sentiment_list'] = sentence_and_sentiment_list
+            # text_data['sentiment_graph_data'] = sentiment_graph_data
+            # text_data['word_count_chart_data'] = word_count_chart_data
+        return jsonify('5')
 
 
 
