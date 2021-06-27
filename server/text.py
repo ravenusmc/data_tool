@@ -1,6 +1,6 @@
 # This file will deal with the text analysis part of the application 
 
-#importing supporting libraries
+# importing supporting libraries
 import numpy as np
 import pandas as pd
 from textblob import TextBlob

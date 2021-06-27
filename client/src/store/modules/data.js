@@ -15,7 +15,6 @@ const getters = {
 const actions = {
 
 	fetchFileInformation: ({ commit }, { formData }) => {
-		console.log(formData)
 		const path = 'http://localhost:5000/fetch_File_Information';
 		axios.post(path, formData, {
 			headers: {

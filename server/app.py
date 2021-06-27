@@ -9,6 +9,7 @@ import datetime
 from user import *
 from db import *
 from text import *
+from data import *
 
 # configuration
 DEBUG = True
@@ -49,7 +50,6 @@ def login():
         login_values['user'] = user
     return jsonify(login_values)
 
-# This route confirm that the user entered the correct password
 @app.route('/check_password', methods=['GET', 'POST'])
 def check_password():
     if request.method == 'POST':
@@ -121,22 +121,14 @@ def delete_user(id):
 def fetch_File_Information():
     if request.method == 'POST':
         if request.files:
-            # For reference 
-            # print(os. getcwd()) Used to get path to upload to 
-            text_data = {}
+            data_information = {}
             file = request.files['file']
             filename = secure_filename(file.filename)
-            print(filename)
             file.save(os.path.join('/Users/mikecuddy/Desktop/coding/data_science_projects/data_tool/server/data', filename))
-            # text_data['file_name'] = filename
-            # text_object = Text(filename)
-            # sentiment_graph_data, sentiment_speech_average, first_sentence, first_sentence_sentiment, sentence_and_sentiment_list, word_count_chart_data = text_object.get_text_file_sentiment()
-            # text_data['sentiment_speech_average'] = sentiment_speech_average
-            # text_data['first_sentence'] = str(first_sentence)
-            # text_data['first_sentence_sentiment'] = first_sentence_sentiment
-            # text_data['sentence_and_sentiment_list'] = sentence_and_sentiment_list
-            # text_data['sentiment_graph_data'] = sentiment_graph_data
-            # text_data['word_count_chart_data'] = word_count_chart_data
+            data_object = Data(filename)
+            data_file = data_object.getting_data_file()
+            column_names = data_object.get_column_names(data_file)  
+            data_information['column_names'] = column_names
         return jsonify('5')
 
 
