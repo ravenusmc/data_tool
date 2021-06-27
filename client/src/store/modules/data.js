@@ -5,11 +5,13 @@ import axios from 'axios';
 Vue.use(Vuex)
 
 const state = {
-	passwordNoMatch: false,
+	fileInformation: {},
+	showDataArea: false,
 };
 
 const getters = {
-	passwordNoMatch: state => state.passwordNoMatch,
+	fileInformation: state => state.fileInformation,
+	showDataArea: state => state.showDataArea,
 };
 
 const actions = {
@@ -22,8 +24,8 @@ const actions = {
 			}
 		})
 			.then((res) => {
-				console.log(res.data)
-				// router.push({ path: '/login' });
+				commit('setFileInformation', res.data)
+				commit('setShowDataArea', true)
 			})
 			.catch(error => {
 				console.log(error);
@@ -34,8 +36,12 @@ const actions = {
 
 const mutations = {
 
-	setLoginFlag(state, data) {
-		state.loginFlag = data
+	setFileInformation(state, data) {
+		state.fileInformation = data
+	},
+
+	setShowDataArea(state, data) {
+		state.showDataArea = data
 	},
 
 };

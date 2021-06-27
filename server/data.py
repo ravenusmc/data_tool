@@ -17,3 +17,13 @@ class Data():
 		for column in data_file.columns:
 			column_names.append(column)
 		return column_names
+	
+	# def get_data_types(self, data_file):
+	# 	data_types = []
+	# 	count = 0
+	# 	for column in data_file.columns:
+	# 		data_type = data_file.dtypes[count]
+	# 		data_types.append(data_type.to_string())
+	# 		count += 1
+	# 	print(data_types)
+		# return column_names_and_data_types

@@ -129,7 +129,9 @@ def fetch_File_Information():
             data_file = data_object.getting_data_file()
             column_names = data_object.get_column_names(data_file)  
             data_information['column_names'] = column_names
-        return jsonify('5')
+            # column_names_and_data_types = data_object.get_data_types(data_file)
+            # data_information['file_data_types'] = column_names_and_data_types
+        return jsonify(data_information)
 
 
 
