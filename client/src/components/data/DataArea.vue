@@ -1,9 +1,18 @@
 <template>
-  <div>Graph Area</div>
+  <div>
+    <FilterArea />
+  </div>
 </template>
 
 <script>
-export default {};
+import FilterArea from "@/components/data/datacomponents/FilterArea.vue";
+
+export default {
+  name: "DataArea",
+  components: {
+    FilterArea,
+  },
+};
 </script>
 
 <style scoped>
