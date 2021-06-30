@@ -5,12 +5,12 @@ import axios from 'axios';
 Vue.use(Vuex)
 
 const state = {
-	fileInformation: {},
+	columns: {},
 	showDataArea: false,
 };
 
 const getters = {
-	fileInformation: state => state.fileInformation,
+	columns: state => state.columns,
 	showDataArea: state => state.showDataArea,
 };
 
@@ -24,7 +24,7 @@ const actions = {
 			}
 		})
 			.then((res) => {
-				commit('setFileInformation', res.data)
+				commit('setColumns', res.data.column_names)
 				commit('setShowDataArea', true)
 			})
 			.catch(error => {
@@ -35,8 +35,8 @@ const actions = {
 
 const mutations = {
 
-	setFileInformation(state, data) {
-		state.fileInformation = data
+	setColumns(state, data) {
+		state.columns = data
 	},
 
 	setShowDataArea(state, data) {

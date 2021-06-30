@@ -10,8 +10,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   modules: {
     common,
-    session, 
+    session,
     text,
-    data
+    data,
   },
 })

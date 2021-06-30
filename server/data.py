@@ -14,8 +14,13 @@ class Data():
 	
 	def get_column_names(self, data_file):
 		column_names = []
+		index = 0
 		for column in data_file.columns:
-			column_names.append(column)
+			columns = {}
+			columns['index'] = index
+			columns['name'] = column
+			column_names.append(columns)
+			index += 1
 		return column_names
 	
 	# def get_data_types(self, data_file):

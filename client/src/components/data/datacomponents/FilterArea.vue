@@ -1,8 +1,8 @@
 <template>
   <div>
     <div>
-      <p>X-Axis</p>
-      <p>Y-Axis</p>
+      <p>X-Axis:</p>
+      <p>Y-Axis:</p>
     </div>
     <button type="submit" class="btn btn-outline-primary">Make Graph</button>
   </div>
