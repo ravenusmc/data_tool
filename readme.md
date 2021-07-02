@@ -34,7 +34,7 @@ Please note that these instructions are not 100% complete.
 2. Python-3.4
 3. Pandas-0.18.1
 4. Numpy-1.11.0
-5. Vue.JS-2
+5. Vue.JS-2.5
 
 ### Operation
 
