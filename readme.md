@@ -10,6 +10,11 @@ to it and it will tell you the sentiment analysis of that sentence. It also brea
 document down and tells you other things like common word count, sentiment by sentence and 
 graphs this for you. 
 
+So this project, as of July of 21, has two main features:
+
+1. Text document sentiment analysis 
+2. CSV document data analysis 
+
 I will say that I'm not sure if I'll ever finish this project. There may be parts that I can't 
 figure out how to build. I may also continually be adding more and more parts to it as to 
 build a fairly robust data tool. We'll see where this goes. For now it's time to start the adventure...
