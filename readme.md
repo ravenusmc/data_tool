@@ -12,8 +12,8 @@ graphs this for you.
 
 So this project, as of July of 21, has two main features:
 
-1. Text document sentiment analysis 
-2. CSV document data analysis 
+1. Text document sentiment analysis.
+2. CSV document data analysis - this will be a simple data dashboard.
 
 I will say that I'm not sure if I'll ever finish this project. There may be parts that I can't 
 figure out how to build. I may also continually be adding more and more parts to it as to 
