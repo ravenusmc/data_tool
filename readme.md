@@ -47,7 +47,7 @@ as well as npm.
 
 # Issues / Other
 
-None at this time.
+None reported.
 
 # Preview
 
