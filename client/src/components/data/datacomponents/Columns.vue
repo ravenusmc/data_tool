@@ -2,7 +2,11 @@
   <div>
     <div>
       <h3>Columns</h3>
-      <div v-for="column in columns" :key="column.index">
+      <div
+        v-for="column in columns"
+        :key="column.index"
+        class="column-name-div"
+      >
         <p>{{ column.name }}</p>
       </div>
     </div>
@@ -35,4 +39,7 @@ export default {
 </script>
 
 <style scoped>
+.column-name-div {
+  border: 2px solid red;
+}
 </style>
