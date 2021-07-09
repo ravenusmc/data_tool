@@ -41,5 +41,8 @@ export default {
 <style scoped>
 .column-name-div {
   border: 2px solid red;
+  padding: 5px;
+  text-align: center;
+  margin: 10px;
 }
 </style>
