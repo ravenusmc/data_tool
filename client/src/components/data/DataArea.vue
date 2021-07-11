@@ -26,7 +26,7 @@ export default {
 <style scoped>
 section {
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 15% 85%;
   border: 2px solid blue;
 }
 </style>
