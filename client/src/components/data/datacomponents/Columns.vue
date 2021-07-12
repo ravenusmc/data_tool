@@ -4,14 +4,15 @@
       <div class="x-axis">
         <h6>X-Axis:</h6>
         <draggable
-          @onDrop="onDrop"
-          :list="arrXAxis"
+          v-model="XAxisArray"
           ghost-class="moving-card"
           group="columnNames"
+          @change="log"
         >
-          <div v-for="column in arrXAxis" :key="column.index">
-            {{ column.name }}
-          </div>
+          <p>{{ this.XAxisArray }}</p>
+          <!-- <div v-for="column in arrXAxis" :key="column.index">
+            {{ this.XAxisArray }}
+          </div> -->
         </draggable>
       </div>
       <div class="x-axis">
@@ -29,9 +30,9 @@
       <button type="submit" class="btn btn-outline-primary">Make Graph</button>
 
       <h3 class="center">Columns</h3>
-      <draggable :list="startColumns" group="columnNames">
+      <draggable v-model="initialColumns" group="columnNames">
         <div
-          v-for="column in startColumns"
+          v-for="column in initialColumns"
           :key="column.index"
           :id="column.index"
           class="column-name-div card"
@@ -53,23 +54,51 @@ export default {
     draggable,
   },
   computed: {
-    ...mapGetters("data", ["columns"]),
+    ...mapGetters("data", ["columns", "XAxisArray", "initialColumns"]),
+    XAxisArray: {
+      get() {
+        return this.$store.state.data.XAxisArray;
+      },
+      set(value) {
+        if (this.$store.state.data.XAxisArray.length >= 1) {
+          console.log("here");
+          let poppedValue = this.$store.state.data.XAxisArray.pop();
+          console.log(poppedValue);
+          this.$store.dispatch("data/updateInitialColumns", poppedValue);
+        } else {
+          this.$store.dispatch("data/updateXAxis", value);
+        }
+      },
+    },
+    initialColumns: {
+      get() {
+        return this.$store.state.data.initialColumns;
+      },
+      set(value) {
+        this.$store.dispatch("data/updateInitialColumns", value);
+        // console.log(this.$store.state.data.initialColumns);
+      },
+    },
   },
   data() {
     return {
-      startColumns: this.$store.getters["data/columns"],
+      // startColumns: this.$store.getters["data/columns"],
       arrXAxis: [],
       arrYAxis: [],
     };
   }, // End of Data
   methods: {
-    onDrop: function (event) {
-      console.log("HI");
+    log: function (event) {
+      // console.log(event);
+      // console.log(this.arrXAxis);
     },
   },
-  // mounted() {
-  //   let startColumns = this.$store.getters["data/columns"];
-  // },
+  mounted() {
+    this.$store.dispatch(
+      "data/updateInitialColumns",
+      this.$store.getters["data/columns"]
+    );
+  },
 };
 </script>
 

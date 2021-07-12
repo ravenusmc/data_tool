@@ -7,11 +7,15 @@ Vue.use(Vuex)
 const state = {
 	columns: {},
 	showDataArea: false,
+	initialColumns: [],
+	XAxisArray: [],
 };
 
 const getters = {
 	columns: state => state.columns,
 	showDataArea: state => state.showDataArea,
+	XAxisArray: state => state.XAxisArray,
+	initialColumns: state => state.initialColumns,
 };
 
 const actions = {
@@ -32,6 +36,14 @@ const actions = {
 			})
 	},
 
+	updateXAxis: ({ commit }, payload) => {
+		commit("updateXAxis", payload);
+	},
+
+	updateInitialColumns: ({ commit }, payload) => {
+		commit("setInitialColumns", payload);
+	},
+
 };
 
 const mutations = {
@@ -42,6 +54,14 @@ const mutations = {
 
 	setShowDataArea(state, data) {
 		state.showDataArea = data
+	},
+
+	updateXAxis: (state, payload) => {
+		state.XAxisArray = payload;
+	},
+
+	setInitialColumns: (state, payload) => {
+		state.initialColumns = payload;
 	},
 
 };
