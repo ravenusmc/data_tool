@@ -5,14 +5,16 @@
         <h6>X-Axis:</h6>
         <draggable
           v-model="XAxisArray"
-          ghost-class="moving-card"
           group="columnNames"
           @change="log"
         >
-          <p>{{ this.XAxisArray }}</p>
-          <!-- <div v-for="column in arrXAxis" :key="column.index">
-            {{ this.XAxisArray }}
-          </div> -->
+          <div
+            v-for="column in XAxisArray"
+            :key="column.index"
+            :id="column.index"
+          >
+            {{ column.name }}
+          </div>
         </draggable>
       </div>
       <div class="x-axis">
@@ -35,7 +37,7 @@
           v-for="column in initialColumns"
           :key="column.index"
           :id="column.index"
-          class="column-name-div card"
+          class="column-name-div"
         >
           <p>{{ column.name }}</p>
         </div>
@@ -60,13 +62,14 @@ export default {
         return this.$store.state.data.XAxisArray;
       },
       set(value) {
-        if (this.$store.state.data.XAxisArray.length >= 1) {
-          console.log("here");
-          let poppedValue = this.$store.state.data.XAxisArray.pop();
-          console.log(poppedValue);
-          this.$store.dispatch("data/updateInitialColumns", poppedValue);
-        } else {
-          this.$store.dispatch("data/updateXAxis", value);
+        this.$store.dispatch("data/updateXAxis", value);
+        if (this.$store.getters["data/XAxisArray"].length > 1) {
+          let poppedValue = this.$store.getters["data/XAxisArray"].pop();
+          this.$store.getters["data/initialColumns"].push(poppedValue);
+          this.$store.dispatch(
+            "data/updateInitialColumns",
+            this.$store.getters["data/initialColumns"]
+          );
         }
       },
     },
@@ -76,7 +79,6 @@ export default {
       },
       set(value) {
         this.$store.dispatch("data/updateInitialColumns", value);
-        // console.log(this.$store.state.data.initialColumns);
       },
     },
   },
