@@ -66,6 +66,7 @@ export default {
       },
       set(value) {
         this.$store.dispatch("data/updateXAxis", value);
+        this.$store.dispatch("data/updateXAxisValue", value[0].name);
         if (this.$store.getters["data/XAxisArray"].length > 1) {
           let poppedValue = this.$store.getters["data/XAxisArray"].pop();
           this.$store.getters["data/initialColumns"].push(poppedValue);
