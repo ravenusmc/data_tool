@@ -3,15 +3,12 @@
     <section>
       <div class="x-axis">
         <h6>X-Axis:</h6>
-        <draggable
-          v-model="XAxisArray"
-          group="columnNames"
-          @change="log"
-        >
+        <draggable v-model="XAxisArray" group="columnNames" @change="log">
           <div
             v-for="column in XAxisArray"
             :key="column.index"
             :id="column.index"
+            class="column-name-div"
           >
             {{ column.name }}
           </div>
@@ -19,12 +16,13 @@
       </div>
       <div class="x-axis">
         <h6>Y-Axis:</h6>
-        <draggable
-          :list="arrYAxis"
-          ghost-class="moving-card"
-          group="columnNames"
-        >
-          <div v-for="column in arrYAxis" :key="column.index">
+        <draggable v-model="YAxisArray" group="columnNames">
+          <div
+            v-for="column in YAxisArray"
+            :key="column.index"
+            :id="column.index"
+            class="column-name-div"
+          >
             {{ column.name }}
           </div>
         </draggable>
@@ -56,7 +54,12 @@ export default {
     draggable,
   },
   computed: {
-    ...mapGetters("data", ["columns", "XAxisArray", "initialColumns"]),
+    ...mapGetters("data", [
+      "columns",
+      "XAxisArray",
+      "initialColumns",
+      "YAxisArray",
+    ]),
     XAxisArray: {
       get() {
         return this.$store.state.data.XAxisArray;
@@ -65,6 +68,22 @@ export default {
         this.$store.dispatch("data/updateXAxis", value);
         if (this.$store.getters["data/XAxisArray"].length > 1) {
           let poppedValue = this.$store.getters["data/XAxisArray"].pop();
+          this.$store.getters["data/initialColumns"].push(poppedValue);
+          this.$store.dispatch(
+            "data/updateInitialColumns",
+            this.$store.getters["data/initialColumns"]
+          );
+        }
+      },
+    },
+    YAxisArray: {
+      get() {
+        return this.$store.state.data.YAxisArray;
+      },
+      set(value) {
+        this.$store.dispatch("data/updateYAxis", value);
+        if (this.$store.getters["data/YAxisArray"].length > 1) {
+          let poppedValue = this.$store.getters["data/YAxisArray"].pop();
           this.$store.getters["data/initialColumns"].push(poppedValue);
           this.$store.dispatch(
             "data/updateInitialColumns",
@@ -82,13 +101,6 @@ export default {
       },
     },
   },
-  data() {
-    return {
-      // startColumns: this.$store.getters["data/columns"],
-      arrXAxis: [],
-      arrYAxis: [],
-    };
-  }, // End of Data
   methods: {
     log: function (event) {
       // console.log(event);
@@ -115,6 +127,7 @@ section {
 }
 
 .column-name-div {
+  border-radius: 12px;
   border: 2px solid #007bff;
   padding: 2px;
   text-align: center;
@@ -122,5 +135,7 @@ section {
   background-color: #007bff;
   color: rgb(255, 150, 0);
   cursor: pointer;
+  text-transform: uppercase;
+  height: 40px;
 }
 </style>

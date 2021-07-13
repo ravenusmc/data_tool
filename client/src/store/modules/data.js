@@ -9,6 +9,7 @@ const state = {
 	showDataArea: false,
 	initialColumns: [],
 	XAxisArray: [],
+	YAxisArray: [],
 };
 
 const getters = {
@@ -16,6 +17,7 @@ const getters = {
 	showDataArea: state => state.showDataArea,
 	XAxisArray: state => state.XAxisArray,
 	initialColumns: state => state.initialColumns,
+	YAxisArray: state => state.YAxisArray,
 };
 
 const actions = {
@@ -40,6 +42,10 @@ const actions = {
 		commit("updateXAxis", payload);
 	},
 
+	updateYAxis: ({ commit }, payload) => {
+		commit("updateYAxis", payload);
+	},
+
 	updateInitialColumns: ({ commit }, payload) => {
 		commit("setInitialColumns", payload);
 	},
@@ -58,6 +64,10 @@ const mutations = {
 
 	updateXAxis: (state, payload) => {
 		state.XAxisArray = payload;
+	},
+
+	updateYAxis: (state, payload) => {
+		state.YAxisArray = payload;
 	},
 
 	setInitialColumns: (state, payload) => {
