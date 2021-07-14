@@ -83,6 +83,8 @@ export default {
       },
       set(value) {
         this.$store.dispatch("data/updateYAxis", value);
+        this.$store.dispatch("data/updateYAxisValue", value[0].name);
+        console.log(this.$store.getters["data/yAxisValue"]);
         if (this.$store.getters["data/YAxisArray"].length > 1) {
           let poppedValue = this.$store.getters["data/YAxisArray"].pop();
           this.$store.getters["data/initialColumns"].push(poppedValue);

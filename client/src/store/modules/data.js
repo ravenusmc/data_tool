@@ -11,6 +11,7 @@ const state = {
 	XAxisArray: [],
 	YAxisArray: [],
 	xAxisValue: '',
+	yAxisValue: '',
 };
 
 const getters = {
@@ -20,6 +21,7 @@ const getters = {
 	initialColumns: state => state.initialColumns,
 	YAxisArray: state => state.YAxisArray,
 	xAxisValue: state => state.xAxisValue,
+	yAxisValue: state => state.yAxisValue,
 };
 
 const actions = {
@@ -54,7 +56,11 @@ const actions = {
 
 	updateXAxisValue: ({ commit }, payload) => {
 		commit("setXAxisValue", payload);
-	}
+	},
+
+	updateYAxisValue: ({ commit }, payload) => {
+		commit("setYAxisValue", payload);
+	},
 
 };
 
@@ -82,6 +88,10 @@ const mutations = {
 
 	setXAxisValue: (state, payload) => {
 		state.xAxisValue = payload;
+	},
+
+	setYAxisValue: (state, payload) => {
+		state.yAxisValue = payload;
 	}
 
 };
