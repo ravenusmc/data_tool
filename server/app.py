@@ -99,7 +99,6 @@ def update_user_profile(id):
     if request.method == 'PUT':
         db = Connection()
         post_data = request.get_json()
-        print(post_data)
         if post_data['password'] == '':
             db.update_username_and_email(post_data)
             user = db.get_user_information(post_data)
@@ -133,9 +132,11 @@ def fetch_File_Information():
             # data_information['file_data_types'] = column_names_and_data_types
         return jsonify(data_information)
 
-
-
-
+@app.route('/build_data_graph', methods=['GET', 'POST'])
+def build_data_graph():
+    if request.method == 'POST':
+        post_data = request.get_json()
+        return jsonify('5')
 
 
 if __name__ == '__main__':

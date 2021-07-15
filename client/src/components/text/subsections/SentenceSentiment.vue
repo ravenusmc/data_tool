@@ -56,7 +56,7 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-// :fill="colorAttr('')"
+
 export default {
   name: "SentenceSentiment",
   props: {

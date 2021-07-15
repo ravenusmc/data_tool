@@ -27,7 +27,13 @@
           </div>
         </draggable>
       </div>
-      <button type="submit" class="btn btn-outline-primary">Make Graph</button>
+      <button
+        type="submit"
+        v-on:click="makeGraph()"
+        class="btn btn-outline-primary"
+      >
+        Make Graph
+      </button>
 
       <h3 class="center">Columns</h3>
       <draggable v-model="initialColumns" group="columnNames">
@@ -45,7 +51,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import draggable from "vuedraggable";
 
 export default {
@@ -84,7 +90,6 @@ export default {
       set(value) {
         this.$store.dispatch("data/updateYAxis", value);
         this.$store.dispatch("data/updateYAxisValue", value[0].name);
-        console.log(this.$store.getters["data/yAxisValue"]);
         if (this.$store.getters["data/YAxisArray"].length > 1) {
           let poppedValue = this.$store.getters["data/YAxisArray"].pop();
           this.$store.getters["data/initialColumns"].push(poppedValue);
@@ -105,9 +110,16 @@ export default {
     },
   },
   methods: {
+    ...mapActions("data", ["fetchGraph"]),
+    makeGraph() {
+      const payload = {
+        xAxisValue: this.$store.getters["data/xAxisValue"],
+        yAxisValue: this.$store.getters["data/yAxisValue"],
+      };
+      this.fetchGraph({ payload });
+    },
     log: function (event) {
       // console.log(event);
-      // console.log(this.arrXAxis);
     },
   },
   mounted() {

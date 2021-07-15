@@ -12,6 +12,7 @@ const state = {
 	YAxisArray: [],
 	xAxisValue: '',
 	yAxisValue: '',
+	graphData: [],
 };
 
 const getters = {
@@ -22,6 +23,7 @@ const getters = {
 	YAxisArray: state => state.YAxisArray,
 	xAxisValue: state => state.xAxisValue,
 	yAxisValue: state => state.yAxisValue,
+	graphData: state => state.graphData,
 };
 
 const actions = {
@@ -62,6 +64,19 @@ const actions = {
 		commit("setYAxisValue", payload);
 	},
 
+	fetchGraph: ({ commit }, payload) => {
+		const path = 'http://localhost:5000/build_data_graph';
+		axios.post(path, payload)
+			.then((res) => {
+				console.log(res.data)
+				// res.data.sort((a, b) => b[1] - a[1]);
+				commit("setGraphData", payload);
+			})
+			.catch(error => {
+				console.log(error);
+			})
+	},
+
 };
 
 const mutations = {
@@ -92,6 +107,10 @@ const mutations = {
 
 	setYAxisValue: (state, payload) => {
 		state.yAxisValue = payload;
+	},
+
+	setGraphData: (state, payload) => {
+		state.graphData = payload;
 	}
 
 };
