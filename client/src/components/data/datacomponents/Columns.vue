@@ -1,7 +1,7 @@
 <template>
   <div>
     <section>
-      <div class="x-axis">
+      <div class="axis">
         <h6>X-Axis:</h6>
         <draggable v-model="XAxisArray" group="columnNames" @change="log">
           <div
@@ -14,7 +14,7 @@
           </div>
         </draggable>
       </div>
-      <div class="x-axis">
+      <div class="axis">
         <h6>Y-Axis:</h6>
         <draggable v-model="YAxisArray" group="columnNames">
           <div
@@ -27,14 +27,15 @@
           </div>
         </draggable>
       </div>
-      <button
-        type="submit"
-        v-on:click="makeGraph()"
-        class="btn btn-outline-primary"
-      >
-        Make Graph
-      </button>
-
+      <div class="button-div">
+        <button
+          type="submit"
+          v-on:click="makeGraph()"
+          class="btn btn-outline-primary"
+        >
+          Make Graph
+        </button>
+      </div>
       <h3 class="center">Columns</h3>
       <draggable v-model="initialColumns" group="columnNames">
         <div
@@ -133,17 +134,26 @@ export default {
 
 <style scoped>
 section {
-  border: 2px solid black;
+  border-right: 2px solid black;
 }
 
-.x-axis {
-  border: 2px solid red;
+.axis {
+  border: 2px solid black;
   height: 80px;
+  margin: 7px;
+  background-color: #b5b5b5;
+}
+
+.button-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
 }
 
 .column-name-div {
   border-radius: 12px;
-  border: 2px solid #007bff;
   padding: 2px;
   text-align: center;
   margin: 10px;
