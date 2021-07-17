@@ -23,12 +23,9 @@ class Data():
 			index += 1
 		return column_names
 	
-	# def get_data_types(self, data_file):
-	# 	data_types = []
-	# 	count = 0
-	# 	for column in data_file.columns:
-	# 		data_type = data_file.dtypes[count]
-	# 		data_types.append(data_type.to_string())
-	# 		count += 1
-	# 	print(data_types)
-		# return column_names_and_data_types
+	def get_column_data_for_graph(self, post_data):
+		print(post_data)
+		graph_data = []
+		columns = []
+		graph_data.append(columns)
+	

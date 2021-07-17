@@ -10,6 +10,7 @@ from user import *
 from db import *
 from text import *
 from data import *
+from graph_data import *
 
 # configuration
 DEBUG = True
@@ -135,7 +136,9 @@ def fetch_File_Information():
 @app.route('/build_data_graph', methods=['GET', 'POST'])
 def build_data_graph():
     if request.method == 'POST':
+        data = Graph_Data()
         post_data = request.get_json()
+        data.get_column_data_for_graph(post_data)
         return jsonify('5')
 
 
