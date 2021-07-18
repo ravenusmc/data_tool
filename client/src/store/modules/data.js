@@ -6,6 +6,7 @@ Vue.use(Vuex)
 
 const state = {
 	columns: {},
+	fileName: '',
 	showDataArea: false,
 	initialColumns: [],
 	XAxisArray: [],
@@ -17,6 +18,7 @@ const state = {
 
 const getters = {
 	columns: state => state.columns,
+	fileName: state => state.fileName,
 	showDataArea: state => state.showDataArea,
 	XAxisArray: state => state.XAxisArray,
 	initialColumns: state => state.initialColumns,
@@ -36,6 +38,7 @@ const actions = {
 			}
 		})
 			.then((res) => {
+				commit('setFileName', res.data.file_name)
 				commit('setColumns', res.data.column_names)
 				commit('setShowDataArea', true)
 			})
@@ -83,6 +86,10 @@ const mutations = {
 
 	setColumns(state, data) {
 		state.columns = data
+	},
+
+	setFileName(state, data) {
+		state.fileName = data
 	},
 
 	setShowDataArea(state, data) {

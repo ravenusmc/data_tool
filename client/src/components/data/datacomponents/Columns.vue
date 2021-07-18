@@ -66,6 +66,7 @@ export default {
       "XAxisArray",
       "initialColumns",
       "YAxisArray",
+      "fileName:",
     ]),
     XAxisArray: {
       get() {
@@ -114,9 +115,11 @@ export default {
     ...mapActions("data", ["fetchGraph"]),
     makeGraph() {
       const payload = {
+        fileName: this.$store.getters["data/fileName"],
         xAxisValue: this.$store.getters["data/xAxisValue"],
         yAxisValue: this.$store.getters["data/yAxisValue"],
       };
+      console.log(payload);
       this.fetchGraph({ payload });
     },
     log: function (event) {

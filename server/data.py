@@ -24,8 +24,7 @@ class Data():
 		return column_names
 	
 	def get_column_data_for_graph(self, post_data):
-		print(post_data)
 		graph_data = []
-		columns = []
+		columns = [post_data['payload']['xAxisValue'], post_data['payload']['yAxisValue']]
 		graph_data.append(columns)
 	
