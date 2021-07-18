@@ -5,7 +5,7 @@ from flask_cors import CORS
 from werkzeug.utils import secure_filename
 import datetime
 
-#Importing files that I created for the project
+# Importing files that I created for the project
 from user import *
 from db import *
 from text import *
@@ -138,8 +138,8 @@ def build_data_graph():
     if request.method == 'POST':
         post_data = request.get_json()
         data_object = Data(post_data['payload']['fileName'])
-        print(post_data['payload']['fileName'])
-        data_object.get_column_data_for_graph(post_data)
+        data_file = data_object.getting_data_file()
+        data_object.get_column_data_for_graph(data_file, post_data)
         return jsonify('5')
 
 
