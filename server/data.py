@@ -31,10 +31,8 @@ class Data():
 		graph_data = []
 		columns = [post_data['payload']['xAxisValue'], post_data['payload']['yAxisValue']]
 		graph_data.append(columns)
-		unique_values = data_helper_obj.get_unique_values_x_axis(data_file, post_data)
 		# Need to handle if there are to many unique values - let user know best not to 
 		# use that column 
-		
 		# Need to get unique values of x-axis. 
 		# Handle situation when dealing with dates - Have a check when submitting axis names? 
 		# dataset_length = len(new_data_set[(new_data_set.category == category) & (new_data_set.state == 'successful')])

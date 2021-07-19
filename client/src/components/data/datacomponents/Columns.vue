@@ -119,7 +119,6 @@ export default {
         xAxisValue: this.$store.getters["data/xAxisValue"],
         yAxisValue: this.$store.getters["data/yAxisValue"],
       };
-      console.log(payload);
       this.fetchGraph({ payload });
     },
     log: function (event) {

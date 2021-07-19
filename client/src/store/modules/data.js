@@ -71,7 +71,9 @@ const actions = {
 		const path = 'http://localhost:5000/build_data_graph';
 		axios.post(path, payload)
 			.then((res) => {
-				console.log(res.data)
+				if (res.data.show_user_warning) {
+					alert('You X-axis has to many unique values. Please try selecting a different X-Axis Value')
+				}
 				// res.data.sort((a, b) => b[1] - a[1]);
 				commit("setGraphData", payload);
 			})
