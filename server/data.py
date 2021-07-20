@@ -26,11 +26,19 @@ class Data():
 			index += 1
 		return column_names
 	
-	def get_column_data_for_graph(self, data_file, post_data):
+	def get_column_data_for_graph(self, data_file, post_data, unique_values):
+		x_axis_column = post_data['payload']['xAxisValue']
 		data_helper_obj = Data_Helper()
 		graph_data = []
 		columns = [post_data['payload']['xAxisValue'], post_data['payload']['yAxisValue']]
 		graph_data.append(columns)
+		for unique_value in unique_values:
+			rows = []
+			count = int(len(data_file[(data_file[x_axis_column] == unique_value)]))
+			rows.append(unique_value)
+			rows.append(count)
+			graph_data.append(rows)
+		return graph_data
 		# Need to handle if there are to many unique values - let user know best not to 
 		# use that column 
 		# Need to get unique values of x-axis. 
