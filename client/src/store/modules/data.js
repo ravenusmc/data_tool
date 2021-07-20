@@ -73,9 +73,10 @@ const actions = {
 			.then((res) => {
 				if (res.data.show_user_warning) {
 					alert('You X-axis has to many unique values. Please try selecting a different X-Axis Value')
+				} else {
+					res.data.graph_data.sort((a, b) => b[1] - a[1]);
+					commit("setGraphData", res.data.graph_data);
 				}
-				// res.data.sort((a, b) => b[1] - a[1]);
-				commit("setGraphData", payload);
 			})
 			.catch(error => {
 				console.log(error);
