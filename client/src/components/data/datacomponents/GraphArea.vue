@@ -1,12 +1,17 @@
 <template>
   <div>
     <section>
-      <GraphCard
-        :typeOne="typeOne"
-        :data="graphData"
-        :options="chartOptionsOne"
-      >
-      </GraphCard>
+      <div v-if="!showGraph">
+        <NoGraph />
+      </div>
+      <div v-if="showGraph">
+        <GraphCard
+          :typeOne="typeOne"
+          :data="graphData"
+          :options="chartOptionsOne"
+        >
+        </GraphCard>
+      </div>
     </section>
   </div>
 </template>
@@ -14,11 +19,13 @@
 <script>
 import { mapGetters } from "vuex";
 import GraphCard from "@/components/charts/GraphCard.vue";
+import NoGraph from "@/components/data/datacomponents/NoGraph.vue";
 
 export default {
   name: "GraphArea",
   components: {
     GraphCard,
+    NoGraph,
   },
   data() {
     return {
@@ -42,7 +49,12 @@ export default {
     };
   }, // End of Data
   computed: {
-    ...mapGetters("data", ["graphData", "xAxisValue", "yAxisValue"]),
+    ...mapGetters("data", [
+      "graphData",
+      "xAxisValue",
+      "yAxisValue",
+      "showGraph",
+    ]),
   },
   created() {
     //this.chartOptionsOne.hAxis.title = this.$store.getters["data/xAxisValue"];

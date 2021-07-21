@@ -14,6 +14,7 @@ const state = {
 	xAxisValue: '',
 	yAxisValue: '',
 	graphData: [],
+	showGraph: false,
 };
 
 const getters = {
@@ -26,6 +27,7 @@ const getters = {
 	xAxisValue: state => state.xAxisValue,
 	yAxisValue: state => state.yAxisValue,
 	graphData: state => state.graphData,
+	showGraph: state => state.showGraph,
 };
 
 const actions = {
@@ -76,6 +78,7 @@ const actions = {
 				} else {
 					res.data.graph_data.sort((a, b) => b[1] - a[1]);
 					commit("setGraphData", res.data.graph_data);
+					commit("setShowGraph", res.data.show_graph);
 				}
 			})
 			.catch(error => {
@@ -121,7 +124,11 @@ const mutations = {
 
 	setGraphData: (state, payload) => {
 		state.graphData = payload;
-	}
+	},
+
+	setShowGraph: (state, payload) => {
+		state.showGraph = payload;
+	},
 
 };
 

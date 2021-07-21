@@ -162,7 +162,8 @@ def build_data_graph():
         else:
             data_graph_information['show_user_warning'] = False
             graph_data = data_object.get_column_data_for_graph(data_file, post_data, unique_values)
-        data_graph_information['graph_data'] = graph_data
+            data_graph_information['graph_data'] = graph_data
+            data_graph_information['show_graph'] = True
         return jsonify(data_graph_information)
 
 
