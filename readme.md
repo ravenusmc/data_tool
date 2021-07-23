@@ -47,7 +47,7 @@ as well as npm.
 
 # Issues / Other
 
-None reported.
+The drag and drop for column names - need to fix having two names in one area briefly. 
 
 # Preview
 
