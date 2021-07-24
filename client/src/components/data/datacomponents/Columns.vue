@@ -114,12 +114,18 @@ export default {
   methods: {
     ...mapActions("data", ["fetchGraph"]),
     makeGraph() {
-      const payload = {
-        fileName: this.$store.getters["data/fileName"],
-        xAxisValue: this.$store.getters["data/xAxisValue"],
-        yAxisValue: this.$store.getters["data/yAxisValue"],
-      };
-      this.fetchGraph({ payload });
+      if (this.$store.getters["data/xAxisValue"] == "") {
+        alert("Please put a column in for the x-value");
+      } else if (this.$store.getters["data/yAxisValue"] == "") {
+        alert("Please put a column in for the y-value");
+      } else {
+        const payload = {
+          fileName: this.$store.getters["data/fileName"],
+          xAxisValue: this.$store.getters["data/xAxisValue"],
+          yAxisValue: this.$store.getters["data/yAxisValue"],
+        };
+        this.fetchGraph({ payload });
+      }
     },
     log: function (event) {
       // console.log(event);
