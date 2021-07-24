@@ -33,7 +33,7 @@ export default {
       chartOptionsOne: {
         title: "Chart",
         hAxis: {
-          title: "",
+          title: this.$store.getters["data/xAxisValue"],
         },
         vAxis: {
           title: "",
@@ -56,9 +56,31 @@ export default {
       "showGraph",
     ]),
   },
-  created() {
-    //this.chartOptionsOne.hAxis.title = this.$store.getters["data/xAxisValue"];
-    this.chartOptionsOne.vAxis.title = this.$store.getters["data/yAxisValue"];
+  methods: {
+    setXAxisOnGraph() {
+      this.chartOptionsOne.hAxis.title = this.xAxisValue;
+    },
+    setYAxisOnGraph() {
+      this.chartOptionsOne.vAxis.title = this.yAxisValue;
+    },
+  },
+  watch: {
+    xAxisValue: {
+      handler(value) {
+        if (value) {
+          this.setXAxisOnGraph();
+        }
+      },
+      immediate: true,
+    },
+    yAxisValue: {
+      handler(value) {
+        if (value) {
+          this.setYAxisOnGraph();
+        }
+      },
+      immediate: true,
+    },
   },
 };
 </script>
