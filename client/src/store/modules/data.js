@@ -15,6 +15,7 @@ const state = {
 	yAxisValue: '',
 	graphData: [],
 	showGraph: false,
+	graphType: '',
 };
 
 const getters = {
@@ -28,6 +29,7 @@ const getters = {
 	yAxisValue: state => state.yAxisValue,
 	graphData: state => state.graphData,
 	showGraph: state => state.showGraph,
+	graphType: state => state.graphType,
 };
 
 const actions = {
@@ -86,6 +88,10 @@ const actions = {
 			})
 	},
 
+	changeGraphType: ({ commit }, payload) => {
+		commit("setGraphType", payload);
+	}
+
 };
 
 const mutations = {
@@ -128,6 +134,10 @@ const mutations = {
 
 	setShowGraph: (state, payload) => {
 		state.showGraph = payload;
+	},
+
+	setGraphType: (state, payload) => {
+		state.graphType = payload;
 	},
 
 };

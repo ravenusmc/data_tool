@@ -26,6 +26,8 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
   name: "FilterArea",
   data() {
@@ -34,13 +36,12 @@ export default {
     };
   }, // End of Data
   methods: {
-    //...mapActions("text", ["changeSentenceAndSentiment"]),
+    ...mapActions("data", ["changeGraphType"]),
     graphTypeSelected() {
       const payload = {
         graphType: this.graphType,
       };
-      console.log(payload);
-      // this.changeSentenceAndSentiment({ payload });
+      this.changeGraphType(payload);
     },
   },
 };

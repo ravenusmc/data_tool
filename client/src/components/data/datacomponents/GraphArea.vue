@@ -29,11 +29,11 @@ export default {
   },
   data() {
     return {
-      typeOne: "BarChart",
+      typeOne: "",
       chartOptionsOne: {
         title: "Chart",
         hAxis: {
-          title: this.$store.getters["data/xAxisValue"],
+          title: "",
         },
         vAxis: {
           title: "",
@@ -54,6 +54,7 @@ export default {
       "xAxisValue",
       "yAxisValue",
       "showGraph",
+      "graphType",
     ]),
   },
   methods: {
@@ -62,6 +63,10 @@ export default {
     },
     setYAxisOnGraph() {
       this.chartOptionsOne.vAxis.title = this.yAxisValue;
+    },
+    changeGraphType() {
+      this.typeOne = this.graphType;
+      console.log(this.typeOne);
     },
   },
   watch: {
@@ -77,6 +82,14 @@ export default {
       handler(value) {
         if (value) {
           this.setYAxisOnGraph();
+        }
+      },
+      immediate: true,
+    },
+    changeGraphType: {
+      handler(value) {
+        if (value) {
+          this.changeGraphType();
         }
       },
       immediate: true,
