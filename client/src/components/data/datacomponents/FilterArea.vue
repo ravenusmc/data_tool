@@ -2,7 +2,7 @@
   <div>
     <section class="filter-area">
       <div>
-        <h3>Pick Chart Type:</h3>
+        <h6>Pick Chart Type:</h6>
         <input
           @change="graphTypeSelected()"
           type="radio"
@@ -21,6 +21,26 @@
         />
         <label for="two">Pie Chart</label>
       </div>
+      <div>
+        <h6>Unique Values:</h6>
+        <input
+          @change="uniqueValueSelected()"
+          type="radio"
+          id="one"
+          value="true"
+          v-model="uniqueValue"
+        />
+        <label for="one">Unique Values Only</label>
+        <br />
+        <input
+          @change="uniqueValueSelected()"
+          type="radio"
+          id="two"
+          value="False"
+          v-model="uniqueValue"
+        />
+        <label for="two">All Values</label>
+      </div>
     </section>
   </div>
 </template>
@@ -33,6 +53,7 @@ export default {
   data() {
     return {
       graphType: "",
+      uniqueValue: "",
     };
   }, // End of Data
   methods: {
@@ -43,6 +64,12 @@ export default {
       };
       this.changeGraphType(payload);
     },
+    uniqueValueSelected() {
+      const payload = {
+        uniqueValue: this.uniqueValue,
+      };
+      this.changeUniqueValue(payload);
+    },
   },
 };
 </script>
@@ -50,6 +77,10 @@ export default {
 <style scoped>
 .filter-area {
   border-bottom: 2px solid black;
+  display: flex; 
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .x-axis {

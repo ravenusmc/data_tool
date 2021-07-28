@@ -65,8 +65,9 @@ export default {
       this.chartOptionsOne.vAxis.title = this.yAxisValue;
     },
     changeGraphType() {
-      this.typeOne = this.graphType;
-      console.log(this.typeOne);
+      console.log(this.graphType.graphType);
+      this.typeOne = this.graphType.graphType;
+      // console.log(this.typeOne.graphType);
     },
   },
   watch: {
@@ -86,15 +87,20 @@ export default {
       },
       immediate: true,
     },
-    changeGraphType: {
+    graphType: {
       handler(value) {
         if (value) {
+          console.log(value);
           this.changeGraphType();
         }
       },
       immediate: true,
     },
   },
+  // mounted() {
+  //   console.log("hi");
+  //   // console.log(this.$store.getters["data/graphType"]);
+  // },
 };
 </script>
 
