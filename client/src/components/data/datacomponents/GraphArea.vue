@@ -97,10 +97,6 @@ export default {
       immediate: true,
     },
   },
-  // mounted() {
-  //   console.log("hi");
-  //   // console.log(this.$store.getters["data/graphType"]);
-  // },
 };
 </script>
 

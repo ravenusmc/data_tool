@@ -16,6 +16,7 @@ const state = {
 	graphData: [],
 	showGraph: false,
 	graphType: '',
+	uniqueValue: true,
 };
 
 const getters = {
@@ -30,6 +31,7 @@ const getters = {
 	graphData: state => state.graphData,
 	showGraph: state => state.showGraph,
 	graphType: state => state.graphType,
+	uniqueValue: state => state.uniqueValue,
 };
 
 const actions = {
@@ -90,6 +92,11 @@ const actions = {
 
 	changeGraphType: ({ commit }, payload) => {
 		commit("setGraphType", payload);
+	},
+
+	changeUniqueValue: ({ commit }, payload) => {
+		console.log(payload);
+		commit("setUniqueValue", payload);
 	}
 
 };
@@ -139,6 +146,10 @@ const mutations = {
 	setGraphType: (state, payload) => {
 		state.graphType = payload;
 	},
+
+	setUniqueValue: (state, payload) => {
+		state.uniqueValue = payload;
+	}
 
 };
 

@@ -57,7 +57,7 @@ export default {
     };
   }, // End of Data
   methods: {
-    ...mapActions("data", ["changeGraphType"]),
+    ...mapActions("data", ["changeGraphType", "changeUniqueValue"]),
     graphTypeSelected() {
       const payload = {
         graphType: this.graphType,
@@ -77,7 +77,7 @@ export default {
 <style scoped>
 .filter-area {
   border-bottom: 2px solid black;
-  display: flex; 
+  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
