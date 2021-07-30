@@ -123,13 +123,15 @@ export default {
           fileName: this.$store.getters["data/fileName"],
           xAxisValue: this.$store.getters["data/xAxisValue"],
           yAxisValue: this.$store.getters["data/yAxisValue"],
+          yAxisValue: this.$store.getters["data/yAxisValue"],
+          uniqueValue: this.$store.getters["data/uniqueValue"],
         };
         this.fetchGraph({ payload });
       }
     },
-    log: function (event) {
-      // console.log(event);
-    },
+    // log: function (event) {
+    //   console.log(event);
+    // },
   },
   mounted() {
     this.$store.dispatch(

@@ -65,10 +65,7 @@ export default {
       this.changeGraphType(payload);
     },
     uniqueValueSelected() {
-      const payload = {
-        uniqueValue: this.uniqueValue,
-      };
-      this.changeUniqueValue(payload);
+      this.changeUniqueValue(this.uniqueValue);
     },
   },
 };

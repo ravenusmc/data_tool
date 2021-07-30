@@ -67,7 +67,6 @@ export default {
     changeGraphType() {
       console.log(this.graphType.graphType);
       this.typeOne = this.graphType.graphType;
-      // console.log(this.typeOne.graphType);
     },
   },
   watch: {

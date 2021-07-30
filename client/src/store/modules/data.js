@@ -95,7 +95,6 @@ const actions = {
 	},
 
 	changeUniqueValue: ({ commit }, payload) => {
-		console.log(payload);
 		commit("setUniqueValue", payload);
 	}
 
