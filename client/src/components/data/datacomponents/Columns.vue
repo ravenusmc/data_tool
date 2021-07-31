@@ -129,9 +129,9 @@ export default {
         this.fetchGraph({ payload });
       }
     },
-    // log: function (event) {
-    //   console.log(event);
-    // },
+    log: function (event) {
+      console.log(event);
+    },
   },
   mounted() {
     this.$store.dispatch(

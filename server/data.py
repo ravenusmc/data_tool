@@ -45,21 +45,3 @@ class Data():
 		# Handle situation when dealing with dates - Have a check when submitting axis names? 
 		# dataset_length = len(new_data_set[(new_data_set.category == category) & (new_data_set.state == 'successful')])
 	
-
-
-## Other examples
-
-    # def get_data_eight_graph(self, yearOne, yearTwo):
-    #     MOS_death_data = []
-    #     columns = ['MOS', 'Deaths']
-    #     MOS_death_data.append(columns)
-    #     jobs = ['INFANTRYMAN', 'RIFLEMAN', 'FIELD ARTILLERY BASIC', 'ASSAULTMAN',
-    #     'ARMOR CREWMAN', 'MORTARMAN']
-    #     death_data_set = self.data[(self.data.FATALITY_YEAR >= yearOne) & (self.data.FATALITY_YEAR <= yearTwo)]
-    #     for job in jobs:
-    #         rows = []
-    #         deaths = int(len(death_data_set[(death_data_set.POSITION == job)]))
-    #         rows.append(job)
-    #         rows.append(deaths)
-    #         MOS_death_data.append(rows)
-    #     return MOS_death_data

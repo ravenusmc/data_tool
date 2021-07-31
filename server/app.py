@@ -155,6 +155,8 @@ def build_data_graph():
         post_data = request.get_json()
         data_object = Data(post_data['payload']['fileName'])
         data_file = data_object.getting_data_file()
+        if post_data['payload']['uniqueValue']:
+            unique_values_y_axis = data_helper_obj.get_unique_values_y_axis(data_file, post_data)
         unique_values = data_helper_obj.get_unique_values_x_axis(data_file, post_data)
         unique_values_length = data_helper_obj.get_length_unique_values(unique_values)
         if unique_values_length > 10:
