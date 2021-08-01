@@ -39,9 +39,29 @@ class Data():
 			rows.append(count)
 			graph_data.append(rows)
 		return graph_data
-		# Need to handle if there are to many unique values - let user know best not to 
-		# use that column 
-		# Need to get unique values of x-axis. 
-		# Handle situation when dealing with dates - Have a check when submitting axis names? 
-		# dataset_length = len(new_data_set[(new_data_set.category == category) & (new_data_set.state == 'successful')])
 	
+	def get_column_data_for_graph_unique_y_values(self, data_file, post_data, unique_values, unique_values_y_axis):
+		x_axis_column = post_data['payload']['xAxisValue']
+		y_axis_column = post_data['payload']['yAxisValue']
+		graph_data = []
+		graph_data.append([post_data['payload']['xAxisValue'], post_data['payload']['yAxisValue']])
+		for unique_value in unique_values:
+			rows = []
+			x_axis_unique_data_data_frame = data_file[(data_file[x_axis_column] == unique_value)]
+			total_unique_values = 0
+			for uniq_value in unique_values_y_axis:
+				total_unique_values = int(len(x_axis_unique_data_data_frame[(x_axis_unique_data_data_frame[y_axis_column] == uniq_value)])) + total_unique_values
+			rows.append(unique_value)
+			rows.append(total_unique_values)
+			graph_data.append(rows)
+		return graph_data
+				
+				
+				
+				
+				
+				# print(uniq_value)
+				# print(x_axis_unique_data_data_frame[(x_axis_unique_data_data_frame[y_axis_column] == uniq_value)])
+				# input()
+				# print(total_unique_values)
+				# input()

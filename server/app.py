@@ -155,17 +155,24 @@ def build_data_graph():
         post_data = request.get_json()
         data_object = Data(post_data['payload']['fileName'])
         data_file = data_object.getting_data_file()
-        if post_data['payload']['uniqueValue']:
-            unique_values_y_axis = data_helper_obj.get_unique_values_y_axis(data_file, post_data)
         unique_values = data_helper_obj.get_unique_values_x_axis(data_file, post_data)
         unique_values_length = data_helper_obj.get_length_unique_values(unique_values)
+        print(post_data['payload']['uniqueValue'])
         if unique_values_length > 10:
             data_graph_information['show_user_warning'] = True
         else:
+            print('here')
+            if post_data['payload']['uniqueValue'] == 'true':
+                print('IF')
+                unique_values_y_axis = data_helper_obj.get_unique_values_y_axis(data_file, post_data)
+                graph_data = data_object.get_column_data_for_graph_unique_y_values(data_file, post_data, unique_values, unique_values_y_axis)
+            else:
+                print('ELSE')
+                graph_data = data_object.get_column_data_for_graph(data_file, post_data, unique_values)
             data_graph_information['show_user_warning'] = False
-            graph_data = data_object.get_column_data_for_graph(data_file, post_data, unique_values)
             data_graph_information['graph_data'] = graph_data
             data_graph_information['show_graph'] = True
+        print(data_graph_information)
         return jsonify(data_graph_information)
 
 
