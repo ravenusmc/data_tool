@@ -22,7 +22,7 @@
         <label for="two">Pie Chart</label>
       </div>
       <div>
-        <h6>Unique Values:</h6>
+        <h6>Unique Values: (Y - Axis)</h6>
         <input
           @change="uniqueValueSelected()"
           type="radio"
@@ -30,7 +30,7 @@
           value="true"
           v-model="uniqueValue"
         />
-        <label for="one">Unique Values Only</label>
+        <label for="one">Unique Values - Y Axis</label>
         <br />
         <input
           @change="uniqueValueSelected()"
@@ -39,7 +39,7 @@
           value="False"
           v-model="uniqueValue"
         />
-        <label for="two">All Values</label>
+        <label for="two">All Values - Y Axis</label>
       </div>
     </section>
   </div>
