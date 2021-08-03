@@ -15,7 +15,7 @@ const state = {
 	yAxisValue: '',
 	graphData: [],
 	showGraph: false,
-	graphType: '',
+	graphType: "BarChart",
 	uniqueValue: true,
 };
 
