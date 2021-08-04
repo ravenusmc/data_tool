@@ -17,6 +17,7 @@ const state = {
 	showGraph: false,
 	graphType: "BarChart",
 	uniqueValue: true,
+	chartTitle: "",
 };
 
 const getters = {
@@ -32,6 +33,7 @@ const getters = {
 	showGraph: state => state.showGraph,
 	graphType: state => state.graphType,
 	uniqueValue: state => state.uniqueValue,
+	chartTitle: state => state.chartTitle,
 };
 
 const actions = {
@@ -148,7 +150,11 @@ const mutations = {
 
 	setUniqueValue: (state, payload) => {
 		state.uniqueValue = payload;
-	}
+	},
+
+	setChartTitle: (state, payload) => {
+		state.chartTitle = payload;
+	},
 
 };
 

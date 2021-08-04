@@ -31,7 +31,7 @@ export default {
     return {
       typeOne: "",
       chartOptionsOne: {
-        title: "Chart",
+        title: "",
         hAxis: {
           title: "",
         },
@@ -88,7 +88,6 @@ export default {
     graphType: {
       handler(value) {
         if (value) {
-          console.log(value);
           this.changeGraphType();
         }
       },

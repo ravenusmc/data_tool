@@ -41,6 +41,16 @@
         />
         <label for="two">All Values - Y Axis</label>
       </div>
+      <div>
+        <input
+          @change="uniqueValueSelected()"
+          type="text"
+          id="title"
+          placeholder="Chart Title"
+          v-model="title"
+        />
+        <label for="title"></label>
+      </div>
     </section>
   </div>
 </template>
@@ -54,6 +64,7 @@ export default {
     return {
       graphType: "",
       uniqueValue: "",
+      title: "",
     };
   }, // End of Data
   methods: {
