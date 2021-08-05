@@ -98,7 +98,11 @@ const actions = {
 
 	changeUniqueValue: ({ commit }, payload) => {
 		commit("setUniqueValue", payload);
-	}
+	},
+
+	changeChartTitle: ({ commit }, payload) => {
+		commit("setChartTitle", payload);
+	},
 
 };
 

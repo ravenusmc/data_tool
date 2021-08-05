@@ -55,6 +55,7 @@ export default {
       "yAxisValue",
       "showGraph",
       "graphType",
+      "chartTitle",
     ]),
   },
   methods: {
@@ -66,6 +67,10 @@ export default {
     },
     changeGraphType() {
       this.typeOne = this.graphType.graphType;
+    },
+    changeChartTitle() {
+      console.log("here");
+      // his.chartOptionsOne.title = this.graphType.graphType;
     },
   },
   watch: {
@@ -89,6 +94,15 @@ export default {
       handler(value) {
         if (value) {
           this.changeGraphType();
+        }
+      },
+      immediate: true,
+    },
+    chartTitle: {
+      handler(value) {
+        if (value) {
+          console.log(value);
+          this.changeChartTitle();
         }
       },
       immediate: true,

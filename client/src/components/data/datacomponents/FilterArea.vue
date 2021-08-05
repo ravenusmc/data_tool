@@ -43,7 +43,7 @@
       </div>
       <div>
         <input
-          @change="uniqueValueSelected()"
+          v-on:input="makeChartTitle()"
           type="text"
           id="title"
           placeholder="Chart Title"
@@ -68,7 +68,11 @@ export default {
     };
   }, // End of Data
   methods: {
-    ...mapActions("data", ["changeGraphType", "changeUniqueValue"]),
+    ...mapActions("data", [
+      "changeGraphType",
+      "changeUniqueValue",
+      "changeChartTitle",
+    ]),
     graphTypeSelected() {
       const payload = {
         graphType: this.graphType,
@@ -77,6 +81,10 @@ export default {
     },
     uniqueValueSelected() {
       this.changeUniqueValue(this.uniqueValue);
+    },
+    makeChartTitle() {
+      this.changeChartTitle();
+      console.log("hi");
     },
   },
 };
