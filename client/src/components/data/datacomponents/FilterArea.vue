@@ -43,13 +43,18 @@
       </div>
       <div>
         <input
-          v-on:input="makeChartTitle()"
           type="text"
           id="title"
           placeholder="Chart Title"
           v-model="title"
         />
-        <label for="title"></label>
+        <button
+          type="submit"
+          v-on:click="makeChartTitle()"
+          class="btn btn-outline-primary"
+        >
+          Change Chart Title
+        </button>
       </div>
     </section>
   </div>
@@ -83,8 +88,7 @@ export default {
       this.changeUniqueValue(this.uniqueValue);
     },
     makeChartTitle() {
-      this.changeChartTitle();
-      console.log("hi");
+      this.changeChartTitle(this.title);
     },
   },
 };

@@ -101,6 +101,7 @@ const actions = {
 	},
 
 	changeChartTitle: ({ commit }, payload) => {
+		console.log(payload)
 		commit("setChartTitle", payload);
 	},
 

@@ -69,8 +69,7 @@ export default {
       this.typeOne = this.graphType.graphType;
     },
     changeChartTitle() {
-      console.log("here");
-      // his.chartOptionsOne.title = this.graphType.graphType;
+      this.chartOptionsOne.title = this.chartTitle;
     },
   },
   watch: {
@@ -101,7 +100,6 @@ export default {
     chartTitle: {
       handler(value) {
         if (value) {
-          console.log(value);
           this.changeChartTitle();
         }
       },
