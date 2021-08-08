@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "FilterArea",
@@ -72,6 +72,9 @@ export default {
       title: "",
     };
   }, // End of Data
+  computed: {
+    ...mapGetters("data", ["showGraph"]),
+  },
   methods: {
     ...mapActions("data", [
       "changeGraphType",
@@ -88,7 +91,11 @@ export default {
       this.changeUniqueValue(this.uniqueValue);
     },
     makeChartTitle() {
-      this.changeChartTitle(this.title);
+      if (!this.showGraph) {
+        alert("Please Make a Graph First before Changing the title");
+      } else {
+        this.changeChartTitle(this.title);
+      }
     },
   },
 };
