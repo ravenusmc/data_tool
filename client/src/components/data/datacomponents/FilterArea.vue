@@ -56,6 +56,11 @@
           Change Chart Title
         </button>
       </div>
+      <!-- change graph color div -->
+      <div>
+
+      </div>
+      <!-- End change graph color div -->
     </section>
   </div>
 </template>
