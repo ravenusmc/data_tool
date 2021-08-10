@@ -39,7 +39,7 @@ export default {
           title: "",
         },
         legend: { position: "top" },
-        colors: ["#007bff"],
+        colors: ["red"],
         height: 650,
         animation: {
           duration: 1000,
@@ -56,6 +56,7 @@ export default {
       "showGraph",
       "graphType",
       "chartTitle",
+      "chartColor",
     ]),
   },
   methods: {
@@ -70,6 +71,10 @@ export default {
     },
     changeChartTitle() {
       this.chartOptionsOne.title = this.chartTitle;
+    },
+    changeChartColor() {
+      console.log("here now");
+      this.chartOptionsOne.colors = [this.chartColor];
     },
   },
   watch: {
@@ -101,6 +106,14 @@ export default {
       handler(value) {
         if (value) {
           this.changeChartTitle();
+        }
+      },
+      immediate: true,
+    },
+    chartColor: {
+      handler(value) {
+        if (value) {
+          this.changeChartColor();
         }
       },
       immediate: true,

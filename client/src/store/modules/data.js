@@ -18,6 +18,7 @@ const state = {
 	graphType: "BarChart",
 	uniqueValue: true,
 	chartTitle: "",
+	chartColor: "blue",
 };
 
 const getters = {
@@ -34,6 +35,7 @@ const getters = {
 	graphType: state => state.graphType,
 	uniqueValue: state => state.uniqueValue,
 	chartTitle: state => state.chartTitle,
+	chartColor: state => state.chartColor,
 };
 
 const actions = {
@@ -101,8 +103,11 @@ const actions = {
 	},
 
 	changeChartTitle: ({ commit }, payload) => {
-		console.log(payload)
 		commit("setChartTitle", payload);
+	},
+
+	changeChartColorAction: ({ commit }, payload) => {
+		commit("setChartColor", payload);
 	},
 
 };
@@ -159,6 +164,10 @@ const mutations = {
 
 	setChartTitle: (state, payload) => {
 		state.chartTitle = payload;
+	},
+
+	setChartColor: (state, payload) => {
+		state.chartColor = payload
 	},
 
 };

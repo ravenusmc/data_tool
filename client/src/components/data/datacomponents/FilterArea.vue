@@ -58,7 +58,19 @@
       </div>
       <!-- change graph color div -->
       <div>
-
+        <label class="font">Color:</label>&nbsp;
+        <select v-model="color" name="colot">
+          <option v-for="color in colors" v-bind:key="color" :value="color">
+            {{ color }}
+          </option>
+        </select>
+        <button
+          type="submit"
+          v-on:click="changeChartColor()"
+          class="btn btn-outline-primary"
+        >
+          Change Chart Color
+        </button>
       </div>
       <!-- End change graph color div -->
     </section>
@@ -75,6 +87,8 @@ export default {
       graphType: "",
       uniqueValue: "",
       title: "",
+      color: "blue",
+      colors: ["blue", "red", "black", "orange"],
     };
   }, // End of Data
   computed: {
@@ -85,8 +99,10 @@ export default {
       "changeGraphType",
       "changeUniqueValue",
       "changeChartTitle",
+      "changeChartColorAction",
     ]),
     graphTypeSelected() {
+      // This needs to be fixed...don't need payload here
       const payload = {
         graphType: this.graphType,
       };
@@ -101,6 +117,9 @@ export default {
       } else {
         this.changeChartTitle(this.title);
       }
+    },
+    changeChartColor() {
+      this.changeChartColorAction(this.color);
     },
   },
 };
