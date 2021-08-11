@@ -73,7 +73,6 @@ export default {
       this.chartOptionsOne.title = this.chartTitle;
     },
     changeChartColor() {
-      console.log("here now");
       this.chartOptionsOne.colors = [this.chartColor];
     },
   },

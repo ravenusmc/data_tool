@@ -1,6 +1,7 @@
 <template>
   <div>
     <section class="filter-area">
+      <!-- Chart type div -->
       <div>
         <h6>Pick Chart Type:</h6>
         <input
@@ -21,6 +22,8 @@
         />
         <label for="two">Pie Chart</label>
       </div>
+      <!-- End chart type div -->
+      <!-- unique values div -->
       <div>
         <h6>Unique Values: (Y - Axis)</h6>
         <input
@@ -41,6 +44,8 @@
         />
         <label for="two">All Values - Y Axis</label>
       </div>
+      <!-- End unique values div -->
+      <!-- change graph Title div -->
       <div>
         <input
           type="text"
@@ -56,6 +61,7 @@
           Change Chart Title
         </button>
       </div>
+      <!-- End change graph Title div -->
       <!-- change graph color div -->
       <div>
         <label class="font">Color:</label>&nbsp;
