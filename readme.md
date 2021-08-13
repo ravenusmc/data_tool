@@ -49,6 +49,7 @@ as well as npm.
 
 1. The drag and drop for column names - need to fix having two names in one area briefly. 
 2. The csv file page I think is getting quite overblown and could be changed in the future. 
+	-Believe that the state management side of things could be heavily improved. 
 
 # Preview
 
