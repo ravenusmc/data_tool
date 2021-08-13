@@ -47,8 +47,8 @@ as well as npm.
 
 # Issues / Other
 
-The drag and drop for column names - need to fix having two names in one area briefly. The csv file page
-I think is getting quite overblown and could be changed in the future. 
+1. The drag and drop for column names - need to fix having two names in one area briefly. 
+2. The csv file page I think is getting quite overblown and could be changed in the future. 
 
 # Preview
 
