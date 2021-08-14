@@ -38,6 +38,7 @@ class Data():
 			rows.append(unique_value)
 			rows.append(count)
 			graph_data.append(rows)
+		print(graph_data)
 		return graph_data
 	
 	def get_column_data_for_graph_unique_y_values(self, data_file, post_data, unique_values, unique_values_y_axis):

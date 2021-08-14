@@ -155,9 +155,11 @@ def build_data_graph():
         post_data = request.get_json()
         data_object = Data(post_data['payload']['fileName'])
         data_file = data_object.getting_data_file()
+        # Checking for Unique Values - x axis 
         unique_values = data_helper_obj.get_unique_values_x_axis(data_file, post_data)
-        unique_values_length = data_helper_obj.get_length_unique_values(unique_values)
-        if unique_values_length > 10:
+        unique_values_length_x_axis = data_helper_obj.get_length_unique_values(unique_values)
+        # Checking for unique Values - y axis 
+        if unique_values_length_x_axis > 8:
             data_graph_information['show_user_warning'] = True
         else:
             if post_data['payload']['uniqueValue'] == 'true':
