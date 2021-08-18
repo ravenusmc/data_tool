@@ -42,19 +42,17 @@ class Data_Helper():
 
     def sort_graph_data(self, graph_data):
         column_names = graph_data.pop(0)
+        graph_data = graph_data[0:5]
         n = len(graph_data)
-        for i in range(n-1):
+        for i in range(len(graph_data)):
             current_value_sum_first = self.get_list_total(graph_data[i])
-            for j in range(0, n-i-1):
+            for j in range(len(graph_data) - 1):
                 current_value_sum_second = self.get_list_total(
                     graph_data[j + 1])
-                if current_value_sum_first > current_value_sum_second:
-                    print(current_value_sum_first)
-                    print(current_value_sum_second)
-                    print(graph_data[0:5])
-                    graph_data[j], graph_data[j +
-                                              1] = graph_data[j + 1], graph_data[j]
-                    print('------------')
-                    print(graph_data[0:5])
-                    input()
+                if current_value_sum_first < current_value_sum_second:
+                    graph_data[j + 1], graph_data[j] = graph_data[j], graph_data[j + 1]
         print(graph_data)
+
+# [['Brazil', '26', '46'], ['Mexico', '35', '65'],
+# ['Singapore', '17', '6'], ['United States', '705', '1850'],
+# ['Turkey', '27', '73']]

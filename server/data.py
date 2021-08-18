@@ -82,8 +82,7 @@ class Data():
 			for uniq_value in unique_values_y_axis:
 				unique_values_y_count = int(len(x_axis_unique_data_data_frame[(
 					x_axis_unique_data_data_frame[y_axis_column] == uniq_value)]))
-				count_values_list.append(unique_values_y_count)
-			# count_values_list = np.array(count_values_list, dtype=np.float32)
+				count_values_list.append(int(unique_values_y_count))
 			rows = np.append(rows, count_values_list)
 			graph_data.append(list(rows))
 		return graph_data
