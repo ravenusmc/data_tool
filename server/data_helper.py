@@ -16,43 +16,14 @@ class Data_Helper():
     def get_length_unique_values(self, unique_values):
         return len(unique_values)
 
-    def get_list_total(self, value):
-        current_value_sum = 0
-        for v in value[1:]:
-            v = int(v)
-            current_value_sum = v + current_value_sum
-        return current_value_sum
-
-    # def sort_graph_data(self, graph_data):
-    #     count = 1
-    #     for value in graph_data[1:]:
-    #         current_data_list = value
-    #         current_value_sum_first = self.get_list_total(value)
-    #         for v in graph_data[2:]:
-    #             current_value_sum_second = self.get_list_total(v)
-    #             if current_value_sum_first > current_value_sum_second:
-    #                 # print(count)
-    #                 # print(graph_data[count])
-    #                 graph_data[count], graph_data[count +
-    #                 1] = graph_data[count + 1], graph_data[count]
-    #                 # print(graph_data[1:5])
-    #             # input()
-    #         count += 1
-    #     print(graph_data)
+    # Keeping this here for future reference...
+    # def get_list_total(self, value):
+    #     return sum(int(v) for v in value[1:])
 
     def sort_graph_data(self, graph_data):
         column_names = graph_data.pop(0)
-        graph_data = graph_data[0:5]
-        n = len(graph_data)
-        for i in range(len(graph_data)):
-            current_value_sum_first = self.get_list_total(graph_data[i])
-            for j in range(len(graph_data) - 1):
-                current_value_sum_second = self.get_list_total(
-                    graph_data[j + 1])
-                if current_value_sum_first < current_value_sum_second:
-                    graph_data[j + 1], graph_data[j] = graph_data[j], graph_data[j + 1]
-        print(graph_data)
+        graph_data = sorted(graph_data, key=lambda value: sum(int(v)
+                        for v in value[1:]), reverse=True )
+        graph_data.insert(0, column_names)
+        return graph_data
 
-# [['Brazil', '26', '46'], ['Mexico', '35', '65'],
-# ['Singapore', '17', '6'], ['United States', '705', '1850'],
-# ['Turkey', '27', '73']]
