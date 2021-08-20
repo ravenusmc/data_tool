@@ -81,6 +81,10 @@ const actions = {
 		const path = 'http://localhost:5000/build_data_graph';
 		axios.post(path, payload)
 			.then((res) => {
+				// const column_names = res.data.graph_data.shift();
+				// const toNumbers = arr => arr.slice(1).map(Number);
+				// let graph_data = toNumbers(res.data.graph_data);
+				// console.log(graph_data)
 				if (res.data.show_user_warning) {
 					alert('You X-axis has to many unique values. Please try selecting a different X-Axis Value')
 				} else {

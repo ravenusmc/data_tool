@@ -20,10 +20,14 @@ class Data_Helper():
     # def get_list_total(self, value):
     #     return sum(int(v) for v in value[1:])
 
+    def get_needed_values_from_data(self, graph_data):
+        return graph_data[0:9]
+
     def sort_graph_data(self, graph_data):
         column_names = graph_data.pop(0)
-        graph_data = sorted(graph_data, key=lambda value: sum(int(v)
-                        for v in value[1:]), reverse=True )
+        graph_data = sorted(graph_data, key=lambda value: sum(v
+                                                              for v in value[1:]), reverse=True)
         graph_data.insert(0, column_names)
+        graph_data = self.get_needed_values_from_data(graph_data)
+        print(graph_data)
         return graph_data
-

@@ -167,6 +167,7 @@ def build_data_graph():
             graph_data = data_object.get_column_data_for_graph_aggregate(
                 data_file, post_data, unique_values, unique_values_y_axis)
             graph_data = data_helper_obj.sort_graph_data(graph_data)
+            data_graph_information['graph_data'] = graph_data
             data_graph_information['show_user_warning'] = True
         else:
             if post_data['payload']['uniqueValue'] == 'true':
