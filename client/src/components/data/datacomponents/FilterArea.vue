@@ -21,6 +21,15 @@
           v-model="graphType"
         />
         <label for="two">Pie Chart</label>
+        <br />
+        <input
+          @change="graphTypeSelected()"
+          type="radio"
+          id="two"
+          value="ColumnChart"
+          v-model="graphType"
+        />
+        <label for="two">Column Chart</label>
       </div>
       <!-- End chart type div -->
       <!-- unique values div -->
