@@ -86,7 +86,8 @@ const actions = {
 				// let graph_data = toNumbers(res.data.graph_data);
 				// console.log(graph_data)
 				if (res.data.show_user_warning) {
-					alert('You X-axis has to many unique values. Please try selecting a different X-Axis Value')
+					const alertMessage = `You X-axis has to many unique values. Please try selecting a different X-Axis Value or select aggragate value`
+					alert(alertMessage)
 				} else {
 					res.data.graph_data.sort((a, b) => b[1] - a[1]);
 					commit("setGraphData", res.data.graph_data);
