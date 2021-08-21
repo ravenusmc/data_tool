@@ -17,6 +17,7 @@ const state = {
 	showGraph: false,
 	graphType: "BarChart",
 	uniqueValue: true,
+	aggregateValue: false,
 	chartTitle: "",
 	chartColor: "blue",
 };
@@ -36,6 +37,7 @@ const getters = {
 	uniqueValue: state => state.uniqueValue,
 	chartTitle: state => state.chartTitle,
 	chartColor: state => state.chartColor,
+	aggregateValue: state => state.aggregateValue,
 };
 
 const actions = {
@@ -81,10 +83,6 @@ const actions = {
 		const path = 'http://localhost:5000/build_data_graph';
 		axios.post(path, payload)
 			.then((res) => {
-				// const column_names = res.data.graph_data.shift();
-				// const toNumbers = arr => arr.slice(1).map(Number);
-				// let graph_data = toNumbers(res.data.graph_data);
-				// console.log(graph_data)
 				if (res.data.show_user_warning) {
 					const alertMessage = `You X-axis has to many unique values. Please try selecting a different X-Axis Value or select aggragate value`
 					alert(alertMessage)
@@ -105,6 +103,10 @@ const actions = {
 
 	changeUniqueValue: ({ commit }, payload) => {
 		commit("setUniqueValue", payload);
+	},
+
+	changeAggregateValue: ({ commit }, payload) => {
+		commit('setAggregateValue', payload);
 	},
 
 	changeChartTitle: ({ commit }, payload) => {
@@ -165,6 +167,10 @@ const mutations = {
 
 	setUniqueValue: (state, payload) => {
 		state.uniqueValue = payload;
+	},
+
+	setAggregateValue: (state, payload) => {
+		state.aggregateValue = payload;
 	},
 
 	setChartTitle: (state, payload) => {

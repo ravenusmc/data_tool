@@ -54,6 +54,19 @@
         <label for="two">All Values - Y Axis</label>
       </div>
       <!-- End unique values div -->
+      <!-- Aggregate div -->
+      <div>
+        <h6>Use Aggregate Value</h6>
+        <input
+          @change="aggregateValueSelected()"
+          type="checkbox"
+          id="checkbox"
+          value="true"
+          v-model="aggregateValueChecked"
+        />
+        <label for="checkbox">Aggregate Value Y Axis</label>
+      </div>
+      <!-- End Aggregate div -->
       <!-- change graph Title div -->
       <div>
         <input
@@ -104,6 +117,7 @@ export default {
       title: "",
       color: "blue",
       colors: ["blue", "red", "black", "orange"],
+      aggregateValueChecked: false,
     };
   }, // End of Data
   computed: {
@@ -115,6 +129,7 @@ export default {
       "changeUniqueValue",
       "changeChartTitle",
       "changeChartColorAction",
+      "changeAggregateValue",
     ]),
     graphTypeSelected() {
       // This needs to be fixed...don't need payload here
@@ -125,6 +140,9 @@ export default {
     },
     uniqueValueSelected() {
       this.changeUniqueValue(this.uniqueValue);
+    },
+    aggregateValueSelected() {
+      this.changeAggregateValue(this.aggregateValueChecked)
     },
     makeChartTitle() {
       if (!this.showGraph) {
