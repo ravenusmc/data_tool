@@ -29,5 +29,4 @@ class Data_Helper():
                                                               for v in value[1:]), reverse=True)
         graph_data.insert(0, column_names)
         graph_data = self.get_needed_values_from_data(graph_data)
-        print(graph_data)
         return graph_data
