@@ -20,6 +20,7 @@ const state = {
 	aggregateValue: false,
 	chartTitle: "",
 	chartColor: "blue",
+	showChartControls: true,
 };
 
 const getters = {
@@ -38,6 +39,7 @@ const getters = {
 	chartTitle: state => state.chartTitle,
 	chartColor: state => state.chartColor,
 	aggregateValue: state => state.aggregateValue,
+	showChartControls: state => state.showChartControls,
 };
 
 const actions = {
@@ -90,6 +92,8 @@ const actions = {
 					res.data.graph_data.sort((a, b) => b[1] - a[1]);
 					commit("setGraphData", res.data.graph_data);
 					commit("setShowGraph", res.data.show_graph);
+					console.log(res.data);
+					commit("setShowChartControls", res.data.show_chart_controls);
 				}
 			})
 			.catch(error => {
@@ -116,6 +120,10 @@ const actions = {
 	changeChartColorAction: ({ commit }, payload) => {
 		commit("setChartColor", payload);
 	},
+
+	// changeChartControls: ({ commit }, payload) => {
+	// 	commit("setShowChartControls", payload)
+	// }
 
 };
 
@@ -180,6 +188,10 @@ const mutations = {
 	setChartColor: (state, payload) => {
 		state.chartColor = payload
 	},
+
+	setShowChartControls: (state, data) => {
+		state.showChartControls = data
+	}
 
 };
 

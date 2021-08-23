@@ -67,39 +67,41 @@
         <label for="checkbox">Aggregate Value Y Axis</label>
       </div>
       <!-- End Aggregate div -->
-      <!-- change graph Title div -->
-      <div>
-        <input
-          type="text"
-          id="title"
-          placeholder="Chart Title"
-          v-model="title"
-        />
-        <button
-          type="submit"
-          v-on:click="makeChartTitle()"
-          class="btn btn-outline-primary"
-        >
-          Change Chart Title
-        </button>
-      </div>
-      <!-- End change graph Title div -->
-      <!-- change graph color div -->
-      <div>
-        <label class="font">Color:</label>&nbsp;
-        <select v-model="color" name="colot">
-          <option v-for="color in colors" v-bind:key="color" :value="color">
-            {{ color }}
-          </option>
-        </select>
-        <button
-          type="submit"
-          v-on:click="changeChartColor()"
-          class="btn btn-outline-primary"
-        >
-          Change Chart Color
-        </button>
-      </div>
+      <section v-if="chartControls" class="chart_controls">
+        <!-- change graph Title div -->
+        <div>
+          <input
+            type="text"
+            id="title"
+            placeholder="Chart Title"
+            v-model="title"
+          />
+          <button
+            type="submit"
+            v-on:click="makeChartTitle()"
+            class="btn btn-outline-primary"
+          >
+            Change Chart Title
+          </button>
+        </div>
+        <!-- End change graph Title div -->
+        <!-- change graph color div -->
+        <div>
+          <label class="font">Color:</label>&nbsp;
+          <select v-model="color" name="colot">
+            <option v-for="color in colors" v-bind:key="color" :value="color">
+              {{ color }}
+            </option>
+          </select>
+          <button
+            type="submit"
+            v-on:click="changeChartColor()"
+            class="btn btn-outline-primary"
+          >
+            Change Chart Color
+          </button>
+        </div>
+      </section>
       <!-- End change graph color div -->
     </section>
   </div>
@@ -118,10 +120,11 @@ export default {
       color: "blue",
       colors: ["blue", "red", "black", "orange"],
       aggregateValueChecked: false,
+      chartControls: true, 
     };
   }, // End of Data
   computed: {
-    ...mapGetters("data", ["showGraph"]),
+    ...mapGetters("data", ["showGraph", "showChartControls"]),
   },
   methods: {
     ...mapActions("data", [
@@ -142,17 +145,26 @@ export default {
       this.changeUniqueValue(this.uniqueValue);
     },
     aggregateValueSelected() {
-      this.changeAggregateValue(this.aggregateValueChecked)
+      this.changeAggregateValue(this.aggregateValueChecked);
     },
     makeChartTitle() {
-      if (!this.showGraph) {
-        alert("Please Make a Graph First before Changing the title");
-      } else {
-        this.changeChartTitle(this.title);
-      }
+      this.changeChartTitle(this.title);
     },
     changeChartColor() {
       this.changeChartColorAction(this.color);
+    },
+    setShowChartControls() {
+      this.chartControls = this.showChartControls;
+    },
+  },
+  watch: {
+    showChartControls: {
+      handler(value) {
+        if (value) {
+          this.setShowChartControls();
+        }
+      },
+      immediate: true,
     },
   },
 };
@@ -170,6 +182,10 @@ export default {
 .x-axis {
   border: 2px solid red;
   height: 80px;
+}
+
+.chart_controls {
+  border: 2px solid red;
 }
 </style>
 
