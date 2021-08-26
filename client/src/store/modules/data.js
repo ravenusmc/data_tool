@@ -21,6 +21,7 @@ const state = {
 	chartTitle: "",
 	chartColor: "blue",
 	showChartControls: true,
+	hideControlsBasedOnAggregateValueSelected: true,
 };
 
 const getters = {
@@ -40,6 +41,7 @@ const getters = {
 	chartColor: state => state.chartColor,
 	aggregateValue: state => state.aggregateValue,
 	showChartControls: state => state.showChartControls,
+	hideControlsBasedOnAggregateValueSelected: state => state.hideControlsBasedOnAggregateValueSelected,
 };
 
 const actions = {
@@ -92,7 +94,6 @@ const actions = {
 					res.data.graph_data.sort((a, b) => b[1] - a[1]);
 					commit("setGraphData", res.data.graph_data);
 					commit("setShowGraph", res.data.show_graph);
-					console.log(res.data);
 					commit("setShowChartControls", res.data.show_chart_controls);
 				}
 			})
@@ -109,8 +110,9 @@ const actions = {
 		commit("setUniqueValue", payload);
 	},
 
-	changeAggregateValue: ({ commit }, payload) => {
+	changeAggregateValue: ({ commit, getters }, payload) => {
 		commit('setAggregateValue', payload);
+		getters.hideControlsBasedOnAggregateValueSelected ? commit("setAggregateValueControls", false) : commit("setAggregateValueControls", true);
 	},
 
 	changeChartTitle: ({ commit }, payload) => {
@@ -191,6 +193,10 @@ const mutations = {
 
 	setShowChartControls: (state, data) => {
 		state.showChartControls = data
+	},
+
+	setAggregateValueControls: (state, data) => {
+		state.hideControlsBasedOnAggregateValueSelected = data
 	}
 
 };

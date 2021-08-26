@@ -20,15 +20,17 @@
           value="PieChart"
           v-model="graphType"
         />
-        <label for="two">Pie Chart</label>
-        <br />
-        <input
-          @change="graphTypeSelected()"
-          type="radio"
-          id="two"
-          value="ColumnChart"
-          v-model="graphType"
-        />
+        <div v-if="hideControlsBasedOnAggregateValueSelected">
+          <label for="two">Pie Chart</label>
+          <br />
+          <input
+            @change="graphTypeSelected()"
+            type="radio"
+            id="two"
+            value="ColumnChart"
+            v-model="graphType"
+          />
+        </div>
         <label for="two">Column Chart</label>
       </div>
       <!-- End chart type div -->
@@ -124,7 +126,7 @@ export default {
     };
   }, // End of Data
   computed: {
-    ...mapGetters("data", ["showGraph", "showChartControls"]),
+    ...mapGetters("data", ["showGraph", "showChartControls", "hideControlsBasedOnAggregateValueSelected"]),
   },
   methods: {
     ...mapActions("data", [
@@ -145,6 +147,7 @@ export default {
       this.changeUniqueValue(this.uniqueValue);
     },
     aggregateValueSelected() {
+      console.log('here');
       this.changeAggregateValue(this.aggregateValueChecked);
     },
     makeChartTitle() {

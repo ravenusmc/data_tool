@@ -16,7 +16,6 @@ const getters = {
 const actions = {
 
 	updateUserProfile: ({ commit }, { payload }) => {
-		console.log(payload.id)
 		const path = `http://localhost:5000/update_user_profile/${payload.id}`;
 		axios.put(path, payload)
 			.then((res) => {
