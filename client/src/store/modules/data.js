@@ -123,10 +123,6 @@ const actions = {
 		commit("setChartColor", payload);
 	},
 
-	// changeChartControls: ({ commit }, payload) => {
-	// 	commit("setShowChartControls", payload)
-	// }
-
 };
 
 const mutations = {

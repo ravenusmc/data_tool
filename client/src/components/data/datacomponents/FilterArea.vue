@@ -147,7 +147,6 @@ export default {
       this.changeUniqueValue(this.uniqueValue);
     },
     aggregateValueSelected() {
-      console.log('here');
       this.changeAggregateValue(this.aggregateValueChecked);
     },
     makeChartTitle() {
