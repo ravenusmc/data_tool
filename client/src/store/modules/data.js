@@ -86,15 +86,15 @@ const actions = {
 	},
 
 	changeGraphData: ({ commit, getters }, payload) => {
+		let tempGraphData = getters.graphData
 		if (payload.length === 1) {
 			console.log(payload)
-			let tempGraphData = getters.graphData
 			tempGraphData = tempGraphData.slice(0, payload);
 			console.log(tempGraphData)
 			commit('setTempGraphData', tempGraphData)
+		}else {
+			commit('setTempGraphData', tempGraphData)
 		}
-		console.log(payload.length);
-		commit('setTempGraphData', tempGraphData)
 	},
 
 	updateXAxis: ({ commit }, payload) => {

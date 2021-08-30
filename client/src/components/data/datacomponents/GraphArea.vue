@@ -7,7 +7,7 @@
       <div v-if="showGraph">
         <GraphCard
           :typeOne="typeOne"
-          :data="graphData"
+          :data="tempGraphData"
           :options="chartOptionsOne"
         >
         </GraphCard>
@@ -57,6 +57,7 @@ export default {
       "graphType",
       "chartTitle",
       "chartColor",
+      "tempGraphData"
     ]),
   },
   methods: {
