@@ -14,6 +14,7 @@ const state = {
 	xAxisValue: '',
 	yAxisValue: '',
 	graphData: [],
+	tempGraphData: [],
 	showGraph: false,
 	graphType: "BarChart",
 	uniqueValue: true,
@@ -42,6 +43,7 @@ const getters = {
 	aggregateValue: state => state.aggregateValue,
 	showChartControls: state => state.showChartControls,
 	hideControlsBasedOnAggregateValueSelected: state => state.hideControlsBasedOnAggregateValueSelected,
+	tempGraphData: state => state.tempGraphData,
 };
 
 const actions = {
@@ -63,6 +65,38 @@ const actions = {
 			})
 	},
 
+	fetchGraph: ({ commit, dispatch }, payload) => {
+		const path = 'http://localhost:5000/build_data_graph';
+		axios.post(path, payload)
+			.then((res) => {
+				if (res.data.show_user_warning) {
+					const alertMessage = `You X-axis has to many unique values. Please try selecting a different X-Axis Value or select aggragate value`
+					alert(alertMessage)
+				} else {
+					// res.data.graph_data.sort((a, b) => b[1] - a[1]);
+					commit("setGraphData", res.data.graph_data);
+					commit("setShowGraph", res.data.show_graph);
+					commit("setShowChartControls", res.data.show_chart_controls);
+					dispatch('changeGraphData', res.data.graph_data)
+				}
+			})
+			.catch(error => {
+				console.log(error);
+			})
+	},
+
+	changeGraphData: ({ commit, getters }, payload) => {
+		if (payload.length === 1) {
+			console.log(payload)
+			let tempGraphData = getters.graphData
+			tempGraphData = tempGraphData.slice(0, payload);
+			console.log(tempGraphData)
+			commit('setTempGraphData', tempGraphData)
+		}
+		console.log(payload.length);
+		commit('setTempGraphData', tempGraphData)
+	},
+
 	updateXAxis: ({ commit }, payload) => {
 		commit("updateXAxis", payload);
 	},
@@ -81,25 +115,6 @@ const actions = {
 
 	updateYAxisValue: ({ commit }, payload) => {
 		commit("setYAxisValue", payload);
-	},
-
-	fetchGraph: ({ commit }, payload) => {
-		const path = 'http://localhost:5000/build_data_graph';
-		axios.post(path, payload)
-			.then((res) => {
-				if (res.data.show_user_warning) {
-					const alertMessage = `You X-axis has to many unique values. Please try selecting a different X-Axis Value or select aggragate value`
-					alert(alertMessage)
-				} else {
-					res.data.graph_data.sort((a, b) => b[1] - a[1]);
-					commit("setGraphData", res.data.graph_data);
-					commit("setShowGraph", res.data.show_graph);
-					commit("setShowChartControls", res.data.show_chart_controls);
-				}
-			})
-			.catch(error => {
-				console.log(error);
-			})
 	},
 
 	changeGraphType: ({ commit }, payload) => {
@@ -161,6 +176,10 @@ const mutations = {
 
 	setGraphData: (state, payload) => {
 		state.graphData = payload;
+	},
+
+	setTempGraphData: (state, payload) => {
+		state.tempGraphData = payload;
 	},
 
 	setShowGraph: (state, payload) => {

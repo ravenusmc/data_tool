@@ -169,12 +169,12 @@ def build_data_graph():
         column_names = graph_data.pop(0)
         graph_data = sorted(graph_data, key=lambda x: x[1], reverse=True)
         graph_data.insert(0, column_names)
-        graph_data = graph_data[0:5]
+        # graph_data = graph_data[0:5]
         data_graph_information['show_user_warning'] = False
         data_graph_information['graph_data'] = graph_data
         data_graph_information['show_graph'] = True
         data_graph_information['show_chart_controls'] = True
-        print(data_graph_information)
+
         # if unique_values_length_x_axis > 8:
         #     if post_data['payload']['aggregateValue']:
         #         graph_data = data_object.get_column_data_for_graph_aggregate(
