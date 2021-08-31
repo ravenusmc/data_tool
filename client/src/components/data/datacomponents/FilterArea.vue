@@ -34,17 +34,6 @@
         <label for="two">Column Chart</label>
       </div>
       <!-- End chart type div -->
-      <div>
-        <label for="two"># of columns for X-Axis:</label>
-        <input type="number" id="title" v-model="xAxisCountNumber" />
-        <button
-          type="submit"
-          v-on:click="changeXAxisColumnNumber()"
-          class="btn btn-outline-primary"
-        >
-          Change X Axis Column Number
-        </button>
-      </div>
       <!-- unique values div -->
       <div>
         <h6>Unique Values: (Y - Axis)</h6>
@@ -114,6 +103,17 @@
             Change Chart Color
           </button>
         </div>
+        <div>
+          <label for="two"># of columns for X-Axis:</label>
+          <input type="number" id="title" v-model="xAxisCountNumber" />
+          <button
+            type="submit"
+            v-on:click="changeXAxisColumnNumber()"
+            class="btn btn-outline-primary"
+          >
+            Change X Axis Column Number
+          </button>
+        </div>
       </section>
       <!-- End change graph color div -->
     </section>
@@ -134,7 +134,7 @@ export default {
       color: "blue",
       colors: ["blue", "red", "black", "orange"],
       aggregateValueChecked: false,
-      chartControls: true,
+      chartControls: false,
     };
   }, // End of Data
   computed: {

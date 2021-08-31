@@ -21,7 +21,7 @@ const state = {
 	aggregateValue: false,
 	chartTitle: "",
 	chartColor: "blue",
-	showChartControls: true,
+	showChartControls: false,
 	hideControlsBasedOnAggregateValueSelected: true,
 };
 
