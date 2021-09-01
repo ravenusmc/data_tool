@@ -104,7 +104,7 @@
           </button>
         </div>
         <div>
-          <label for="two"># of columns for X-Axis:</label>
+          <label for="two" v-tooltip="test"># of columns for X-Axis:</label>
           <input type="number" id="title" v-model="xAxisCountNumber" />
           <button
             type="submit"
@@ -113,13 +113,14 @@
           >
             Change X Axis Column Number
           </button>
+          <!-- <span data-tooltip="HELLO MIKE">Hover Over Me</span> -->
         </div>
       </section>
       <!-- End change graph color div -->
     </section>
   </div>
 </template>
-
+Logistics Officer, 2009-2014, Central Intelligence Agency (CIA)
 <script>
 import { mapGetters, mapActions } from "vuex";
 
@@ -135,6 +136,7 @@ export default {
       colors: ["blue", "red", "black", "orange"],
       aggregateValueChecked: false,
       chartControls: false,
+      test: "hello Mike",
     };
   }, // End of Data
   computed: {
@@ -209,5 +211,36 @@ export default {
 .chart_controls {
   border: 2px solid red;
 }
+
+/* [data-tooltip] {
+  position: relative;
+  cursor: default;
+}
+
+[data-tooltip]::after {
+  position: absolute;
+  width: 140px;
+  left: calc(50% - 70px);
+  bottom: 125%;
+  text-align: center;
+  box-sizing: border-box;
+  content: attr(data-tooltip);
+  color: #fff;
+  background: rgba(0, 0, 0, 0.75);
+  padding: 8px;
+  border-radius: 10px;
+  font-size: 0.9em;
+  font-weight: bold;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s, transform 0.2s;
+}
+
+[data-tooltip]::hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+} */
 </style>
 
