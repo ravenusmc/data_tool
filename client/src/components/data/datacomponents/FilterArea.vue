@@ -104,7 +104,10 @@
           </button>
         </div>
         <div>
-          <label for="two" v-tooltip="test"># of columns for X-Axis:</label>
+          <label for="two"># of columns for X-Axis:</label>
+          <div class="tooltip">
+            <span class="tooltiptext">Tooltip text</span>
+          </div>
           <input type="number" id="title" v-model="xAxisCountNumber" />
           <button
             type="submit"
@@ -113,7 +116,6 @@
           >
             Change X Axis Column Number
           </button>
-          <!-- <span data-tooltip="HELLO MIKE">Hover Over Me</span> -->
         </div>
       </section>
       <!-- End change graph color div -->
@@ -212,35 +214,28 @@ export default {
   border: 2px solid red;
 }
 
-/* [data-tooltip] {
+.tooltip {
   position: relative;
-  cursor: default;
+  display: inline-block;
+  border-bottom: 1px dotted black;
 }
 
-[data-tooltip]::after {
-  position: absolute;
-  width: 140px;
-  left: calc(50% - 70px);
-  bottom: 125%;
-  text-align: center;
-  box-sizing: border-box;
-  content: attr(data-tooltip);
-  color: #fff;
-  background: rgba(0, 0, 0, 0.75);
-  padding: 8px;
-  border-radius: 10px;
-  font-size: 0.9em;
-  font-weight: bold;
+.tooltip .tooltiptext {
   visibility: hidden;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.3s, transform 0.2s;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
 }
 
-[data-tooltip]::hover::after {
-  opacity: 1;
+.tooltip:hover .tooltiptext {
   visibility: visible;
-  transform: translateY(0);
-} */
+}
 </style>
 
