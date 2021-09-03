@@ -94,8 +94,6 @@ form {
   width: 45%;
 }
 
-
-
 .fontColor:hover {
   color: rgb(0, 125, 225) !important;
 }

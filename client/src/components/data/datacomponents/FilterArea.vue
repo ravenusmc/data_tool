@@ -113,6 +113,7 @@
             type="submit"
             v-on:click="changeXAxisColumnNumber()"
             class="btn btn-outline-primary"
+            v-tooltip.top="msg"
           >
             Change X Axis Column Number
           </button>
@@ -138,7 +139,7 @@ export default {
       colors: ["blue", "red", "black", "orange"],
       aggregateValueChecked: false,
       chartControls: false,
-      test: "hello Mike",
+      msg: "This is a button.  " + '</br>' + "This is a button.  ",
     };
   }, // End of Data
   computed: {
@@ -214,28 +215,5 @@ export default {
   border: 2px solid red;
 }
 
-.tooltip {
-  position: relative;
-  display: inline-block;
-  border-bottom: 1px dotted black;
-}
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-}
 </style>
 
