@@ -139,7 +139,7 @@ export default {
       colors: ["blue", "red", "black", "orange"],
       aggregateValueChecked: false,
       chartControls: false,
-      msg: "This is a button.  " + '</br>' + "This is a button.  ",
+      msg: "The  " + '</br>' + "This is a button.  ",
     };
   }, // End of Data
   computed: {
