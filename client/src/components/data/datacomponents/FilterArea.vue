@@ -139,7 +139,7 @@ export default {
       colors: ["blue", "red", "black", "orange"],
       aggregateValueChecked: false,
       chartControls: false,
-      msg: "The  " + '</br>' + "This is a button.  ",
+      msg: "Here you can select" + '</br>' + "how many columns you" + '</br>' + "want on the x-axis.",
     };
   }, // End of Data
   computed: {
