@@ -139,6 +139,7 @@ export default {
       colors: ["blue", "red", "black", "orange"],
       aggregateValueChecked: false,
       chartControls: false,
+      // Need to fix this message...as well as do this better. 
       msg: "Here you can select" + '</br>' + "how many columns you" + '</br>' + "want on the x-axis.",
     };
   }, // End of Data
