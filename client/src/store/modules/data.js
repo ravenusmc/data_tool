@@ -69,15 +69,16 @@ const actions = {
 		const path = 'http://localhost:5000/build_data_graph';
 		axios.post(path, payload)
 			.then((res) => {
-				console.log(res.data.show_user_warning);
 				if (res.data.show_user_warning) {
-					console.log('here')
 					const alertMessage = `The X-axis has to many unique values. 
 					The graph is showing the first 5 columns on the x-axis. If you want 
 					to see more use the Change X Axis Column Number filter.`
 					alert(alertMessage)
+					commit("setGraphData", res.data.graph_data);
+					commit("setShowGraph", res.data.show_graph);
+					commit("setShowChartControls", res.data.show_chart_controls);
+					dispatch('changeGraphData', res.data)
 				} else {
-					console.log('Else')
 					commit("setGraphData", res.data.graph_data);
 					commit("setShowGraph", res.data.show_graph);
 					commit("setShowChartControls", res.data.show_chart_controls);
@@ -90,11 +91,17 @@ const actions = {
 	},
 
 	changeGraphData: ({ commit, getters }, payload) => {
+		console.log('Change Graph Data Loc')
+		console.log(payload)
 		let tempGraphData = getters.graphData
 		if (payload.length === 1) {
 			tempGraphData = tempGraphData.slice(0, payload);
 			commit('setTempGraphData', tempGraphData)
-		} else {
+		} else if (payload.show_user_warning === true) {
+			tempGraphData = tempGraphData.slice(0, 6);
+			commit('setTempGraphData', tempGraphData);
+		}
+		else {
 			commit('setTempGraphData', tempGraphData)
 		}
 	},
