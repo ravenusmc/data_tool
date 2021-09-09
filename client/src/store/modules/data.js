@@ -70,14 +70,12 @@ const actions = {
 		axios.post(path, payload)
 			.then((res) => {
 				if (res.data.show_user_warning) {
-					const alertMessage = `The X-axis has to many unique values. 
-					The graph is showing the first 5 columns on the x-axis. If you want 
-					to see more use the Change X Axis Column Number filter.`
-					alert(alertMessage)
+					const alertMessage = `The X-axis has to many unique values. The graph is showing the first 5 columns on the x-axis. If you want to see more use the Change X Axis Column Number filter.`
 					commit("setGraphData", res.data.graph_data);
 					commit("setShowGraph", res.data.show_graph);
 					commit("setShowChartControls", res.data.show_chart_controls);
 					dispatch('changeGraphData', res.data)
+					alert(alertMessage)
 				} else {
 					commit("setGraphData", res.data.graph_data);
 					commit("setShowGraph", res.data.show_graph);
@@ -91,7 +89,6 @@ const actions = {
 	},
 
 	changeGraphData: ({ commit, getters }, payload) => {
-		console.log('Change Graph Data Loc')
 		console.log(payload)
 		let tempGraphData = getters.graphData
 		if (payload.length === 1) {
