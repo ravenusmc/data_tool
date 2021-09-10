@@ -91,8 +91,8 @@ const actions = {
 	changeGraphData: ({ commit, getters }, payload) => {
 		console.log(payload)
 		let tempGraphData = getters.graphData
-		if (payload.length === 1) {
-			tempGraphData = tempGraphData.slice(0, payload);
+		if (payload.fromButton) {
+			tempGraphData = tempGraphData.slice(0, payload.xAxisCountNumber);
 			commit('setTempGraphData', tempGraphData)
 		} else if (payload.show_user_warning === true) {
 			tempGraphData = tempGraphData.slice(0, 6);

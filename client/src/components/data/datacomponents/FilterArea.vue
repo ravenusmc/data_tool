@@ -182,7 +182,11 @@ export default {
       this.chartControls = this.showChartControls;
     },
     changeXAxisColumnNumber() {
-      this.changeGraphData(this.xAxisCountNumber);
+      const payload = {
+        xAxisCountNumber: this.xAxisCountNumber,
+        fromButton: true, 
+      };
+      this.changeGraphData(payload);
     },
   },
   watch: {
