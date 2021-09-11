@@ -89,7 +89,6 @@ const actions = {
 	},
 
 	changeGraphData: ({ commit, getters }, payload) => {
-		console.log(payload)
 		let tempGraphData = getters.graphData
 		if (payload.fromButton) {
 			tempGraphData = tempGraphData.slice(0, payload.xAxisCountNumber);
