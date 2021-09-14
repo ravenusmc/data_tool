@@ -76,6 +76,10 @@ const actions = {
 					commit("setShowChartControls", res.data.show_chart_controls);
 					dispatch('changeGraphData', res.data)
 					alert(alertMessage)
+					if (res.data.show_aggr_warning) {
+						const alertMessageAggr = 'The Y Axis has multiple values that you may want to use the aggregate check box'
+						alert(alertMessageAggr)
+					}
 				} else {
 					commit("setGraphData", res.data.graph_data);
 					commit("setShowGraph", res.data.show_graph);
