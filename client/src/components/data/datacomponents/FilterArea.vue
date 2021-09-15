@@ -118,6 +118,21 @@
             Change X Axis Column Number
           </button>
         </div>
+        <div>
+          <label for="two"># of columns for Y-Axis:</label>
+          <div class="tooltip">
+            <span class="tooltiptext">Tooltip text</span>
+          </div>
+          <input type="number" id="title" v-model="yAxisCountNumber" />
+          <button
+            type="submit"
+            v-on:click="changeYAxisColumnNumber()"
+            class="btn btn-outline-primary"
+            v-tooltip.top="msg"
+          >
+            Change Y Axis Column Number
+          </button>
+        </div>
       </section>
       <!-- End change graph color div -->
     </section>
@@ -134,13 +149,19 @@ export default {
       graphType: "",
       uniqueValue: "",
       xAxisCountNumber: 5,
+      yAxisCountNumber: 4,
       title: "",
       color: "blue",
       colors: ["blue", "red", "black", "orange"],
       aggregateValueChecked: false,
       chartControls: false,
-      // Need to fix this message...as well as do this better. 
-      msg: "Here you can select" + '</br>' + "how many columns you" + '</br>' + "want on the x-axis.",
+      // Need to fix this message...as well as do this better.
+      msg:
+        "Here you can select" +
+        "</br>" +
+        "how many columns you" +
+        "</br>" +
+        "want on the x-axis.",
     };
   }, // End of Data
   computed: {
@@ -184,9 +205,31 @@ export default {
     changeXAxisColumnNumber() {
       const payload = {
         xAxisCountNumber: this.xAxisCountNumber,
-        fromButton: true, 
+        fromButton: true,
       };
       this.changeGraphData(payload);
+    },
+    changeYAxisColumnNumber() {
+      console.log(this.yAxisCountNumber)
+      const payload = {
+        YAxisCountNumber: this.yAxisCountNumber,
+        fromYButton: true,
+      };
+      // if (this.$store.getters["data/xAxisValue"] == "") {
+      //   alert("Please put a column in for the x-value");
+      // } else if (this.$store.getters["data/yAxisValue"] == "") {
+      //   alert("Please put a column in for the y-value");
+      // } else {
+      //   const payload = {
+      //     fileName: this.$store.getters["data/fileName"],
+      //     xAxisValue: this.$store.getters["data/xAxisValue"],
+      //     yAxisValue: this.$store.getters["data/yAxisValue"],
+      //     yAxisValue: this.$store.getters["data/yAxisValue"],
+      //     uniqueValue: this.$store.getters["data/uniqueValue"],
+      //     aggregateValue: this.$store.getters["data/aggregateValue"],
+      //   };
+      //   this.fetchGraph({ payload });
+      // }
     },
   },
   watch: {
@@ -219,6 +262,5 @@ export default {
 .chart_controls {
   border: 2px solid red;
 }
-
 </style>
 

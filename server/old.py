@@ -1,3 +1,20 @@
+# else:
+#     data_graph_information['show_user_warning'] = True
+# else:
+#     if post_data['payload']['uniqueValue'] == 'true':
+#         unique_values_y_axis = data_helper_obj.get_unique_values_y_axis(
+#             data_file, post_data)
+#         graph_data = data_object.get_column_data_for_graph_unique_y_values(
+#             data_file, post_data, unique_values, unique_values_y_axis)
+#     else:
+#         graph_data = data_object.get_column_data_for_graph(
+#             data_file, post_data, unique_values)
+#     data_graph_information['show_user_warning'] = False
+#     data_graph_information['graph_data'] = graph_data
+#     data_graph_information['show_graph'] = True
+#     data_graph_information['show_chart_controls'] = True
+
+
 682
 
 Working:

@@ -164,8 +164,7 @@ def build_data_graph():
         unique_values_y_axis = data_helper_obj.get_unique_values_y_axis(
             data_file, post_data)
         data_graph_information['show_aggr_warning'] = False
-        if (len(unique_values_y_axis) > 1) and (post_data['payload']['aggregateValue'] == False): 
-            print(post_data['payload']['aggregateValue'])
+        if (len(unique_values_y_axis) > 1) and (post_data['payload']['aggregateValue'] == False):
             data_graph_information['show_aggr_warning'] = True
         # Getting graph data
         graph_data = data_object.get_column_data_for_graph(
@@ -183,6 +182,7 @@ def build_data_graph():
                 graph_data = data_object.get_column_data_for_graph_aggregate(
                     data_file, post_data, unique_values, unique_values_y_axis)
                 graph_data = data_helper_obj.sort_graph_data(graph_data)
+                print(graph_data)
                 data_graph_information['graph_data'] = graph_data
                 data_graph_information['show_user_warning'] = False
                 data_graph_information['show_graph'] = True
@@ -193,35 +193,20 @@ def build_data_graph():
             return jsonify(data_graph_information)
         if post_data['payload']['uniqueValue'] == 'true':
             unique_values_y_axis = data_helper_obj.get_unique_values_y_axis(
-                    data_file, post_data)
+                data_file, post_data)
             graph_data = data_object.get_column_data_for_graph_unique_y_values(
-                    data_file, post_data, unique_values, unique_values_y_axis)
-            return jsonify(data_graph_information)
-        if post_data['payload']['aggregateValue']:
-            graph_data = data_object.get_column_data_for_graph_aggregate(
                 data_file, post_data, unique_values, unique_values_y_axis)
-            graph_data = data_helper_obj.sort_graph_data(graph_data)
-            data_graph_information['graph_data'] = graph_data
-            data_graph_information['show_user_warning'] = False
-            data_graph_information['show_graph'] = True
-            data_graph_information['show_chart_controls'] = True
-        # else:
-        #     data_graph_information['show_user_warning'] = True
-        # else:
-        #     if post_data['payload']['uniqueValue'] == 'true':
-        #         unique_values_y_axis = data_helper_obj.get_unique_values_y_axis(
-        #             data_file, post_data)
-        #         graph_data = data_object.get_column_data_for_graph_unique_y_values(
-        #             data_file, post_data, unique_values, unique_values_y_axis)
-        #     else:
-        #         graph_data = data_object.get_column_data_for_graph(
-        #             data_file, post_data, unique_values)
-        #     data_graph_information['show_user_warning'] = False
+            return jsonify(data_graph_information)
+        # if post_data['payload']['aggregateValue']:
+        #     graph_data = data_object.get_column_data_for_graph_aggregate(
+        #         data_file, post_data, unique_values, unique_values_y_axis)
+        #     graph_data = data_helper_obj.sort_graph_data(graph_data)
         #     data_graph_information['graph_data'] = graph_data
+        #     data_graph_information['show_user_warning'] = False
         #     data_graph_information['show_graph'] = True
         #     data_graph_information['show_chart_controls'] = True
+        #     return jsonify(data_graph_information)
         return jsonify(data_graph_information)
-
 
 if __name__ == '__main__':
     app.run()
