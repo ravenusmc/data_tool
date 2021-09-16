@@ -179,6 +179,7 @@ export default {
       "changeChartColorAction",
       "changeAggregateValue",
       "changeGraphData",
+      "fetchGraph"
     ]),
     graphTypeSelected() {
       // This needs to be fixed...don't need payload here
@@ -210,26 +211,22 @@ export default {
       this.changeGraphData(payload);
     },
     changeYAxisColumnNumber() {
-      console.log(this.yAxisCountNumber)
-      const payload = {
-        YAxisCountNumber: this.yAxisCountNumber,
-        fromYButton: true,
-      };
-      // if (this.$store.getters["data/xAxisValue"] == "") {
-      //   alert("Please put a column in for the x-value");
-      // } else if (this.$store.getters["data/yAxisValue"] == "") {
-      //   alert("Please put a column in for the y-value");
-      // } else {
-      //   const payload = {
-      //     fileName: this.$store.getters["data/fileName"],
-      //     xAxisValue: this.$store.getters["data/xAxisValue"],
-      //     yAxisValue: this.$store.getters["data/yAxisValue"],
-      //     yAxisValue: this.$store.getters["data/yAxisValue"],
-      //     uniqueValue: this.$store.getters["data/uniqueValue"],
-      //     aggregateValue: this.$store.getters["data/aggregateValue"],
-      //   };
-      //   this.fetchGraph({ payload });
-      // }
+      if (this.$store.getters["data/xAxisValue"] == "") {
+        alert("Please put a column in for the x-value");
+      } else if (this.$store.getters["data/yAxisValue"] == "") {
+        alert("Please put a column in for the y-value");
+      } else {
+        const payload = {
+          fileName: this.$store.getters["data/fileName"],
+          xAxisValue: this.$store.getters["data/xAxisValue"],
+          yAxisValue: this.$store.getters["data/yAxisValue"],
+          yAxisValue: this.$store.getters["data/yAxisValue"],
+          uniqueValue: this.$store.getters["data/uniqueValue"],
+          aggregateValue: this.$store.getters["data/aggregateValue"],
+          yAxisCountNumber: this.yAxisCountNumber,
+        };
+        this.fetchGraph({ payload });
+      }
     },
   },
   watch: {

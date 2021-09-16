@@ -66,6 +66,7 @@ const actions = {
 	},
 
 	fetchGraph: ({ commit, dispatch }, payload) => {
+		console.log(payload);
 		const path = 'http://localhost:5000/build_data_graph';
 		axios.post(path, payload)
 			.then((res) => {
