@@ -128,7 +128,7 @@
             type="submit"
             v-on:click="changeYAxisColumnNumber()"
             class="btn btn-outline-primary"
-            v-tooltip.top="msg"
+            v-tooltip.top="yAxisColumnNumberMSG"
           >
             Change Y Axis Column Number
           </button>
@@ -138,7 +138,7 @@
     </section>
   </div>
 </template>
-Logistics Officer, 2009-2014, Central Intelligence Agency (CIA)
+
 <script>
 import { mapGetters, mapActions } from "vuex";
 
@@ -162,6 +162,14 @@ export default {
         "how many columns you" +
         "</br>" +
         "want on the x-axis.",
+      yAxisColumnNumberMSG:
+        "Here you can select" +
+        "</br>" +
+        "how many columns you" +
+        "</br>" +
+        "want on the y-axis" +
+        "</br>" +
+        "when aggregate is selected.",
     };
   }, // End of Data
   computed: {
@@ -179,7 +187,7 @@ export default {
       "changeChartColorAction",
       "changeAggregateValue",
       "changeGraphData",
-      "fetchGraph"
+      "fetchGraph",
     ]),
     graphTypeSelected() {
       // This needs to be fixed...don't need payload here

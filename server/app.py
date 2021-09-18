@@ -167,9 +167,6 @@ def build_data_graph():
         if (len(unique_values_y_axis) > 1) and (post_data['payload']['aggregateValue'] == False):
             data_graph_information['show_aggr_warning'] = True
         unique_values_y_axis = unique_values_y_axis[0:int(post_data['payload']['yAxisCountNumber'])]
-        print(unique_values_y_axis)
-        print('-----')
-        print(post_data['payload']['yAxisCountNumber'])
         # Getting graph data
         graph_data = data_object.get_column_data_for_graph(
             data_file, post_data, unique_values)
