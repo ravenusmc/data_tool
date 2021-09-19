@@ -133,6 +133,17 @@
             Change Y Axis Column Number
           </button>
         </div>
+        <div>
+          <label for="two">H-Axis Label:</label>
+          <input type="number" id="title" v-model="yAxisCountNumber" />
+          <button
+            type="submit"
+            v-on:click="changeYAxisColumnNumber()"
+            class="btn btn-outline-primary"
+          >
+            Change H-Axis Label
+          </button>
+        </div>
       </section>
       <!-- End change graph color div -->
     </section>
