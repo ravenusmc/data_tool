@@ -20,6 +20,8 @@ const state = {
 	uniqueValue: true,
 	aggregateValue: false,
 	chartTitle: "",
+	hAxisName: "",
+	vAxisName: "",
 	chartColor: "blue",
 	showChartControls: false,
 	hideControlsBasedOnAggregateValueSelected: true,
@@ -44,6 +46,8 @@ const getters = {
 	showChartControls: state => state.showChartControls,
 	hideControlsBasedOnAggregateValueSelected: state => state.hideControlsBasedOnAggregateValueSelected,
 	tempGraphData: state => state.tempGraphData,
+	hAxisName: state => state.hAxisName,
+	vAxisName: state => state.vAxisName,
 };
 
 const actions = {
@@ -147,6 +151,14 @@ const actions = {
 		commit("setChartColor", payload);
 	},
 
+	changeHAxisName: ({ commit }, payload) => {
+		commit("setHAxisName", payload)
+	},
+
+	changeVAxisName: ({ commit }, payload) => {
+		commit("setVAxisName", payload)
+	},
+
 };
 
 const mutations = {
@@ -221,7 +233,15 @@ const mutations = {
 
 	setAggregateValueControls: (state, data) => {
 		state.hideControlsBasedOnAggregateValueSelected = data
-	}
+	},
+
+	setHAxisName: (state, data) => {
+		state.hAxisName = data
+	},
+
+	setVAxisName: (state, data) => {
+		state.vAxisName = data
+	},
 
 };
 

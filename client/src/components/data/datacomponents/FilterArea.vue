@@ -135,13 +135,24 @@
         </div>
         <div>
           <label for="two">H-Axis Label:</label>
-          <input type="number" id="title" v-model="yAxisCountNumber" />
+          <input type="text" id="title" v-model="hAxisName" />
           <button
             type="submit"
-            v-on:click="changeYAxisColumnNumber()"
+            v-on:click="changeHAxisTitle()"
             class="btn btn-outline-primary"
           >
             Change H-Axis Label
+          </button>
+        </div>
+        <div>
+          <label for="two">V-Axis Label:</label>
+          <input type="text" id="title" v-model="vAxisName" />
+          <button
+            type="submit"
+            v-on:click="changeVAxisTitle()"
+            class="btn btn-outline-primary"
+          >
+            Change V-Axis Label
           </button>
         </div>
       </section>
@@ -161,6 +172,8 @@ export default {
       uniqueValue: "",
       xAxisCountNumber: 5,
       yAxisCountNumber: 4,
+      hAxisName: "",
+      vAxisName: "",
       title: "",
       color: "blue",
       colors: ["blue", "red", "black", "orange"],
@@ -199,6 +212,8 @@ export default {
       "changeAggregateValue",
       "changeGraphData",
       "fetchGraph",
+      "changeHAxisName",
+      "changeVAxisName",
     ]),
     graphTypeSelected() {
       // This needs to be fixed...don't need payload here
@@ -246,6 +261,12 @@ export default {
         };
         this.fetchGraph({ payload });
       }
+    },
+    changeHAxisTitle() {
+      this.changeHAxisName(this.hAxisName);
+    },
+    changeVAxisTitle() {
+      this.changeVAxisName(this.vAxisName);
     },
   },
   watch: {

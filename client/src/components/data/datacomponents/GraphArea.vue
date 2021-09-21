@@ -56,14 +56,13 @@ export default {
       "showGraph",
       "graphType",
       "chartTitle",
+      "hAxisName",
+      "vAxisName",
       "chartColor",
       "tempGraphData"
     ]),
   },
   methods: {
-    setXAxisOnGraph() {
-      this.chartOptionsOne.hAxis.title = this.xAxisValue;
-    },
     setYAxisOnGraph() {
       this.chartOptionsOne.vAxis.title = this.yAxisValue;
     },
@@ -76,20 +75,26 @@ export default {
     changeChartColor() {
       this.chartOptionsOne.colors = [this.chartColor];
     },
+    changeHAxisName(){
+      this.chartOptionsOne.hAxis.title = this.hAxisName;
+    },
+    changeVAxisName(){
+      this.chartOptionsOne.vAxis.title = this.vAxisName;
+    },
   },
   watch: {
-    xAxisValue: {
+    hAxisName: {
       handler(value) {
         if (value) {
-          this.setXAxisOnGraph();
+          this.changeHAxisName();
         }
       },
       immediate: true,
     },
-    yAxisValue: {
+    vAxisName: {
       handler(value) {
         if (value) {
-          this.setYAxisOnGraph();
+          this.changeVAxisName();
         }
       },
       immediate: true,
