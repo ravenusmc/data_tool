@@ -13,24 +13,25 @@
         />
         <label for="one">Bar Chart</label>
         <br />
-        <input
-          @change="graphTypeSelected()"
-          type="radio"
-          id="two"
-          value="PieChart"
-          v-model="graphType"
-        />
         <div v-if="hideControlsBasedOnAggregateValueSelected">
-          <label for="two">Pie Chart</label>
-          <br />
           <input
             @change="graphTypeSelected()"
             type="radio"
             id="two"
-            value="ColumnChart"
+            value="PieChart"
             v-model="graphType"
           />
+          <label for="two">Pie Chart</label>
         </div>
+        <br />
+        <input
+          @change="graphTypeSelected()"
+          type="radio"
+          id="two"
+          value="ColumnChart"
+          v-model="graphType"
+        />
+
         <label for="two">Column Chart</label>
       </div>
       <!-- End chart type div -->
@@ -289,6 +290,7 @@ export default {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  height: 250px;
 }
 
 .x-axis {

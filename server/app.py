@@ -146,7 +146,7 @@ def fetch_File_Information():
             # data_information['file_data_types'] = column_names_and_data_types
         return jsonify(data_information)
 
-
+# This entire method needs to be rewritten or made clearer...
 @app.route('/build_data_graph', methods=['GET', 'POST'])
 def build_data_graph():
     if request.method == 'POST':
@@ -166,7 +166,8 @@ def build_data_graph():
         data_graph_information['show_aggr_warning'] = False
         if (len(unique_values_y_axis) > 1) and (post_data['payload']['aggregateValue'] == False):
             data_graph_information['show_aggr_warning'] = True
-        unique_values_y_axis = unique_values_y_axis[0:int(post_data['payload']['yAxisCountNumber'])]
+        unique_values_y_axis = unique_values_y_axis[0:int(
+            post_data['payload']['yAxisCountNumber'])]
         # Getting graph data
         graph_data = data_object.get_column_data_for_graph(
             data_file, post_data, unique_values)
