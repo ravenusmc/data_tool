@@ -1,3 +1,73 @@
+<div >
+        <h6 > Pick Chart Type: < /h6 >
+        <input
+          @change = "graphTypeSelected()"
+          type = "radio"
+          id = "one"
+          value = "BarChart"
+          v-model = "graphType"
+        / >
+        <label for = "one" > Bar Chart < /label >
+        <br / >
+        <div v-if = "hideControlsBasedOnAggregateValueSelected" >
+          <input
+            @change = "graphTypeSelected()"
+            type = "radio"
+            id = "two"
+            value = "PieChart"
+            v-model = "graphType"
+          / >
+          <label for = "two" > Pie Chart < /label >
+        </div >
+        <br / >
+        <input
+          @change = "graphTypeSelected()"
+          type = "radio"
+          id = "two"
+          value = "ColumnChart"
+          v-model = "graphType"
+        / >
+
+        <label for = "two" > Column Chart < /label >
+      </div>
+      <!-- End chart type div -->
+      <!-- unique values div -->
+      <div>
+        <h6>Unique Values: (Y - Axis)</h6>
+        <input
+          @change="uniqueValueSelected()"
+          type="radio"
+          id="one"
+          value="true"
+          v-model="uniqueValue"
+        />
+        <label for="one">Unique Values - Y Axis</label>
+        <br />
+        <input
+          @change="uniqueValueSelected()"
+          type="radio"
+          id="two"
+          value="False"
+          v-model="uniqueValue"
+        />
+        <label for="two">All Values - Y Axis</label>
+      </div>
+      <!-- End unique values div -->
+      <!-- Aggregate div -->
+      <div>
+        <h6>Use Aggregate Value</h6>
+        <input
+          @change="aggregateValueSelected()"
+          type="checkbox"
+          id="checkbox"
+          value="true"
+          v-model="aggregateValueChecked"
+        />
+        <label for="checkbox">Aggregate Value Y Axis</label>
+      </div>
+
+
+
 # else:
 #     data_graph_information['show_user_warning'] = True
 # else:
