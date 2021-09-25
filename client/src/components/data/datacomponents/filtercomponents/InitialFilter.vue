@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>
+    <div class='filter-area'>
       <h6>Pick Chart Type:</h6>
       <input
         @change="graphTypeSelected()"
@@ -74,7 +74,7 @@
 import { mapGetters, mapActions } from "vuex";
 
 export default {
-	name: "InitialFilter",
+  name: "InitialFilter",
   data() {
     return {
       graphType: "",
@@ -110,4 +110,12 @@ export default {
 </script>
 
 <style scoped>
+.filter-area {
+  border-bottom: 2px solid black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+}
 </style>

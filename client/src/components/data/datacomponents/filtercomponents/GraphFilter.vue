@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section v-if="chartControls" class="chart_controls">
+    <section v-if="chartControls" class="chart_controls filter-area">
       <!-- change graph Title div -->
       <div>
         <input
@@ -211,4 +211,12 @@ export default {
 </script>
 
 <style scoped>
+.filter-area {
+  border-bottom: 2px solid black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+}
 </style>
