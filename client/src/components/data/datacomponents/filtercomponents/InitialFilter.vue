@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class='filter-area'>
+    <div class="filter-area">
       <h6>Pick Chart Type:</h6>
       <input
         @change="graphTypeSelected()"
@@ -111,6 +111,7 @@ export default {
 
 <style scoped>
 .filter-area {
+  border: 2px solid red;
   border-bottom: 2px solid black;
   display: flex;
   flex-direction: row;
