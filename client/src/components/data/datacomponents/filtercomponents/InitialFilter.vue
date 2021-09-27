@@ -31,41 +31,41 @@
       />
 
       <label for="two">Column Chart</label>
-    </div>
-    <!-- End chart type div -->
-    <!-- unique values div -->
-    <div>
-      <h6>Unique Values: (Y - Axis)</h6>
-      <input
-        @change="uniqueValueSelected()"
-        type="radio"
-        id="one"
-        value="true"
-        v-model="uniqueValue"
-      />
-      <label for="one">Unique Values - Y Axis</label>
-      <br />
-      <input
-        @change="uniqueValueSelected()"
-        type="radio"
-        id="two"
-        value="False"
-        v-model="uniqueValue"
-      />
-      <label for="two">All Values - Y Axis</label>
-    </div>
-    <!-- End unique values div -->
-    <!-- Aggregate div -->
-    <div>
-      <h6>Use Aggregate Value</h6>
-      <input
-        @change="aggregateValueSelected()"
-        type="checkbox"
-        id="checkbox"
-        value="true"
-        v-model="aggregateValueChecked"
-      />
-      <label for="checkbox">Aggregate Value Y Axis</label>
+      <!-- End chart type div -->
+      <!-- unique values div -->
+      <div>
+        <h6>Unique Values: (Y - Axis)</h6>
+        <input
+          @change="uniqueValueSelected()"
+          type="radio"
+          id="one"
+          value="true"
+          v-model="uniqueValue"
+        />
+        <label for="one">Unique Values - Y Axis</label>
+        <br />
+        <input
+          @change="uniqueValueSelected()"
+          type="radio"
+          id="two"
+          value="False"
+          v-model="uniqueValue"
+        />
+        <label for="two">All Values - Y Axis</label>
+      </div>
+      <!-- End unique values div -->
+      <!-- Aggregate div -->
+      <div>
+        <h6>Use Aggregate Value</h6>
+        <input
+          @change="aggregateValueSelected()"
+          type="checkbox"
+          id="checkbox"
+          value="true"
+          v-model="aggregateValueChecked"
+        />
+        <label for="checkbox">Aggregate Value Y Axis</label>
+      </div>
     </div>
   </div>
 </template>
@@ -112,7 +112,6 @@ export default {
 <style scoped>
 .filter-area {
   border: 2px solid red;
-  border-bottom: 2px solid black;
   display: flex;
   flex-direction: row;
   align-items: center;
