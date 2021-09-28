@@ -1,39 +1,40 @@
 <template>
   <div>
     <div class="filter-area">
-      <h6>Pick Chart Type:</h6>
-      <input
-        @change="graphTypeSelected()"
-        type="radio"
-        id="one"
-        value="BarChart"
-        v-model="graphType"
-      />
-      <label for="one">Bar Chart</label>
-      <br />
-      <div v-if="hideControlsBasedOnAggregateValueSelected">
+      <div class="filter-fix">
+        <h6>Pick Chart Type:</h6>
+        <input
+          @change="graphTypeSelected()"
+          type="radio"
+          id="one"
+          value="BarChart"
+          v-model="graphType"
+        />
+        <label for="one">Bar Chart</label>
+        <br />
+        <div v-if="hideControlsBasedOnAggregateValueSelected">
+          <input
+            @change="graphTypeSelected()"
+            type="radio"
+            id="two"
+            value="PieChart"
+            v-model="graphType"
+          />
+          <label for="two">Pie Chart</label>
+        </div>
         <input
           @change="graphTypeSelected()"
           type="radio"
           id="two"
-          value="PieChart"
+          value="ColumnChart"
           v-model="graphType"
         />
-        <label for="two">Pie Chart</label>
-      </div>
-      <br />
-      <input
-        @change="graphTypeSelected()"
-        type="radio"
-        id="two"
-        value="ColumnChart"
-        v-model="graphType"
-      />
 
-      <label for="two">Column Chart</label>
-      <!-- End chart type div -->
-      <!-- unique values div -->
-      <div>
+        <label for="two">Column Chart</label>
+        <!-- End chart type div -->
+        <!-- unique values div -->
+      </div>
+      <div class="filter-fix">
         <h6>Unique Values: (Y - Axis)</h6>
         <input
           @change="uniqueValueSelected()"
@@ -55,7 +56,7 @@
       </div>
       <!-- End unique values div -->
       <!-- Aggregate div -->
-      <div>
+      <div class="filter-fix">
         <h6>Use Aggregate Value</h6>
         <input
           @change="aggregateValueSelected()"
@@ -117,5 +118,9 @@ export default {
   align-items: center;
   justify-content: center;
   height: 250px;
+}
+
+.filter-fix {
+  margin: 10px;
 }
 </style>
