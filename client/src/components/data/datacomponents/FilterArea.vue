@@ -24,11 +24,12 @@ export default {
 <style scoped>
 .filter-area {
   border-bottom: 2px solid black;
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* flex-direction: row;
   align-items: center;
-  justify-content: center;
-  height: 250px;
+  justify-content: center; */
+  /* height: 350px; */
 }
 
 .x-axis {
@@ -36,8 +37,5 @@ export default {
   height: 80px;
 }
 
-.chart_controls {
-  border: 2px solid red;
-}
 </style>
 

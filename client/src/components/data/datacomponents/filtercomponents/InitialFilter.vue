@@ -112,7 +112,6 @@ export default {
 
 <style scoped>
 .filter-area {
-  border: 2px solid red;
   display: flex;
   flex-direction: row;
   align-items: center;
