@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section v-if="chartControls" class="chart_controls filter-area">
+    <section v-if="chartControls" class="chart_controls graph-filter-area">
       <!-- change graph Title div -->
       <div class="chart-controls-one">
         <div class="align">
@@ -13,9 +13,9 @@
           <button
             type="submit"
             v-on:click="makeChartTitle()"
-            class="btn btn-outline-primary"
+            class="btn btn-outline-primary button-fix"
           >
-            Change Chart Title
+            Submit
           </button>
         </div>
         <!-- End change graph Title div -->
@@ -30,24 +30,26 @@
           <button
             type="submit"
             v-on:click="changeChartColor()"
-            class="btn btn-outline-primary"
+            class="btn btn-outline-primary button-fix"
           >
-            Change Chart Color
+            Submit
           </button>
         </div>
-        <div>
-          <label for="two"># of columns for X-Axis:</label>
-          <div class="tooltip">
-            <span class="tooltiptext">Tooltip text</span>
+        <div class="alignment-fix">
+          <div>
+            <label for="two"># of columns for X-Axis:</label>
+            <div class="tooltip">
+              <span class="tooltiptext">Tooltip text</span>
+            </div>
+            <input type="number" id="title" v-model="xAxisCountNumber" />
           </div>
-          <input type="number" id="title" v-model="xAxisCountNumber" />
           <button
             type="submit"
             v-on:click="changeXAxisColumnNumber()"
-            class="btn btn-outline-primary"
+            class="btn btn-outline-primary button-fix"
             v-tooltip.top="msg"
           >
-            Change X Axis Column #
+            Submit
           </button>
         </div>
         <div>
@@ -59,23 +61,23 @@
           <button
             type="submit"
             v-on:click="changeYAxisColumnNumber()"
-            class="btn btn-outline-primary"
+            class="btn btn-outline-primary button-fix"
             v-tooltip.top="yAxisColumnNumberMSG"
           >
-            Change Y Axis Column #
+            Submit
           </button>
         </div>
       </div>
-      <div class="chart-controls-three">
-        <div>
+      <div>
+        <div class="h-axis-fix">
           <label for="two">H-Axis Label:</label>
           <input type="text" id="title" v-model="hAxisName" />
           <button
             type="submit"
             v-on:click="changeHAxisTitle()"
-            class="btn btn-outline-primary"
+            class="btn btn-outline-primary button-fix"
           >
-            Change H-Axis Label
+            Submit
           </button>
         </div>
         <div>
@@ -84,9 +86,9 @@
           <button
             type="submit"
             v-on:click="changeVAxisTitle()"
-            class="btn btn-outline-primary"
+            class="btn btn-outline-primary button-fix"
           >
-            Change V-Axis Label
+            Submit
           </button>
         </div>
       </div>
@@ -215,12 +217,9 @@ export default {
 </script>
 
 <style scoped>
-.filter-area {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid red;
+.graph-filter-area {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 450px));
 }
 
 .align {
@@ -229,4 +228,21 @@ export default {
   align-items: center;
   margin: 10px;
 }
+
+.button-fix {
+  margin-left: 3%;
+}
+
+.h-axis-fix {
+  margin-bottom: 2%;
+}
+
+/* .alignment-fix {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  border: 2px solid red;
+  padding: 20px;
+} */
 </style>

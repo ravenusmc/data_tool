@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="filter-area">
+    <div class="initial-filter-area">
       <div class="filter-fix">
         <h6>Pick Chart Type:</h6>
         <input
@@ -111,12 +111,9 @@ export default {
 </script>
 
 <style scoped>
-.filter-area {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  height: 250px;
+.initial-filter-area {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 250px));
 }
 
 .filter-fix {
