@@ -39,7 +39,7 @@ export default {
           title: "",
         },
         legend: { position: "top" },
-        colors: ["red"],
+        colors: ["green", "#0891F5"],
         height: 650,
         animation: {
           duration: 1000,

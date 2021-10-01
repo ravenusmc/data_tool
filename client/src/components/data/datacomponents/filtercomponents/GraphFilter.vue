@@ -237,12 +237,4 @@ export default {
   margin-bottom: 2%;
 }
 
-/* .alignment-fix {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  border: 2px solid red;
-  padding: 20px;
-} */
 </style>

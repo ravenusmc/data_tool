@@ -28,10 +28,5 @@ export default {
   grid-template-columns: repeat(auto-fit, minmax(150px, 500px));
   justify-content: center;
 }
-
-.x-axis {
-  border: 2px solid red;
-  height: 80px;
-}
 </style>
 

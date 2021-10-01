@@ -22,7 +22,7 @@ const state = {
 	chartTitle: "",
 	hAxisName: "",
 	vAxisName: "",
-	chartColor: "blue",
+	chartColor: "",
 	showChartControls: false,
 	hideControlsBasedOnAggregateValueSelected: true,
 };
