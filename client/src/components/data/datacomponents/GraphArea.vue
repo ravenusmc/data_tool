@@ -30,22 +30,6 @@ export default {
   data() {
     return {
       typeOne: "",
-      chartOptionsOne: {
-        title: "",
-        hAxis: {
-          title: "",
-        },
-        vAxis: {
-          title: "",
-        },
-        legend: { position: "top" },
-        colors: ["green", "#0891F5"],
-        height: 650,
-        animation: {
-          duration: 1000,
-          easing: "linear",
-        },
-      },
     };
   }, // End of Data
   computed: {
@@ -59,7 +43,8 @@ export default {
       "hAxisName",
       "vAxisName",
       "chartColor",
-      "tempGraphData"
+      "tempGraphData",
+      "chartOptionsOne"
     ]),
   },
   methods: {

@@ -25,6 +25,22 @@ const state = {
 	chartColor: "",
 	showChartControls: false,
 	hideControlsBasedOnAggregateValueSelected: true,
+	chartOptionsOne: {
+		title: "",
+		hAxis: {
+			title: "",
+		},
+		vAxis: {
+			title: "",
+		},
+		legend: { position: "top" },
+		colors: [],
+		height: 650,
+		animation: {
+			duration: 1000,
+			easing: "linear",
+		},
+	},
 };
 
 const getters = {
@@ -48,6 +64,7 @@ const getters = {
 	tempGraphData: state => state.tempGraphData,
 	hAxisName: state => state.hAxisName,
 	vAxisName: state => state.vAxisName,
+	chartOptionsOne: state => state.chartOptionsOne,
 };
 
 const actions = {
@@ -69,7 +86,7 @@ const actions = {
 			})
 	},
 
-	fetchGraph: ({ commit, dispatch }, payload) => {
+	fetchGraph: ({ commit, getters, dispatch }, payload) => {
 		const path = 'http://localhost:5000/build_data_graph';
 		axios.post(path, payload)
 			.then((res) => {
@@ -85,79 +102,86 @@ const actions = {
 						alert(alertMessageAggr)
 					}
 				} else {
+					const colors = ["red", "blue", "orange", "yellow", "purple",
+						"green", "#0891F5", "#641684", "#F90F24", "#2AC102"]
+					let data_length = res.data.graph_data.length - 1
+					let chart_colors = colors.slice(0,data_length)
+					console.log(getters.chartOptionsOne.colors);
+					getters.chartOptionsOne.colors = chart_colors
+					console.log(getters.chartOptionsOne.colors);
 					commit("setGraphData", res.data.graph_data);
 					commit("setShowGraph", res.data.show_graph);
 					commit("setShowChartControls", res.data.show_chart_controls);
 					dispatch('changeGraphData', res.data.graph_data)
-				}
-			})
-			.catch(error => {
-				console.log(error);
-			})
+	}
+})
+			.catch (error => {
+	console.log(error);
+})
 	},
 
-	changeGraphData: ({ commit, getters }, payload) => {
-		let tempGraphData = getters.graphData
-		if (payload.fromButton) {
-			tempGraphData = tempGraphData.slice(0, payload.xAxisCountNumber);
-			commit('setTempGraphData', tempGraphData)
-		} else if (payload.show_user_warning === true) {
-			tempGraphData = tempGraphData.slice(0, 6);
-			commit('setTempGraphData', tempGraphData);
-		}
-		else {
-			commit('setTempGraphData', tempGraphData)
-		}
-	},
+changeGraphData: ({ commit, getters }, payload) => {
+	let tempGraphData = getters.graphData
+	if (payload.fromButton) {
+		tempGraphData = tempGraphData.slice(0, payload.xAxisCountNumber);
+		commit('setTempGraphData', tempGraphData)
+	} else if (payload.show_user_warning === true) {
+		tempGraphData = tempGraphData.slice(0, 6);
+		commit('setTempGraphData', tempGraphData);
+	}
+	else {
+		commit('setTempGraphData', tempGraphData)
+	}
+},
 
 	updateXAxis: ({ commit }, payload) => {
 		commit("updateXAxis", payload);
 	},
 
-	updateYAxis: ({ commit }, payload) => {
-		commit("updateYAxis", payload);
-	},
+		updateYAxis: ({ commit }, payload) => {
+			commit("updateYAxis", payload);
+		},
 
-	updateInitialColumns: ({ commit }, payload) => {
-		commit("setInitialColumns", payload);
-	},
+			updateInitialColumns: ({ commit }, payload) => {
+				commit("setInitialColumns", payload);
+			},
 
-	updateXAxisValue: ({ commit }, payload) => {
-		commit("setXAxisValue", payload);
-	},
+				updateXAxisValue: ({ commit }, payload) => {
+					commit("setXAxisValue", payload);
+				},
 
-	updateYAxisValue: ({ commit }, payload) => {
-		commit("setYAxisValue", payload);
-	},
+					updateYAxisValue: ({ commit }, payload) => {
+						commit("setYAxisValue", payload);
+					},
 
-	changeGraphType: ({ commit }, payload) => {
-		commit("setGraphType", payload);
-	},
+						changeGraphType: ({ commit }, payload) => {
+							commit("setGraphType", payload);
+						},
 
-	changeUniqueValue: ({ commit }, payload) => {
-		commit("setUniqueValue", payload);
-	},
+							changeUniqueValue: ({ commit }, payload) => {
+								commit("setUniqueValue", payload);
+							},
 
-	changeAggregateValue: ({ commit, getters }, payload) => {
-		commit('setAggregateValue', payload);
-		getters.hideControlsBasedOnAggregateValueSelected ? commit("setAggregateValueControls", false) : commit("setAggregateValueControls", true);
-	},
+								changeAggregateValue: ({ commit, getters }, payload) => {
+									commit('setAggregateValue', payload);
+									getters.hideControlsBasedOnAggregateValueSelected ? commit("setAggregateValueControls", false) : commit("setAggregateValueControls", true);
+								},
 
-	changeChartTitle: ({ commit }, payload) => {
-		commit("setChartTitle", payload);
-	},
+									changeChartTitle: ({ commit }, payload) => {
+										commit("setChartTitle", payload);
+									},
 
-	changeChartColorAction: ({ commit }, payload) => {
-		commit("setChartColor", payload);
-	},
+										changeChartColorAction: ({ commit }, payload) => {
+											commit("setChartColor", payload);
+										},
 
-	changeHAxisName: ({ commit }, payload) => {
-		commit("setHAxisName", payload)
-	},
+											changeHAxisName: ({ commit }, payload) => {
+												commit("setHAxisName", payload)
+											},
 
-	changeVAxisName: ({ commit }, payload) => {
-		commit("setVAxisName", payload)
-	},
+												changeVAxisName: ({ commit }, payload) => {
+													commit("setVAxisName", payload)
+												},
 
 };
 
