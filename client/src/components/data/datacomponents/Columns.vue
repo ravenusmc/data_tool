@@ -126,6 +126,7 @@ export default {
           yAxisValue: this.$store.getters["data/yAxisValue"],
           uniqueValue: this.$store.getters["data/uniqueValue"],
           aggregateValue: this.$store.getters["data/aggregateValue"],
+          graphType: this.$store.getters["data/graphType"],     
           yAxisCountNumber: 3,
         };
         this.fetchGraph({ payload });

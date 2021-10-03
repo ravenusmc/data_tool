@@ -101,87 +101,95 @@ const actions = {
 						const alertMessageAggr = 'The Y Axis has multiple values that you may want to use the aggregate check box'
 						alert(alertMessageAggr)
 					}
-				} else {
+				}
+				else {
 					const colors = ["red", "blue", "orange", "yellow", "purple",
 						"green", "#0891F5", "#641684", "#F90F24", "#2AC102"]
+					if (res.data.graphType != "Pie") {
+						res.data.graph_data[0].push({ role: 'style' })
+						for (let i = 1; i < res.data.graph_data.length; i++) {
+							let color = colors[i - 1]
+							let graph_color = `color: ${color}`
+							res.data.graph_data[i].push(graph_color)
+						}
+					}
 					let data_length = res.data.graph_data.length - 1
-					let chart_colors = colors.slice(0,data_length)
-					console.log(getters.chartOptionsOne.colors);
+					let chart_colors = colors.slice(0, data_length)
 					getters.chartOptionsOne.colors = chart_colors
-					console.log(getters.chartOptionsOne.colors);
+					console.log(res.data.graph_data)
 					commit("setGraphData", res.data.graph_data);
 					commit("setShowGraph", res.data.show_graph);
 					commit("setShowChartControls", res.data.show_chart_controls);
 					dispatch('changeGraphData', res.data.graph_data)
-	}
-})
-			.catch (error => {
-	console.log(error);
-})
+				}
+			})
+			.catch(error => {
+				console.log(error);
+			})
 	},
 
-changeGraphData: ({ commit, getters }, payload) => {
-	let tempGraphData = getters.graphData
-	if (payload.fromButton) {
-		tempGraphData = tempGraphData.slice(0, payload.xAxisCountNumber);
-		commit('setTempGraphData', tempGraphData)
-	} else if (payload.show_user_warning === true) {
-		tempGraphData = tempGraphData.slice(0, 6);
-		commit('setTempGraphData', tempGraphData);
-	}
-	else {
-		commit('setTempGraphData', tempGraphData)
-	}
-},
+	changeGraphData: ({ commit, getters }, payload) => {
+		let tempGraphData = getters.graphData
+		if (payload.fromButton) {
+			tempGraphData = tempGraphData.slice(0, payload.xAxisCountNumber);
+			commit('setTempGraphData', tempGraphData)
+		} else if (payload.show_user_warning === true) {
+			tempGraphData = tempGraphData.slice(0, 6);
+			commit('setTempGraphData', tempGraphData);
+		}
+		else {
+			commit('setTempGraphData', tempGraphData)
+		}
+	},
 
 	updateXAxis: ({ commit }, payload) => {
 		commit("updateXAxis", payload);
 	},
 
-		updateYAxis: ({ commit }, payload) => {
-			commit("updateYAxis", payload);
-		},
+	updateYAxis: ({ commit }, payload) => {
+		commit("updateYAxis", payload);
+	},
 
-			updateInitialColumns: ({ commit }, payload) => {
-				commit("setInitialColumns", payload);
-			},
+	updateInitialColumns: ({ commit }, payload) => {
+		commit("setInitialColumns", payload);
+	},
 
-				updateXAxisValue: ({ commit }, payload) => {
-					commit("setXAxisValue", payload);
-				},
+	updateXAxisValue: ({ commit }, payload) => {
+		commit("setXAxisValue", payload);
+	},
 
-					updateYAxisValue: ({ commit }, payload) => {
-						commit("setYAxisValue", payload);
-					},
+	updateYAxisValue: ({ commit }, payload) => {
+		commit("setYAxisValue", payload);
+	},
 
-						changeGraphType: ({ commit }, payload) => {
-							commit("setGraphType", payload);
-						},
+	changeGraphType: ({ commit }, payload) => {
+		commit("setGraphType", payload);
+	},
 
-							changeUniqueValue: ({ commit }, payload) => {
-								commit("setUniqueValue", payload);
-							},
+	changeUniqueValue: ({ commit }, payload) => {
+		commit("setUniqueValue", payload);
+	},
 
-								changeAggregateValue: ({ commit, getters }, payload) => {
-									commit('setAggregateValue', payload);
-									getters.hideControlsBasedOnAggregateValueSelected ? commit("setAggregateValueControls", false) : commit("setAggregateValueControls", true);
-								},
+	changeAggregateValue: ({ commit, getters }, payload) => {
+		commit('setAggregateValue', payload);
+		getters.hideControlsBasedOnAggregateValueSelected ? commit("setAggregateValueControls", false) : commit("setAggregateValueControls", true);
+	},
 
-									changeChartTitle: ({ commit }, payload) => {
-										commit("setChartTitle", payload);
-									},
+	changeChartTitle: ({ commit }, payload) => {
+		commit("setChartTitle", payload);
+	},
 
-										changeChartColorAction: ({ commit }, payload) => {
-											commit("setChartColor", payload);
-										},
+	changeChartColorAction: ({ commit }, payload) => {
+		commit("setChartColor", payload);
+	},
 
-											changeHAxisName: ({ commit }, payload) => {
-												commit("setHAxisName", payload)
-											},
+	changeHAxisName: ({ commit }, payload) => {
+		commit("setHAxisName", payload)
+	},
 
-												changeVAxisName: ({ commit }, payload) => {
-													commit("setVAxisName", payload)
-												},
+	changeVAxisName: ({ commit }, payload) => {
+		commit("setVAxisName", payload)
+	},
 
 };
 
