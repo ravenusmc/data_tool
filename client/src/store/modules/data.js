@@ -116,7 +116,6 @@ const actions = {
 					let data_length = res.data.graph_data.length - 1
 					let chart_colors = colors.slice(0, data_length)
 					getters.chartOptionsOne.colors = chart_colors
-					console.log(res.data.graph_data)
 					commit("setGraphData", res.data.graph_data);
 					commit("setShowGraph", res.data.show_graph);
 					commit("setShowChartControls", res.data.show_chart_controls);

@@ -29,10 +29,7 @@
           value="ColumnChart"
           v-model="graphType"
         />
-
         <label for="two">Column Chart</label>
-        <!-- End chart type div -->
-        <!-- unique values div -->
       </div>
       <div class="filter-fix">
         <h6>Unique Values: (Y - Axis)</h6>
@@ -54,8 +51,6 @@
         />
         <label for="two">All Values - Y Axis</label>
       </div>
-      <!-- End unique values div -->
-      <!-- Aggregate div -->
       <div class="filter-fix">
         <h6>Use Aggregate Value</h6>
         <input
