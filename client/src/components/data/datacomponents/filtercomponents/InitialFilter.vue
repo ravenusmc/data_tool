@@ -1,27 +1,8 @@
 <template>
   <div>
     <div class="initial-filter-area">
-      <ChartTypes/>
-      <div class="filter-fix">
-        <h6>Unique Values: (Y - Axis)</h6>
-        <input
-          @change="uniqueValueSelected()"
-          type="radio"
-          id="one"
-          value="true"
-          v-model="uniqueValue"
-        />
-        <label for="one">Unique Values - Y Axis</label>
-        <br />
-        <input
-          @change="uniqueValueSelected()"
-          type="radio"
-          id="two"
-          value="False"
-          v-model="uniqueValue"
-        />
-        <label for="two">All Values - Y Axis</label>
-      </div>
+      <ChartTypes />
+      <UniqueValues />
       <div class="filter-fix">
         <h6>Use Aggregate Value</h6>
         <input
@@ -40,11 +21,13 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 import ChartTypes from "@/components/data/datacomponents/filtercomponents/filterparts/ChartType.vue";
+import UniqueValues from "@/components/data/datacomponents/filtercomponents/filterparts/UniqueValues.vue";
 
 export default {
   name: "InitialFilter",
   components: {
     ChartTypes,
+    UniqueValues,
   },
   data() {
     return {
