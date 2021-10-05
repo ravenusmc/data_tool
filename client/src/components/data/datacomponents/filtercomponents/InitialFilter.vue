@@ -1,36 +1,7 @@
 <template>
   <div>
     <div class="initial-filter-area">
-      <div class="filter-fix">
-        <h6>Pick Chart Type:</h6>
-        <input
-          @change="graphTypeSelected()"
-          type="radio"
-          id="one"
-          value="BarChart"
-          v-model="graphType"
-        />
-        <label for="one">Bar Chart</label>
-        <br />
-        <div v-if="hideControlsBasedOnAggregateValueSelected">
-          <input
-            @change="graphTypeSelected()"
-            type="radio"
-            id="two"
-            value="PieChart"
-            v-model="graphType"
-          />
-          <label for="two">Pie Chart</label>
-        </div>
-        <input
-          @change="graphTypeSelected()"
-          type="radio"
-          id="two"
-          value="ColumnChart"
-          v-model="graphType"
-        />
-        <label for="two">Column Chart</label>
-      </div>
+      <ChartTypes/>
       <div class="filter-fix">
         <h6>Unique Values: (Y - Axis)</h6>
         <input
@@ -68,9 +39,13 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import ChartTypes from "@/components/data/datacomponents/filtercomponents/filterparts/ChartType.vue";
 
 export default {
   name: "InitialFilter",
+  components: {
+    ChartTypes,
+  },
   data() {
     return {
       graphType: "",
@@ -79,9 +54,6 @@ export default {
       chartControls: false,
     };
   }, // End of Data
-  computed: {
-    ...mapGetters("data", ["hideControlsBasedOnAggregateValueSelected"]),
-  },
   methods: {
     ...mapActions("data", [
       "changeGraphType",
