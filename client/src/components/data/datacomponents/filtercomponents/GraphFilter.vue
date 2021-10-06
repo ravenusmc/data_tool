@@ -2,22 +2,8 @@
   <div>
     <section v-if="chartControls" class="chart_controls graph-filter-area">
       <!-- change graph Title div -->
-      <div class="chart-controls-one">
-        <div class="align">
-          <input
-            type="text"
-            id="title"
-            placeholder="Chart Title"
-            v-model="title"
-          />
-          <button
-            type="submit"
-            v-on:click="makeChartTitle()"
-            class="btn btn-outline-primary button-fix"
-          >
-            Submit
-          </button>
-        </div>
+      <div>
+
         <!-- End change graph Title div -->
         <!-- change graph color div -->
         <div class="align">
