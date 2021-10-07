@@ -148,9 +148,9 @@ export default {
     aggregateValueSelected() {
       this.changeAggregateValue(this.aggregateValueChecked);
     },
-    makeChartTitle() {
-      this.changeChartTitle(this.title);
-    },
+    // makeChartTitle() {
+    //   this.changeChartTitle(this.title);
+    // },
     changeChartColor() {
       this.changeChartColorAction(this.color);
     },
