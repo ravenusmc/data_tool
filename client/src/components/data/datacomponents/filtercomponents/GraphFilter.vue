@@ -1,9 +1,8 @@
 <template>
   <div>
     <section v-if="chartControls" class="chart_controls graph-filter-area">
-      <!-- change graph Title div -->
+      <ChartTitle />
       <div>
-
         <!-- End change graph Title div -->
         <!-- change graph color div -->
         <div class="align">
@@ -84,10 +83,14 @@
 </template>
 
 <script>
+import ChartTitle from "@/components/data/datacomponents/filtercomponents/filterparts/MakeChartTitle.vue";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "GraphFilter",
+  components: {
+    ChartTitle,
+  },
   data() {
     return {
       xAxisCountNumber: 5,
@@ -222,5 +225,4 @@ export default {
 .h-axis-fix {
   margin-bottom: 2%;
 }
-
 </style>

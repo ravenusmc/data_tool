@@ -18,6 +18,11 @@ import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "ChartTitle",
+    data() {
+    return {
+      title: "",
+    };
+  }, // End of Data
   methods: {
     ...mapActions("data", ["changeChartTitle"]),
     makeChartTitle() {
