@@ -179,6 +179,7 @@ const actions = {
 	},
 
 	changeChartColorAction: ({ commit }, payload) => {
+		console.log(payload)
 		commit("setChartColor", payload);
 	},
 

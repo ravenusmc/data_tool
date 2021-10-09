@@ -3,23 +3,8 @@
     <section v-if="chartControls" class="chart_controls graph-filter-area">
       <ChartTitle />
       <div>
-        <!-- End change graph Title div -->
         <!-- change graph color div -->
-        <div class="align">
-          <label class="font">Color:</label>&nbsp;
-          <select v-model="color" name="colot">
-            <option v-for="color in colors" v-bind:key="color" :value="color">
-              {{ color }}
-            </option>
-          </select>
-          <button
-            type="submit"
-            v-on:click="changeChartColor()"
-            class="btn btn-outline-primary button-fix"
-          >
-            Submit
-          </button>
-        </div>
+        <GraphColor />
         <div class="alignment-fix">
           <div>
             <label for="two"># of columns for X-Axis:</label>
@@ -84,12 +69,14 @@
 
 <script>
 import ChartTitle from "@/components/data/datacomponents/filtercomponents/filterparts/MakeChartTitle.vue";
+import GraphColor from "@/components/data/datacomponents/filtercomponents/filterparts/GraphColor.vue";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "GraphFilter",
   components: {
     ChartTitle,
+    GraphColor,
   },
   data() {
     return {
@@ -98,8 +85,8 @@ export default {
       hAxisName: "",
       vAxisName: "",
       title: "",
-      color: "blue",
-      colors: ["blue", "red", "black", "orange"],
+      // color: "blue",
+      // colors: ["blue", "red", "black", "orange"],
       aggregateValueChecked: false,
       chartControls: false,
       // Need to fix this message...as well as do this better.
@@ -131,7 +118,7 @@ export default {
       "changeGraphType",
       "changeUniqueValue",
       "changeChartTitle",
-      "changeChartColorAction",
+      // "changeChartColorAction",
       "changeAggregateValue",
       "changeGraphData",
       "fetchGraph",
@@ -154,9 +141,9 @@ export default {
     // makeChartTitle() {
     //   this.changeChartTitle(this.title);
     // },
-    changeChartColor() {
-      this.changeChartColorAction(this.color);
-    },
+    // changeChartColor() {
+    //   this.changeChartColorAction(this.color);
+    // },
     setShowChartControls() {
       this.chartControls = this.showChartControls;
     },
