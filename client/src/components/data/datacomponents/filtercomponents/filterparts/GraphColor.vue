@@ -45,4 +45,8 @@ export default {
   align-items: center;
   margin: 10px;
 }
+
+.button-fix {
+  margin-left: 3%;
+}
 </style>
