@@ -5,23 +5,7 @@
       <div>
         <!-- change graph color div -->
         <GraphColor />
-        <div class="alignment-fix">
-          <div>
-            <label for="two"># of columns for X-Axis:</label>
-            <div class="tooltip">
-              <span class="tooltiptext">Tooltip text</span>
-            </div>
-            <input type="number" id="title" v-model="xAxisCountNumber" />
-          </div>
-          <button
-            type="submit"
-            v-on:click="changeXAxisColumnNumber()"
-            class="btn btn-outline-primary button-fix"
-            v-tooltip.top="msg"
-          >
-            Submit
-          </button>
-        </div>
+        <ColumnsXAxis />
         <div>
           <label for="two"># of columns for Y-Axis:</label>
           <div class="tooltip">
@@ -70,6 +54,7 @@
 <script>
 import ChartTitle from "@/components/data/datacomponents/filtercomponents/filterparts/MakeChartTitle.vue";
 import GraphColor from "@/components/data/datacomponents/filtercomponents/filterparts/GraphColor.vue";
+import ColumnsXAxis from "@/components/data/datacomponents/filtercomponents/filterparts/ColumnsXAxis.vue";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
@@ -77,6 +62,7 @@ export default {
   components: {
     ChartTitle,
     GraphColor,
+    ColumnsXAxis,
   },
   data() {
     return {
@@ -90,12 +76,12 @@ export default {
       aggregateValueChecked: false,
       chartControls: false,
       // Need to fix this message...as well as do this better.
-      msg:
-        "Here you can select" +
-        "</br>" +
-        "how many columns you" +
-        "</br>" +
-        "want on the x-axis.",
+      // msg:
+      //   "Here you can select" +
+      //   "</br>" +
+      //   "how many columns you" +
+      //   "</br>" +
+      //   "want on the x-axis.",
       yAxisColumnNumberMSG:
         "Here you can select" +
         "</br>" +
@@ -120,7 +106,7 @@ export default {
       "changeChartTitle",
       // "changeChartColorAction",
       "changeAggregateValue",
-      "changeGraphData",
+      // "changeGraphData",
       "fetchGraph",
       "changeHAxisName",
       "changeVAxisName",
@@ -147,13 +133,13 @@ export default {
     setShowChartControls() {
       this.chartControls = this.showChartControls;
     },
-    changeXAxisColumnNumber() {
-      const payload = {
-        xAxisCountNumber: this.xAxisCountNumber,
-        fromButton: true,
-      };
-      this.changeGraphData(payload);
-    },
+    // changeXAxisColumnNumber() {
+    //   const payload = {
+    //     xAxisCountNumber: this.xAxisCountNumber,
+    //     fromButton: true,
+    //   };
+    //   this.changeGraphData(payload);
+    // },
     changeYAxisColumnNumber() {
       if (this.$store.getters["data/xAxisValue"] == "") {
         alert("Please put a column in for the x-value");
