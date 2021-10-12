@@ -3,24 +3,9 @@
     <section v-if="chartControls" class="chart_controls graph-filter-area">
       <ChartTitle />
       <div>
-        <!-- change graph color div -->
         <GraphColor />
         <ColumnsXAxis />
-        <div>
-          <label for="two"># of columns for Y-Axis:</label>
-          <div class="tooltip">
-            <span class="tooltiptext">Tooltip text</span>
-          </div>
-          <input type="number" id="title" v-model="yAxisCountNumber" />
-          <button
-            type="submit"
-            v-on:click="changeYAxisColumnNumber()"
-            class="btn btn-outline-primary button-fix"
-            v-tooltip.top="yAxisColumnNumberMSG"
-          >
-            Submit
-          </button>
-        </div>
+        <ColumnsYAxis />
       </div>
       <div>
         <div class="h-axis-fix">
@@ -55,6 +40,7 @@
 import ChartTitle from "@/components/data/datacomponents/filtercomponents/filterparts/MakeChartTitle.vue";
 import GraphColor from "@/components/data/datacomponents/filtercomponents/filterparts/GraphColor.vue";
 import ColumnsXAxis from "@/components/data/datacomponents/filtercomponents/filterparts/ColumnsXAxis.vue";
+import ColumnsYAxis from "@/components/data/datacomponents/filtercomponents/filterparts/ColumnsYAxis.vue";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
@@ -63,11 +49,12 @@ export default {
     ChartTitle,
     GraphColor,
     ColumnsXAxis,
+    ColumnsYAxis,
   },
   data() {
     return {
       xAxisCountNumber: 5,
-      yAxisCountNumber: 4,
+      // yAxisCountNumber: 4,
       hAxisName: "",
       vAxisName: "",
       title: "",
@@ -82,14 +69,14 @@ export default {
       //   "how many columns you" +
       //   "</br>" +
       //   "want on the x-axis.",
-      yAxisColumnNumberMSG:
-        "Here you can select" +
-        "</br>" +
-        "how many columns you" +
-        "</br>" +
-        "want on the y-axis" +
-        "</br>" +
-        "when aggregate is selected.",
+    //   yAxisColumnNumberMSG:
+    //     "Here you can select" +
+    //     "</br>" +
+    //     "how many columns you" +
+    //     "</br>" +
+    //     "want on the y-axis" +
+    //     "</br>" +
+    //     "when aggregate is selected.",
     };
   }, // End of Data
   computed: {
@@ -107,7 +94,7 @@ export default {
       // "changeChartColorAction",
       "changeAggregateValue",
       // "changeGraphData",
-      "fetchGraph",
+      // "fetchGraph",
       "changeHAxisName",
       "changeVAxisName",
     ]),
@@ -140,24 +127,24 @@ export default {
     //   };
     //   this.changeGraphData(payload);
     // },
-    changeYAxisColumnNumber() {
-      if (this.$store.getters["data/xAxisValue"] == "") {
-        alert("Please put a column in for the x-value");
-      } else if (this.$store.getters["data/yAxisValue"] == "") {
-        alert("Please put a column in for the y-value");
-      } else {
-        const payload = {
-          fileName: this.$store.getters["data/fileName"],
-          xAxisValue: this.$store.getters["data/xAxisValue"],
-          yAxisValue: this.$store.getters["data/yAxisValue"],
-          yAxisValue: this.$store.getters["data/yAxisValue"],
-          uniqueValue: this.$store.getters["data/uniqueValue"],
-          aggregateValue: this.$store.getters["data/aggregateValue"],
-          yAxisCountNumber: this.yAxisCountNumber,
-        };
-        this.fetchGraph({ payload });
-      }
-    },
+    // changeYAxisColumnNumber() {
+    //   if (this.$store.getters["data/xAxisValue"] == "") {
+    //     alert("Please put a column in for the x-value");
+    //   } else if (this.$store.getters["data/yAxisValue"] == "") {
+    //     alert("Please put a column in for the y-value");
+    //   } else {
+    //     const payload = {
+    //       fileName: this.$store.getters["data/fileName"],
+    //       xAxisValue: this.$store.getters["data/xAxisValue"],
+    //       yAxisValue: this.$store.getters["data/yAxisValue"],
+    //       yAxisValue: this.$store.getters["data/yAxisValue"],
+    //       uniqueValue: this.$store.getters["data/uniqueValue"],
+    //       aggregateValue: this.$store.getters["data/aggregateValue"],
+    //       yAxisCountNumber: this.yAxisCountNumber,
+    //     };
+    //     this.fetchGraph({ payload });
+    //   }
+    // },
     changeHAxisTitle() {
       this.changeHAxisName(this.hAxisName);
     },

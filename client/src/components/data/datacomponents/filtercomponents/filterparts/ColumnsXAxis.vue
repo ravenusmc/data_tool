@@ -51,4 +51,7 @@ export default {
 </script>
 
 <style scoped>
+.button-fix {
+  margin-left: 3%;
+}
 </style>
