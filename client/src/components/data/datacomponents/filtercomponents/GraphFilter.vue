@@ -8,17 +8,7 @@
         <ColumnsYAxis />
       </div>
       <div>
-        <div class="h-axis-fix">
-          <label for="two">H-Axis Label:</label>
-          <input type="text" id="title" v-model="hAxisName" />
-          <button
-            type="submit"
-            v-on:click="changeHAxisTitle()"
-            class="btn btn-outline-primary button-fix"
-          >
-            Submit
-          </button>
-        </div>
+        <HAxisLabel />
         <div>
           <label for="two">V-Axis Label:</label>
           <input type="text" id="title" v-model="vAxisName" />
@@ -32,7 +22,6 @@
         </div>
       </div>
     </section>
-    <!-- End change graph color div -->
   </div>
 </template>
 
@@ -41,6 +30,7 @@ import ChartTitle from "@/components/data/datacomponents/filtercomponents/filter
 import GraphColor from "@/components/data/datacomponents/filtercomponents/filterparts/GraphColor.vue";
 import ColumnsXAxis from "@/components/data/datacomponents/filtercomponents/filterparts/ColumnsXAxis.vue";
 import ColumnsYAxis from "@/components/data/datacomponents/filtercomponents/filterparts/ColumnsYAxis.vue";
+import HAxisLabel from "@/components/data/datacomponents/filtercomponents/filterparts/HAxisLabel.vue";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
@@ -50,12 +40,13 @@ export default {
     GraphColor,
     ColumnsXAxis,
     ColumnsYAxis,
+    HAxisLabel,
   },
   data() {
     return {
       xAxisCountNumber: 5,
       // yAxisCountNumber: 4,
-      hAxisName: "",
+      // hAxisName: "",
       vAxisName: "",
       title: "",
       // color: "blue",
@@ -69,14 +60,14 @@ export default {
       //   "how many columns you" +
       //   "</br>" +
       //   "want on the x-axis.",
-    //   yAxisColumnNumberMSG:
-    //     "Here you can select" +
-    //     "</br>" +
-    //     "how many columns you" +
-    //     "</br>" +
-    //     "want on the y-axis" +
-    //     "</br>" +
-    //     "when aggregate is selected.",
+      //   yAxisColumnNumberMSG:
+      //     "Here you can select" +
+      //     "</br>" +
+      //     "how many columns you" +
+      //     "</br>" +
+      //     "want on the y-axis" +
+      //     "</br>" +
+      //     "when aggregate is selected.",
     };
   }, // End of Data
   computed: {
@@ -145,9 +136,9 @@ export default {
     //     this.fetchGraph({ payload });
     //   }
     // },
-    changeHAxisTitle() {
-      this.changeHAxisName(this.hAxisName);
-    },
+    // changeHAxisTitle() {
+    //   this.changeHAxisName(this.hAxisName);
+    // },
     changeVAxisTitle() {
       this.changeVAxisName(this.vAxisName);
     },
@@ -180,9 +171,5 @@ export default {
 
 .button-fix {
   margin-left: 3%;
-}
-
-.h-axis-fix {
-  margin-bottom: 2%;
 }
 </style>
