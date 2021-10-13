@@ -9,17 +9,7 @@
       </div>
       <div>
         <HAxisLabel />
-        <div>
-          <label for="two">V-Axis Label:</label>
-          <input type="text" id="title" v-model="vAxisName" />
-          <button
-            type="submit"
-            v-on:click="changeVAxisTitle()"
-            class="btn btn-outline-primary button-fix"
-          >
-            Submit
-          </button>
-        </div>
+        <VAxisLabel />
       </div>
     </section>
   </div>
@@ -31,6 +21,7 @@ import GraphColor from "@/components/data/datacomponents/filtercomponents/filter
 import ColumnsXAxis from "@/components/data/datacomponents/filtercomponents/filterparts/ColumnsXAxis.vue";
 import ColumnsYAxis from "@/components/data/datacomponents/filtercomponents/filterparts/ColumnsYAxis.vue";
 import HAxisLabel from "@/components/data/datacomponents/filtercomponents/filterparts/HAxisLabel.vue";
+import VAxisLabel from "@/components/data/datacomponents/filtercomponents/filterparts/VAxisLabel.vue";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
@@ -41,33 +32,14 @@ export default {
     ColumnsXAxis,
     ColumnsYAxis,
     HAxisLabel,
+    VAxisLabel,
   },
   data() {
     return {
       xAxisCountNumber: 5,
-      // yAxisCountNumber: 4,
-      // hAxisName: "",
-      vAxisName: "",
       title: "",
-      // color: "blue",
-      // colors: ["blue", "red", "black", "orange"],
       aggregateValueChecked: false,
       chartControls: false,
-      // Need to fix this message...as well as do this better.
-      // msg:
-      //   "Here you can select" +
-      //   "</br>" +
-      //   "how many columns you" +
-      //   "</br>" +
-      //   "want on the x-axis.",
-      //   yAxisColumnNumberMSG:
-      //     "Here you can select" +
-      //     "</br>" +
-      //     "how many columns you" +
-      //     "</br>" +
-      //     "want on the y-axis" +
-      //     "</br>" +
-      //     "when aggregate is selected.",
     };
   }, // End of Data
   computed: {
@@ -82,12 +54,7 @@ export default {
       "changeGraphType",
       "changeUniqueValue",
       "changeChartTitle",
-      // "changeChartColorAction",
       "changeAggregateValue",
-      // "changeGraphData",
-      // "fetchGraph",
-      "changeHAxisName",
-      "changeVAxisName",
     ]),
     graphTypeSelected() {
       // This needs to be fixed...don't need payload here
@@ -102,45 +69,8 @@ export default {
     aggregateValueSelected() {
       this.changeAggregateValue(this.aggregateValueChecked);
     },
-    // makeChartTitle() {
-    //   this.changeChartTitle(this.title);
-    // },
-    // changeChartColor() {
-    //   this.changeChartColorAction(this.color);
-    // },
     setShowChartControls() {
       this.chartControls = this.showChartControls;
-    },
-    // changeXAxisColumnNumber() {
-    //   const payload = {
-    //     xAxisCountNumber: this.xAxisCountNumber,
-    //     fromButton: true,
-    //   };
-    //   this.changeGraphData(payload);
-    // },
-    // changeYAxisColumnNumber() {
-    //   if (this.$store.getters["data/xAxisValue"] == "") {
-    //     alert("Please put a column in for the x-value");
-    //   } else if (this.$store.getters["data/yAxisValue"] == "") {
-    //     alert("Please put a column in for the y-value");
-    //   } else {
-    //     const payload = {
-    //       fileName: this.$store.getters["data/fileName"],
-    //       xAxisValue: this.$store.getters["data/xAxisValue"],
-    //       yAxisValue: this.$store.getters["data/yAxisValue"],
-    //       yAxisValue: this.$store.getters["data/yAxisValue"],
-    //       uniqueValue: this.$store.getters["data/uniqueValue"],
-    //       aggregateValue: this.$store.getters["data/aggregateValue"],
-    //       yAxisCountNumber: this.yAxisCountNumber,
-    //     };
-    //     this.fetchGraph({ payload });
-    //   }
-    // },
-    // changeHAxisTitle() {
-    //   this.changeHAxisName(this.hAxisName);
-    // },
-    changeVAxisTitle() {
-      this.changeVAxisName(this.vAxisName);
     },
   },
   watch: {
