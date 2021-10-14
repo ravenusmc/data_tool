@@ -47,13 +47,14 @@ export default {
     ...mapGetters("data", ["hideControlsBasedOnAggregateValueSelected"]),
   },
   methods: {
-    ...mapActions("data", ["changeGraphType"]),
+    ...mapActions("data", ["changeGraphType", "changeAxisLabelsValues"]),
     graphTypeSelected() {
       // This needs to be fixed...don't need payload here
       const payload = {
         graphType: this.graphType,
       };
       this.changeGraphType(payload);
+      this.changeAxisLabelsValues(this.graphType);
     },
   },
 };

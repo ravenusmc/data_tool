@@ -25,6 +25,7 @@ const state = {
 	chartColor: "",
 	showChartControls: false,
 	hideControlsBasedOnAggregateValueSelected: true,
+	hideAvisLabels: true,
 	chartOptionsOne: {
 		title: "",
 		hAxis: {
@@ -65,6 +66,7 @@ const getters = {
 	hAxisName: state => state.hAxisName,
 	vAxisName: state => state.vAxisName,
 	chartOptionsOne: state => state.chartOptionsOne,
+	hideAvisLabels: state => state.hideAvisLabels,
 };
 
 const actions = {
@@ -191,6 +193,11 @@ const actions = {
 		commit("setVAxisName", payload)
 	},
 
+	changeAxisLabelsValues: ({ commit }, payload) => {
+		let showAxisLabels = payload !== 'PieChart' ? true : false;
+		commit("setHideAvisLabelsValue", showAxisLabels)
+	},
+
 };
 
 const mutations = {
@@ -273,6 +280,10 @@ const mutations = {
 
 	setVAxisName: (state, data) => {
 		state.vAxisName = data
+	},
+
+	setHideAvisLabelsValue: (state, data) => {
+		state.hideAvisLabels = data
 	},
 
 };

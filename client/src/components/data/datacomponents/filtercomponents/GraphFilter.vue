@@ -7,7 +7,7 @@
         <ColumnsXAxis />
         <ColumnsYAxis />
       </div>
-      <div>
+      <div v-if="hideAvisLabels">
         <HAxisLabel />
         <VAxisLabel />
       </div>
@@ -47,6 +47,7 @@ export default {
       "showGraph", // May not need this
       "showChartControls",
       "hideControlsBasedOnAggregateValueSelected",
+      "hideAvisLabels",
     ]),
   },
   methods: {
@@ -90,6 +91,7 @@ export default {
 .graph-filter-area {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 450px));
+  height: 350px;
 }
 
 .align {
