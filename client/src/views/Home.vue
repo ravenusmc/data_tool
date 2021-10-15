@@ -2,30 +2,37 @@
   <div>
     <section>
       <div class="title-div" :style="{ filter: blurCalculation }">
-        <h1 class="title_header">Data Tool</h1>
+        <h1 class="title_header center">Data Tool</h1>
+        <h4 class="sub_title_header">A Simple Data Tool for the Masses</h4>
       </div>
     </section>
+    <LandingCenter />
   </div>
 </template>
 
 <script>
+import LandingCenter from "@/views/landing/LandingCenter.vue";
+
 export default {
   name: "Home",
+  components: {
+    LandingCenter,
+  },
   computed: {
     blurCalculation() {
       return "blur(1.2px)";
     },
-  }
+  },
 };
 </script>
 
 <style scoped>
 section {
-  background-image: url("../assets/images/landing.jpg");
+  background-image: url("../assets/images/landing_2.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
+  height: 70vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -34,7 +41,7 @@ section {
 }
 
 .title-div {
-  background: hsla(240, 100%, 100%, 0.7);
+  background: rgba(0, 0, 0, 0.7);
   padding: 20px;
 }
 
@@ -43,5 +50,14 @@ section {
   font-weight: 600;
   letter-spacing: -0.3rem;
   text-transform: uppercase;
+  color: white;
+}
+
+.sub_title_header {
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+  color: white;
 }
 </style>

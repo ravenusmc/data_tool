@@ -14,12 +14,12 @@ import DataArea from "@/components/data/DataArea.vue";
 
 export default {
   name: "TextAnalysis",
-  computed: {
-    ...mapGetters("data", ["showDataArea"]),
-  },
   components: {
     FileArea,
     DataArea,
+  },
+  computed: {
+    ...mapGetters("data", ["showDataArea"]),
   },
 };
 </script>
