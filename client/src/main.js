@@ -8,7 +8,11 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faUserSecret, faHashtag, faPencilAlt, faCodeBranch, faNetworkWired } from '@fortawesome/free-solid-svg-icons'
 import VTooltip from 'v-tooltip'
 
-library.add(faUserSecret, faHashtag, faPencilAlt, faCodeBranch, faNetworkWired)
+library.add(faUserSecret, 
+  faHashtag, 
+  faPencilAlt, 
+  faCodeBranch, 
+  faNetworkWired)
 
 Vue.component('fa-icon', FontAwesomeIcon)
 
