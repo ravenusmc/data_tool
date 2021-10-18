@@ -2,16 +2,29 @@
   <div>
     <section>
       <div class="div-area">
-				    <a href="https://twitter.com/mcuddy7">
-						<fa-icon :icon="['fas', 'usertie']" size="3x" />
-						<i class="fa-solid fa-user-tie"></i>
-            <!-- <fa-icon :icon="['fas', 'hashtag']" size="3x" /> -->
-          </a>
-        <h2>Ease of Use</h2>
+        <div class="icon-area">
+          <i class="ri-drag-move-2-fill ri-4x"></i>
+        </div>
+        <div class="paragraph-div">
+          <h2>Ease of Use</h2>
+          <p>
+            Data Tool is a simple, easy to use tool that allows the user to do
+            some basic data analysis.
+          </p>
+        </div>
       </div>
-      <div>File Types</div>
-      <div>Dashboards</div>
-      <div>Quick Analysis</div>
+      <div class="div-area">
+        <i class="ri-file-line ri-4x"></i>
+        <h2>File Types</h2>
+      </div>
+      <div class="div-area">
+        <i class="ri-dashboard-2-fill ri-4x"></i>
+        <h2>Dashboards</h2>
+      </div>
+      <div class="div-area">
+        <i class="ri-speed-fill ri-4x"></i>
+        <h2>Quick Analysis</h2>
+      </div>
     </section>
   </div>
 </template>
@@ -29,6 +42,21 @@ section {
 }
 
 .div-area {
-  border: 2px solid red;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* border: 2px solid black; */
+  margin: 60px;
 }
+
+.paragraph-div {
+  border-left: 1px solid #dedede;
+  padding-left: 30px;
+}
+
+.icon-area {
+  padding-right: 15px;
+}
+
 </style>

@@ -43,6 +43,9 @@ Please note that these instructions are not 100% complete.
 4. Numpy-1.11.0
 5. Vue.JS-2.5
 
+Remix Icon link: 
+https://remixicon.com/
+
 ### Operation
 
 Once the program is downloaded, simply run the program as you would any other python program.
