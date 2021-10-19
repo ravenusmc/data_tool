@@ -14,16 +14,40 @@
         </div>
       </div>
       <div class="div-area">
-        <i class="ri-file-line ri-4x"></i>
-        <h2>File Types</h2>
+        <div class="icon-area">
+          <i class="ri-file-line ri-4x"></i>
+        </div>
+        <div class="paragraph-div">
+          <h2>File Types</h2>
+          <p>
+            Data Tool allows the user to conduct analysis on two file types: CSV
+            and TXT files.
+          </p>
+        </div>
       </div>
       <div class="div-area">
-        <i class="ri-dashboard-2-fill ri-4x"></i>
-        <h2>Dashboards</h2>
+        <div class="icon-area">
+          <i class="ri-dashboard-2-fill ri-4x"></i>
+        </div>
+        <div class="paragraph-div">
+          <h2>Dashboards</h2>
+          <p>
+            Once a file is uploaded, Data Tool will present the information in a
+            nice dashboard.
+          </p>
+        </div>
       </div>
       <div class="div-area">
-        <i class="ri-speed-fill ri-4x"></i>
-        <h2>Quick Analysis</h2>
+        <div class="icon-area">
+          <i class="ri-speed-fill ri-4x"></i>
+        </div>
+        <div class="paragraph-div">
+          <h2>Quick Analysis</h2>
+          <p>
+            Data Tool is a fast, simple to use data analysis system 
+            that allows a user too quickly get started with it.
+          </p>
+        </div>
       </div>
     </section>
   </div>
@@ -58,5 +82,4 @@ section {
 .icon-area {
   padding-right: 15px;
 }
-
 </style>
