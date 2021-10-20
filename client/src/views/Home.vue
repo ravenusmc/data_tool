@@ -7,16 +7,19 @@
       </div>
     </section>
     <LandingCenter />
+    <DataToolBackGround />
   </div>
 </template>
 
 <script>
 import LandingCenter from "@/views/landing/LandingCenter.vue";
+import DataToolBackGround from "@/views/landing/DataToolBackGround.vue";
 
 export default {
   name: "Home",
   components: {
     LandingCenter,
+    DataToolBackGround,
   },
   computed: {
     blurCalculation() {
