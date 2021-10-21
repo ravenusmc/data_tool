@@ -68,7 +68,7 @@
           <li class="nav-item">
             <a class="nav-link" href="#"
               ><router-link class="fontColor font" to="/about"
-                >About FLAG: {{ loginFlag }}</router-link
+                >About</router-link
               ></a
             >
           </li>
