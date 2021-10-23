@@ -31,7 +31,7 @@
         <button
           type="submit"
           v-on:click="submitFile()"
-          class="btn btn-outline-primary"
+          class="btn btn-outline-dark"
         >
           Submit
         </button>

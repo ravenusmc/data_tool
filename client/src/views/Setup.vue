@@ -15,8 +15,8 @@
             then be able to analyze it by the most common words and sentiment of
             each sentence as well as the over all sentiment of the document.
           </p>
-          <a class="btn btn-primary">
-            <router-link class="fontColor font" to="/text_analysis">
+          <a class="btn btn-outline-dark">
+            <router-link class="font" to="/text_analysis">
               Get Started...
             </router-link>
           </a>
@@ -35,8 +35,8 @@
             The user will be able to upload a csv file here and be able to do
             some basic data analysis on the document
           </p>
-          <a class="btn btn-primary">
-            <router-link class="fontColor font" to="/data_analysis">
+          <a class="btn btn-outline-dark">
+            <router-link class="font" to="/data_analysis">
               Get Started...
             </router-link>
           </a>

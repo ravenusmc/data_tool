@@ -29,7 +29,7 @@
             :placeholder="userObject.email"
           />
         </div>
-        <button type="submit" class="btn btn-outline-primary">Submit</button>
+        <button type="submit" class="btn btn-outline-dark">Submit</button>
       </form>
 
       <form @submit="changePassword">
@@ -66,7 +66,7 @@
             placeholder="Confirm New Password"
           />
         </div>
-        <button type="submit" class="btn btn-outline-primary">Submit</button>
+        <button type="submit" class="btn btn-outline-dark">Submit</button>
       </form>
       <form @submit="deleteUser" class="delete-user">
         <button type="submit" class="btn btn-outline-danger">
@@ -176,12 +176,12 @@ section {
 
 .login-title {
   text-transform: uppercase;
-  color: rgb(0, 125, 225);
+  color: #333;
 }
 
 form {
-  border: 2px solid rgb(0, 125, 225);
-  background-color: rgba(0, 0, 0, 0.3);
+  border: 2px solid rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.5);
   border-radius: 15px;
   padding: 30px;
   width: 45%;
