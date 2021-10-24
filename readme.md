@@ -59,6 +59,9 @@ as well as npm.
 2. The csv file page I think is getting quite overblown and could be changed in the future. 
 	-Believe that the state management side of things could be heavily improved. 
 3. Dealing with dates on the CSV file. 
+4. I've thought about on the text analysis to present the entire document and highlighting 
+a sentence as the use clicks through. The problem with this is that some documents may be 
+to long so I decided not to go that route.
 
 # Preview
 
