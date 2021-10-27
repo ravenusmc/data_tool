@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <section>
       <div class="card" style="width: 30rem">
         <img
@@ -15,11 +14,9 @@
             then be able to analyze it by the most common words and sentiment of
             each sentence as well as the over all sentiment of the document.
           </p>
-          <a class="btn btn-outline-dark">
-            <router-link class="font" to="/text_analysis">
-              Get Started...
-            </router-link>
-          </a>
+          <router-link class="font fontColor" to="/text_analysis">
+            <button class="btn btn-outline-dark">Get Started...</button>
+          </router-link>
         </div>
       </div>
 
@@ -35,15 +32,14 @@
             The user will be able to upload a csv file here and be able to do
             some basic data analysis on the document
           </p>
-          <a class="btn btn-outline-dark">
-            <router-link class="font" to="/data_analysis">
+          <router-link class="font fontColor" to="/data_analysis">
+            <button id="show-text" class="btn btn-outline-dark">
               Get Started...
-            </router-link>
-          </a>
+            </button>
+          </router-link>
         </div>
       </div>
     </section>
-
   </div>
 </template>
 
@@ -65,7 +61,20 @@ section {
   justify-items: center;
 }
 
+.card-text {
+  height: 100px;
+}
+
+#show-text:active {
+  color: rgb(255, 255, 255) !important;
+}
+
 .fontColor {
-  color: rgb(255, 150, 0) !important;
+  color: #333 !important;
+}
+
+.fontColor:hover {
+  color: rgb(255, 255, 255) !important;
+  text-decoration: none;
 }
 </style>
