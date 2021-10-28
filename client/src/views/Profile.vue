@@ -69,6 +69,9 @@
         <button type="submit" class="btn btn-outline-dark">Submit</button>
       </form>
       <form @submit="deleteUser" class="delete-user">
+        <div>
+          <h3 class="login-title center">Delete Account</h3>
+        </div>
         <button type="submit" class="btn btn-outline-danger">
           Delete User
         </button>
